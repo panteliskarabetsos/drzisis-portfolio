@@ -197,12 +197,11 @@ export default function HomePage() {
         He will be an asset to any residency program."
       />
       <RecommendationCard
-        name="Dr. Georgia K"
-        title="Internal Medicine Attending"
-        text="It’s rare to see someone so early in their career combine 
-        compassion and professionalism so effectively. Marios is an outstanding 
-        team member and an attentive clinician."
-      />
+  name="Dr. Georgia K"
+  title="Internal Medicine Attending"
+  text="Marios consistently demonstrated an eagerness to learn, remarkable empathy for patients, and a strong aptitude for clinical research. He will be an asset to any &quot;residency&quot; program."
+/>
+
     </div>
   </div>
 </section>
@@ -329,7 +328,7 @@ function Recommendation({ name, title, text }) {
 function RecommendationCard({ name, title, text }) {
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <p className="italic text-stone-700 mb-4 leading-relaxed">"{text}"</p>
+      <p className="italic text-stone-700 mb-4 leading-relaxed">&quot;{text}&quot;</p>
       <div className="border-t border-stone-200 pt-4">
         <h4 className="font-semibold text-stone-800">{name}</h4>
         <p className="text-sm text-stone-500">{title}</p>

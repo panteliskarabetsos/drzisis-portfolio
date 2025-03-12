@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { Inter, Domine } from "next/font/google";
 import "./globals.css";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 import { Montserrat } from "next/font/google";
 import Header from "./components/Header";
 import Footer from "./components/Footer";

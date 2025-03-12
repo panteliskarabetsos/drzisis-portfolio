@@ -10,10 +10,9 @@ export default function PrivacyPolicy() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-2">1. Introduction</h2>
           <p>
-            Welcome to <strong>Dr. Marios Zisis Website</strong>. We are committed to
-            protecting your personal information and your right to privacy. This Privacy Policy explains how we
-            collect, use, store, and protect your data when you visit our website and use our contact form.
-          </p>
+  Welcome to <strong>Dr. Marios Zisis Website</strong>. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we handle &quot;personal information&quot;.
+</p>
+
           <p>By using this website, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
         </section>
 
@@ -72,7 +71,7 @@ export default function PrivacyPolicy() {
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-2">8. Changes to This Privacy Policy</h2>
-          <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated <strong>"Effective Date."</strong></p>
+          <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated <strong>&quot;Effective Date.&quot;</strong></p>
         </section>
 
         <section className="mb-8">

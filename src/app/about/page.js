@@ -115,7 +115,7 @@ export default function AboutPage() {
               { name: "Dr. Georgia K.", role: "Internal Medicine Specialist", quote: "His dedication to medicine and research is unmatched. Marios is a true asset to any medical institution." },
             ].map((item, index) => (
               <div key={index} className="p-6 bg-stone-50 shadow-lg rounded-lg hover:scale-105 transition-transform duration-300">
-                <p className="italic text-stone-600">"{item.quote}"</p>
+                <p className="italic text-stone-600">&quot;{item.quote}&quot;</p>
                 <h4 className="text-lg font-semibold mt-4">{item.name}</h4>
                 <p className="text-sm text-cyan-600">{item.role}</p>
               </div>
@@ -126,10 +126,11 @@ export default function AboutPage() {
 
       {/* CTA - CONTACT */}
       <section className="bg-cyan-600 text-white py-14 text-center px-4">
-        <h2 className="text-3xl sm:text-4xl font-semibold">Let's Connect</h2>
-        <p className="text-lg mt-3 sm:mt-4 max-w-xl mx-auto">
-          If you're interested in collaborating, discussing research initiatives, or sharing insights on patient care, feel free to reach out.
-        </p>
+      <h2 className="text-3xl sm:text-4xl font-semibold">Let&apos;s Connect</h2>
+      <p className="text-lg mt-3 sm:mt-4 max-w-xl mx-auto">
+  If you&apos;re interested in collaborating, discussing research initiatives, or sharing insights on patient care, feel free to reach out.
+</p>
+
         <a href="/contact" className="mt-6 inline-block bg-white text-cyan-600 px-8 py-3 rounded-md font-semibold transition hover:bg-gray-200">
           Contact Me
         </a>
