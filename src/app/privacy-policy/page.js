@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-2">1. Introduction</h2>
           <p>
-            Welcome to <strong>Dr. Marios Zisis' Website</strong>. We are committed to
+            Welcome to <strong>Dr. Marios Zisis Website</strong>. We are committed to
             protecting your personal information and your right to privacy. This Privacy Policy explains how we
             collect, use, store, and protect your data when you visit our website and use our contact form.
           </p>
