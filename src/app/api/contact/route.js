@@ -17,7 +17,7 @@ export async function POST(request) {
     const mailOptions = {
       from: `"Dr. Zisis Website" <${process.env.GMAIL_USER}>`,
       replyTo: email,
-      to: "karapantelis21@gmail.com",
+      to: "mzisis01@gmail.com",
       subject: `📬 New Contact Message from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6;">
