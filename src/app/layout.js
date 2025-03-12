@@ -33,9 +33,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={montserrat.variable}>
-    <body className="font-sans text-stone-800"> 
+    <body className="font-sans text-stone-800 flex flex-col min-h-screen">
       <Header />
-      {children} 
+      <main className="flex-1">
+        {children}
+      </main>
       <Footer />
     </body>
   </html>
