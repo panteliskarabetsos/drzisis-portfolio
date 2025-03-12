@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-stone-200 text-stone-800 py-8 sm:py-10">
+    <footer className="bg-white border-t border-stone-200 text-stone-800 py-8 sm:py-10 mt-auto">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Footer Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center sm:text-left">
@@ -39,7 +39,7 @@ export default function Footer() {
             <div className="mt-2 space-y-1 text-sm">
               <a href="mailto:mzisis01@gmail.com" className="hover:text-cyan-600 transition">mzisis01@gmail.com</a>
             </div>
-            {/* Social Media Icons */}
+
             <div className="flex justify-center sm:justify-start space-x-4 mt-3">
               <a href="#" className="text-stone-500 hover:text-cyan-600 transition" aria-label="LinkedIn">
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -65,4 +65,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+}  
+
+
