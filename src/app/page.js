@@ -190,7 +190,7 @@ export default function HomePage() {
     {/* Recommendations Grid */}
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
       <RecommendationCard
-        name="Dr. Alexandros P."
+        name="Dr. Nikolaos P."
         title="Professor of Cardiology, Athens Medical School"
         text="Marios consistently demonstrated an eagerness to learn, remarkable 
         empathy for patients, and a strong aptitude for clinical research. 

@@ -68,7 +68,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="inline-block hover:text-cyan-600 transition duration-200"
             >
-              Pantelis
+              Pantelis.dev
             </a>
           </p>
         </div>
