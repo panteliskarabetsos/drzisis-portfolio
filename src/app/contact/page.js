@@ -77,7 +77,7 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
-            <div className="flex items-center space-x-4">
+            {/* <div className="flex items-center space-x-4">
               <PhoneIcon className="h-6 w-6 text-stone-600" />
               <div>
                 <p className="text-sm text-stone-500">Phone</p>
@@ -88,7 +88,7 @@ export default function ContactPage() {
                   +1 (234) 567-890
                 </a>
               </div>
-            </div>
+            </div> */}
             <div className="flex items-center space-x-4">
               <MapPinIcon className="h-6 w-6 text-stone-600" />
               <div>
