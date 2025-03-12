@@ -111,7 +111,7 @@ export default function AboutPage() {
           <h2 className="text-4xl sm:text-5xl font-bold mb-12">What Others Say</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {[
-              { name: "Dr. Alex P.", role: "Professor of Neurosurgery, MD, PhD", quote: "Marios has an exceptional ability to blend technical expertise with genuine patient care. A promising future awaits him." },
+              { name: "Dr. Nikolaos P.", role: "Professor of Neurosurgery, MD, PhD", quote: "Marios has an exceptional ability to blend technical expertise with genuine patient care. A promising future awaits him." },
               { name: "Dr. Georgia K.", role: "Internal Medicine Specialist", quote: "His dedication to medicine and research is unmatched. Marios is a true asset to any medical institution." },
             ].map((item, index) => (
               <div key={index} className="p-6 bg-stone-50 shadow-lg rounded-lg hover:scale-105 transition-transform duration-300">

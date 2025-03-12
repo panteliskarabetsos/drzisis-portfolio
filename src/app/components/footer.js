@@ -60,8 +60,16 @@ export default function Footer() {
 
         {/* Bottom Footer */}
         <div className="mt-10 border-t border-stone-200 pt-6 flex flex-col items-center sm:flex-row justify-between gap-4">
-          <p className="text-sm text-stone-500">
-            &copy; {new Date().getFullYear()} Dr. Marios Zisis. All rights reserved.
+        <p className="text-sm text-stone-500">
+            &copy; {new Date().getFullYear()} Dr. Marios Zisis. All rights reserved. Created By{' '}
+            <a 
+              href="http://panteliskarabetsos.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block hover:text-cyan-600 transition duration-200"
+            >
+              Pantelis
+            </a>
           </p>
         </div>
       </div>
