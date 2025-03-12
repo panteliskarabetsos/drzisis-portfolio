@@ -19,7 +19,7 @@ export async function POST(request) {
     const mailOptions = {
       from: process.env.GMAIL_USER,         // or from: your custom domain
       replyTo: email,                       // user’s address can be the reply-to
-      to: "karapantelis21@gmail.com",  // where you want the message
+      to: "mzisis01@gmail.com",  // where you want the message
       subject: `New Contact Form: ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     };

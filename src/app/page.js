@@ -230,9 +230,9 @@ Dr. Marios Zisis
   );
 }
 
-/* ----------------------------------------------------------------- */
-/*  Reusable Components Below: Stats Box, Service Card, Testimonial  */
-/* ----------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------- */
+/*  Reusable Components Below: Stats Box, Service Card, Testimonial,Recommendation  */
+/* -------------------------------------------------------------------------------- */
 
 /**
  * Stats/achievements card: displays a number and label.

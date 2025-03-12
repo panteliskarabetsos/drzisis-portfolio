@@ -28,9 +28,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold text-stone-900">Get in Touch</h3>
             <div className="mt-3 space-y-1 text-sm">
-              <p className="flex justify-center sm:justify-start items-center space-x-2">
-                📍 <span>Athens, Greece</span>
-              </p>
+             
               <p className="flex justify-center sm:justify-start items-center space-x-2">
                 ✉️ <a href="mailto:mzisis01@gmail.com" className="hover:text-cyan-600 transition duration-200">mzisis01@gmail.com</a>
               </p>
