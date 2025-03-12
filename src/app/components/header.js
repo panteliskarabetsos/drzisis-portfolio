@@ -13,7 +13,7 @@ export default function Header() {
     if (pathname === "/") {
       // On the homepage, show name only after scrolling 200px.
       const handleScroll = () => {
-        if (window.scrollY > 200) {
+        if (window.scrollY > 240) {
           setShowName(true);
         } else {
           setShowName(false);
