@@ -29,7 +29,7 @@ export default function HomePage() {
     backgroundImage: 'url("/hero-bg.jpg")',
   }}
 >
-  {/* Lighter Gradient Overlay for Better Readability */}
+  {/* Background Overlay */}
   <div className="absolute inset-0 bg-black/50 sm:bg-black/30" />
 
   {/* Hero Content */}
@@ -158,7 +158,6 @@ export default function HomePage() {
       />
     </div>
 
-    {/* Centered "Learn More" Button */}
     <div className="mt-10 flex justify-center">
       <a
         href="/research"
