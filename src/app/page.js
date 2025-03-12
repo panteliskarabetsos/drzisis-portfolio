@@ -73,7 +73,7 @@ export default function HomePage() {
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-4">About Me</h2>
           <p className="text-stone-600 mb-6 leading-relaxed">
-          Recent medical graduate and aspiring cardiologist committed to compassionate, patient-centered care. Driven by preventive medicine, clinical excellence, and innovative cardiovascular research.
+          Passionate about cardiology and preventive medicine, dedicated to enhancing patient care through clinical excellence. Committed to continuous learning, research, and compassionate practice.
           </p>
           <a
             href="/about"
