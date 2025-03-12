@@ -4,6 +4,7 @@ import {
   AcademicCapIcon,
   BeakerIcon,
   ClipboardDocumentListIcon,
+  HeartIcon,
 } from "@heroicons/react/24/solid";
 
 export default function ResearchPage() {
@@ -60,40 +61,52 @@ export default function ResearchPage() {
         </div>
       </section>
 
-      {/* PUBLICATIONS */}
-      <section className="py-12 sm:py-16 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6">Research Publications</h2>
+   {/* RESEARCH PUBLICATIONS  */}
+{/* RESEARCH PUBLICATIONS (LIST STYLE WITHOUT ICONS) */}
+<section className="bg-stone-40 py-16 px-4 sm:px-6 lg:px-8">
+  <div className="mx-auto max-w-7xl text-center">
+    <h2 className="text-3xl font-bold mb-10">Research Publications</h2>
 
-          <div className="space-y-8 max-w-4xl mx-auto">
-            <PublicationEntry
-              title="Artificial Intelligence in Cardiology"
-              journal="Journal of Cardiovascular Medicine"
-              year="2023"
-              link="#"
-            />
-            <PublicationEntry
-              title="Genomic Insights into Cardiac Risk Factors"
-              journal="International Journal of Cardiology"
-              year="2022"
-              link="#"
-            />
-            <PublicationEntry
-              title="Wearable Tech for Remote Cardiac Monitoring"
-              journal="Digital Health & AI"
-              year="2021"
-              link="#"
-            />
-          </div>
-        </div>
-      </section>
+    <ul className="space-y-8 max-w-3xl mx-auto">
+    
+
+      <li className="bg-white p-6 rounded-xl shadow-md transition duration-300 hover:shadow-lg text-left">
+        <h3 className="text-xl font-semibold text-stone-800">Linking Cardiovascular Disease and Metabolic Dysfunction-Associated Steatotic Liver Disease (MASLD): The Role of Cardiometabolic Drugs in MASLD Treatment</h3>
+        <p className="text-sm text-stone-500">Biomolecules, 2025</p>
+        <a 
+          href="https://www.mdpi.com/2218-273X/15/3/324" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-2 inline-block font-medium text-cyan-600 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-cyan-600 after:transition-all after:duration-300 hover:after:w-full"
+        >
+          View Publication &rarr;
+        </a>
+      </li>
+
+      <li className="bg-white p-6 rounded-xl shadow-md transition duration-300 hover:shadow-lg text-left">
+        <h3 className="text-xl font-semibold text-stone-800">Acute Ischemic Stroke during Extracorporeal Membrane Oxygenation (ECMO): A Narrative Review of the Literature
+        </h3>
+        <p className="text-sm text-stone-500 mb-2">Journal of Clinical Medicine, 2024</p>
+        <a 
+          href="https://www.mdpi.com/2077-0383/13/19/6014" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-2 inline-block font-medium text-cyan-600 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-cyan-600 after:transition-all after:duration-300 hover:after:w-full"
+        >
+          View Publication &rarr;
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</section>
 
       {/* CTA SECTION */}
       <section className="py-12 sm:py-16 px-6 text-center bg-stone-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-xl sm:text-2xl font-semibold mb-6">Interested in Research Collaboration?</h2>
           <p className="text-stone-600 mb-6 max-w-xl mx-auto text-sm sm:text-lg">
-            If you&apos;re interested in collaborating on research or discussing ideas, let&apos;s connect.
+            If youre interested in collaborating on research or discussing ideas, let&apos;s connect.
           </p>
           <a href="/contact" className="inline-block rounded-md bg-stone-800 px-6 py-2 sm:px-6 sm:py-3 text-white hover:bg-stone-700 transition">
             Contact Me

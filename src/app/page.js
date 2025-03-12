@@ -123,7 +123,7 @@ export default function HomePage() {
 
 
 {/* CLINICAL FOCUS SECTION */}
-<section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-stone-50 to-white">
+<section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-stone-30 to-white">
   <div className="mx-auto max-w-7xl text-center">
     <h2 className="text-3xl font-bold mb-8 text-stone-900">
       Clinical Interests & Experience

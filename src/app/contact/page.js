@@ -1,25 +1,17 @@
 "use client";
 import { useState } from "react";
-import {
-  EnvelopeIcon,
-  PhoneIcon,
-  MapPinIcon,
-} from "@heroicons/react/24/outline";
+import { EnvelopeIcon, MapPinIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setIsSuccess(false); // reset success state on new submission
+    setIsSuccess(false);
 
     try {
       const response = await fetch("/api/contact", {
@@ -44,40 +36,36 @@ export default function ContactPage() {
   };
 
   const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-stone-50 to-white text-stone-800">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        {/* Title & Intro */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <h1 className="text-4xl font-bold mb-4">Contact Me</h1>
-          <p className="text-stone-600 leading-relaxed">
-            Whether you’re interested in discussing residency opportunities, research collaborations, or simply want to share insights on medical practice, I would love to connect.
+    <main className="bg-gradient-to-b from-stone-100 to-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-stone-800 mb-4">Get in Touch</h1>
+          <p className="text-stone-600">
+            Let's discuss opportunities, collaborate on research, or connect professionally.
           </p>
         </div>
 
-        {/* Responsive Grid: stacks on mobile, two-column on lg+ */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left Column: Contact Info */}
-          <div className="flex flex-col space-y-8 justify-center">
-            <div className="flex items-center space-x-4">
-              <EnvelopeIcon className="h-6 w-6 text-stone-600" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="space-y-6">
+
+            {/* EMAIL CLASS */}
+            <div className="flex items-center space-x-3">
+              <EnvelopeIcon className="h-7 w-7 text-cyan-600" />
               <div>
-                <p className="text-sm text-stone-500">Email</p>
-                <a
-                  href="mailto:mzisis@example.com"
-                  className="text-stone-800 font-medium hover:underline underline-offset-2"
-                >
+                <p className="text-stone-600">Email</p>
+                <a href="mailto:mzisis01@gmail.com" className="text-stone-800 hover:text-cyan-600 transition">
                   mzisis01@gmail.com
                 </a>
               </div>
+
+              {/* PHONE CLASS */}
+              
             </div>
-            {/* <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-4">
               <PhoneIcon className="h-6 w-6 text-stone-600" />
               <div>
                 <p className="text-sm text-stone-500">Phone</p>
@@ -88,117 +76,66 @@ export default function ContactPage() {
                   +1 (234) 567-890
                 </a>
               </div>
-            </div> */}
-            <div className="flex items-center space-x-4">
-              <MapPinIcon className="h-6 w-6 text-stone-600" />
+            </div> 
+
+            {/* MAP CLASS */}
+            <div className="flex items-center space-x-3">
+              <MapPinIcon className="h-7 w-7 text-cyan-600" />
               <div>
-                <p className="text-sm text-stone-500">Location</p>
-                <p className="text-stone-800 font-medium">Athens, Greece</p>
+                <p className="text-stone-600">Location</p>
+                <p className="text-stone-800">Athens, Greece</p>
               </div>
             </div>
-           
           </div>
 
-          {/* Right Column: Contact Form */}
-          <div>
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-6 bg-white p-8 rounded-xl shadow-lg transition-all duration-300"
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white p-8 rounded-2xl shadow-xl space-y-5"
+          >
+            <input
+              type="text"
+              name="name"
+              required
+              placeholder="Full Name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full border border-stone-300 rounded-lg px-4 py-2 focus:ring-cyan-500"
+            />
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full border border-stone-300 rounded-lg px-4 py-2 focus:ring-cyan-500"
+            />
+            <textarea
+              name="message"
+              required
+              rows="4"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+              className="w-full border border-stone-300 rounded-lg px-4 py-2 focus:ring-cyan-500"
+            ></textarea>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3 rounded-lg transition duration-200 ${
+                isSubmitting && "opacity-60 cursor-wait"
+              }`}
             >
-              {/* Name */}
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-stone-700">
-                  Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  required
-                  placeholder="Your Full Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  onInvalid={(e) => e.target.setCustomValidity("Please enter your Name.")}
-                  onInput={(e) => e.target.setCustomValidity("")}
-                  className="
-                    mt-1 block w-full rounded-md border border-stone-300 py-2 px-4 shadow-sm
-                    focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500
-                    text-sm placeholder-stone-400 transition-colors duration-200
-                  "
-                />
-              </div>
+              {isSubmitting ? "Sending..." : "Send Message"}
+            </button>
 
-              {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-stone-700">
-                  Email <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  required
-                  placeholder="you@example.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  onInvalid={(e) => e.target.setCustomValidity("Please enter a valid Email address.")}
-                  onInput={(e) => e.target.setCustomValidity("")}
-                  className="
-                    mt-1 block w-full rounded-md border border-stone-300 py-2 px-4 shadow-sm
-                    focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500
-                    text-sm placeholder-stone-400 transition-colors duration-200
-                  "
-                />
-              </div>
-
-              {/* Message */}
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-stone-700">
-                  Message <span className="text-red-500">*</span>
-                </label>
-                <textarea
-                  name="message"
-                  id="message"
-                  rows={5}
-                  required
-                  placeholder="Write your message here..."
-                  value={formData.message}
-                  onChange={handleChange}
-                  onInvalid={(e) => e.target.setCustomValidity("Please enter your Message.")}
-                  onInput={(e) => e.target.setCustomValidity("")}
-                  className="
-                    mt-1 block w-full rounded-md border border-stone-300 py-2 px-4 shadow-sm
-                    focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500
-                    text-sm placeholder-stone-400 transition-colors duration-200
-                  "
-                ></textarea>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`
-                  inline-block w-full rounded-md bg-cyan-600 py-2 px-4 text-sm font-medium text-white
-                  transition-all duration-200 transform hover:-translate-y-[1px] hover:bg-red-900 hover:shadow-lg
-                  focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2
-                  ${isSubmitting ? "opacity-60 cursor-not-allowed" : ""}
-                `}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
-            </form>
-
-            {/* Success Message */}
             {isSuccess && (
-              <div className="mt-6 flex flex-col items-center justify-center p-4 border border-green-300 bg-green-50 rounded-md text-green-800">
-                <CheckCircleIcon className="h-8 w-8 mb-2 text-green-500" />
-                <p className="font-semibold">
-                  Thank you! Your message has been sent successfully.
-                </p>
+              <div className="mt-4 flex items-center justify-center text-green-600">
+                <CheckCircleIcon className="h-6 w-6 mr-2" />
+                <p>Your message was sent successfully!</p>
               </div>
             )}
-          </div>
+          </form>
         </div>
       </div>
     </main>
