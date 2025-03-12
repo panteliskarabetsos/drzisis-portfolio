@@ -73,9 +73,7 @@ export default function HomePage() {
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-4">About Me</h2>
           <p className="text-stone-600 mb-6 leading-relaxed">
-            I’m a board-certified cardiologist specializing in preventive care,
-            comprehensive diagnostics, and patient education. My mission is to empower
-            you to take charge of your cardiovascular health with confidence.
+          Recent medical graduate and aspiring cardiologist committed to compassionate, patient-centered care. Driven by preventive medicine, clinical excellence, and innovative cardiovascular research.
           </p>
           <a
             href="/about"
