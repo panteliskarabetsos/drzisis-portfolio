@@ -98,7 +98,7 @@ export default function HomePage() {
       <StatBox
         icon={<AcademicCapIcon className="h-10 w-10 text-cyan-600 mx-auto" />}
         number="MD"
-        label="Medical Degree Earned with destinction"
+        label="Medical Degree Earned with distinction"
       />
       <StatBox
         icon={<DocumentTextIcon className="h-10 w-10 text-blue-600 mx-auto" />}

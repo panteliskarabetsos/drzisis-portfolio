@@ -69,12 +69,12 @@ export default function ContactPage() {
               <PhoneIcon className="h-6 w-6 text-stone-600" />
               <div>
                 <p className="text-sm text-stone-500">Phone</p>
-                <a
+                {/* <a
                   href="tel:+1234567890"
                   className="text-stone-800 font-medium hover:underline underline-offset-2"
                 >
                   +1 (234) 567-890
-                </a>
+                </a> */}
               </div>
             </div> 
 
@@ -122,7 +122,7 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3 rounded-lg transition duration-200 ${
+              className={`w-full bg-cyan-600 hover:bg-red-900 text-white font-semibold py-3 rounded-lg transition duration-200 ${
                 isSubmitting && "opacity-60 cursor-wait"
               }`}
             >
