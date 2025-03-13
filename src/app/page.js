@@ -102,7 +102,7 @@ export default function HomePage() {
       />
       <StatBox
         icon={<DocumentTextIcon className="h-10 w-10 text-blue-600 mx-auto" />}
-        number="6"
+        number="2"
         label="Research Publications"
       />
       <StatBox
@@ -112,7 +112,7 @@ export default function HomePage() {
       />
       <StatBox
         icon={<HandThumbUpIcon className="h-10 w-10 text-yellow-500 mx-auto" />}
-        number="100+"
+        number="50+"
         label="Volunteer Hours"
       />
     </div>
