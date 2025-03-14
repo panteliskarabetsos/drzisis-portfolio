@@ -37,7 +37,7 @@ export default function Footer() {
           <div>
             <h3 className="text-md font-semibold text-stone-900">Get in Touch</h3>
             <div className="mt-2 space-y-1 text-sm">
-              <a href="mailto:mzisis01@gmail.com" className="hover:text-cyan-600 transition">mzisis01@gmail.com</a>
+              <a href="mailto:contact@drzisis.com" className="hover:text-cyan-600 transition">contact@drzisis.com</a>
             </div>
 
             <div className="flex justify-center sm:justify-start space-x-4 mt-3">

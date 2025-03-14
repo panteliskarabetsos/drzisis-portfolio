@@ -57,8 +57,8 @@ export default function ContactPage() {
               <EnvelopeIcon className="h-7 w-7 text-cyan-600" />
               <div>
                 <p className="text-stone-600">Email</p>
-                <a href="mailto:mzisis01@gmail.com" className="text-stone-800 hover:text-cyan-600 transition">
-                  mzisis01@gmail.com
+                <a href="mailto:contact@drzisis.com" className="text-stone-800 hover:text-cyan-600 transition">
+                  contact@drzisis.com
                 </a>
               </div>
 
