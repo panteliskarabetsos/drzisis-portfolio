@@ -58,7 +58,7 @@ export default function Footer() {
         {/* Bottom Footer */}
         <div className="mt-8 border-t border-stone-200 pt-4 text-center text-xs text-stone-500">
           © {new Date().getFullYear()} Dr. Marios Zisis. All rights reserved. Created By{' '}
-          <a href="http://panteliskarabetsos.com/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-600 transition">
+          <a href="http://panteliskarabetsos.com/" target="_blank" rel="noopener noreferrer"  className="hover:text-cyan-600 transition  underline underline-offset-2 hover:no-underline">
             Pantelis.dev
           </a>
         </div>
