@@ -106,7 +106,7 @@ export default function ResearchPage() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-xl sm:text-2xl font-semibold mb-6">Interested in Research Collaboration?</h2>
           <p className="text-stone-600 mb-6 max-w-xl mx-auto text-sm sm:text-lg">
-            If youre interested in collaborating on research or discussing ideas, let&apos;s connect.
+            If you are interested in collaborating on research or discussing ideas, let&apos;s connect.
           </p>
           <a href="/contact" className="inline-block rounded-md bg-stone-800 px-6 py-2 sm:px-6 sm:py-3 text-white hover:bg-stone-700 transition">
             Contact Me
