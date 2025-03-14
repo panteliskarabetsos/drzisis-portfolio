@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: 'https://yourwebsite.com', // Replace with your actual site URL
+    siteUrl: 'https://drzisis.com',
     generateRobotsTxt: true, // Generate robots.txt
   };
 
