@@ -73,7 +73,7 @@ export default function HomePage() {
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold mb-4">About Me</h2>
           <p className="text-stone-600 mb-6 leading-relaxed">
-          Passionate about cardiology and preventive medicine, dedicated to enhancing patient care through clinical excellence. Committed to continuous learning, research, and compassionate practice.
+          Passionate about cardiology and preventive medicine, dedicated to enhancing patient care through clinical excellence. Committed to continuous learning, research and compassionate practice.
           </p>
           <a
             href="/about"
@@ -90,7 +90,7 @@ export default function HomePage() {
     <h2 className="text-3xl font-bold mb-4 text-stone-900">Academic Highlights</h2>
     <p className="text-stone-600 mb-10 max-w-xl mx-auto leading-relaxed">
       My journey is just beginning, but these milestones reflect my dedication 
-      to patient care, research, and community service.
+      to patient care, research and community service.
     </p>
 
     {/* Responsive Grid Layout */}
@@ -181,7 +181,7 @@ export default function HomePage() {
     </h2>
     <p className="text-stone-600 mb-12 max-w-xl mx-auto leading-relaxed">
       I’m grateful to have worked alongside exceptional mentors and peers. 
-      Here’s what a few of them have to say about my work ethic, clinical approach, 
+      Here’s what a few of them have to say about my work ethic, clinical approach 
       and commitment to patient care.
     </p>
 
@@ -213,7 +213,7 @@ export default function HomePage() {
     </h2>
     <p className="text-stone-600 mb-8 max-w-xl mx-auto leading-relaxed">
       If you’re interested in discussing residency opportunities, research 
-      collaborations, or simply want to share insights on medical practice, 
+      collaborations or simply want to share insights on medical practice, 
       I’d love to hear from you.
     </p>
     <a
