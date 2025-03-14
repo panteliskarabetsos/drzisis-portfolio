@@ -5,6 +5,7 @@ import { Playfair_Display } from "next/font/google";
 import { Montserrat } from "next/font/google";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import { Metadata } from 'next';
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const domine = Domine({ subsets: ["latin"], variable: "--font-domine" });
@@ -26,10 +27,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Dr. Marios Zisis | Cardiologist",
-  description: "Dr. Marios Zisis, a recent medical graduate specializing in cardiology and preventive medicine, committed to compassionate patient care",
-  alternates: {
-    canonical: "https://drzisis.com",
+  title: "Dr. Marios Zisis | Cardiologist ",
+  description: "Recent medical graduate with a passion for cardiology and patient-centered care.",
+  openGraph: {
+    title: "Dr. Marios Zisis | Cardiologist",
+    description: "Medical graduate dedicated to cardiology excellence and compassionate healthcare.",
+    url: "https://drzisis.com",
+    type: "website",
+    locale: "en_US",
   },
 };
 
