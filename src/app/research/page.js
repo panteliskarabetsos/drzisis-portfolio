@@ -63,7 +63,7 @@ export default function ResearchPage() {
 
    {/* RESEARCH PUBLICATIONS  */}
 {/* RESEARCH PUBLICATIONS (LIST STYLE WITHOUT ICONS) */}
-<section className="bg-stone-40 py-16 px-4 sm:px-6 lg:px-8">
+<section id="publications" className="bg-stone-40 py-16 px-4 sm:px-6 lg:px-8">
   <div className="mx-auto max-w-7xl text-center">
     <h2 className="text-3xl font-bold mb-10">Research Publications</h2>
 

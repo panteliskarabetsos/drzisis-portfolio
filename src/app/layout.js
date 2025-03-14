@@ -26,8 +26,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Dr. Marios Zisis | Cardiologist",
-  description: "Cardiologist in Athens, Greece",
+  title: "Dr. Marios Zisis – Cardiologist in Athens, Greece",
+  description: "Dr. Marios Zisis is a recent medical graduate passionate about cardiology, preventive care, and patient-centered clinical practice in Athens, Greece.",
+  alternates: {
+    canonical: "https://drzisis.com",
+  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1.0,
 };
 
 export default function RootLayout({ children }) {

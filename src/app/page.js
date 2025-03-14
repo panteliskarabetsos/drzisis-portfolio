@@ -104,6 +104,7 @@ export default function HomePage() {
         icon={<DocumentTextIcon className="h-10 w-10 text-blue-600 mx-auto" />}
         number="2"
         label="Research Publications"
+        href="/research"
       />
       <StatBox
         icon={<CheckBadgeIcon className="h-10 w-10 text-green-600 mx-auto" />}
