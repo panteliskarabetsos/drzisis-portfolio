@@ -45,7 +45,7 @@ export default function ContactPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-stone-800 mb-4">Get in Touch</h1>
           <p className="text-stone-600">
-            Let&apos;s discuss opportunities, collaborate on research, or connect professionally.
+            Let&apos;s discuss opportunities, collaborate on research or connect professionally.
           </p>
         </div>
 
