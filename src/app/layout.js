@@ -27,14 +27,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Dr. Marios Zisis | Cardiologist ",
-  description: "Recent medical graduate with a passion for cardiology and patient-centered care.",
+  title: "Dr. Marios Zisis | Cardiologist",
+  description: "Medical graduate dedicated to cardiology and patient-centered care.",
   openGraph: {
     title: "Dr. Marios Zisis | Cardiologist",
-    description: "Medical graduate dedicated to cardiology excellence and compassionate healthcare.",
+    description: "Medical graduate dedicated to cardiology and patient-centered care",
     url: "https://drzisis.com",
-    type: "website",
+    siteName: "Dr. Marios Zisis",
+    images: [
+      {
+        url: "https://drzisis.com/favicon.ico", // Path to Open Graph image
+        width: 1200,
+        height: 630,
+        alt: "Dr. Marios Zisis | Cardiologist",
+      },
+    ],
     locale: "en_US",
+    type: "website",
   },
 };
 
@@ -56,3 +65,25 @@ export default function RootLayout({ children }) {
   </html>
   );
 }
+
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Dr. Marios Zisis",
+      "image": "https://drzisis.com/profile-img.jpg", // A good professional photo
+      "jobTitle": "Cardiologist",
+      "url": "https://drzisis.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Athens",
+        "addressCountry": "GR"
+      },
+      "email": "mailto:mzisis01@gmail.com",
+      "description": "Recent medical graduate with a passion for cardiology, preventive care, and patient-centered clinical practice.",
+    }),
+  }}
+/>
