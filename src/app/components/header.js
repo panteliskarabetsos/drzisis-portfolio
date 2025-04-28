@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { px } from "framer-motion";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,9 +12,9 @@ export default function Header() {
 
   useEffect(() => {
     if (pathname === "/") {
-      // On the homepage, show name only after scrolling 200px.
+      // On the homepage, show name only after scrolling 460px.
       const handleScroll = () => {
-        if (window.scrollY > 240) {
+        if (window.scrollY > 460) {
           setShowName(true);
         } else {
           setShowName(false);
@@ -91,7 +92,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu - styled exactly as header */}
+
       <nav
         id="mobile-menu"
         className={`absolute left-0 right-0 top-full md:hidden border-b border-stone-200 bg-white/80 backdrop-blur-md transform transition-all duration-500 ease-in-out origin-top ${
@@ -115,7 +116,7 @@ export default function Header() {
 }
 
 /**
- * A reusable component that creates an animated underline on hover.
+ * A reusable component 
  * It adjusts padding for mobile vs. desktop links.
  */
 function AnimatedUnderlineLink({ href, children, mobile = false, ...props }) {
