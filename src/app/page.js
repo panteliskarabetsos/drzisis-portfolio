@@ -50,39 +50,48 @@ export default function HomePage() {
         </section> */}
 
                   {/* NEW HERO SECTION */}
-                  <section className="relative min-h-[90vh] flex items-center justify-center bg-white overflow-hidden">
-  {/* Background Image */}
+                  <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-white lg:bg-transparent">
+  {/* Background Image: Mobile full width, Desktop half width */}
   <div
-    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    className="absolute inset-0 bg-cover bg-center lg:w-1/2 lg:left-0 lg:block hidden"
     style={{ backgroundImage: 'url("/hero-bg.jpg")' }}
   >
-    {/* Dark Overlay */}
+    <div className="absolute inset-0 bg-black/30" />
+  </div>
+
+  {/* Mobile background (different from lg) */}
+  <div
+    className="absolute inset-0 bg-cover bg-center lg:hidden"
+    style={{ backgroundImage: 'url("/hero-bg.jpg")' }}
+  >
     <div className="absolute inset-0 bg-black/40" />
   </div>
 
   {/* Content */}
-  <div className="relative z-10 flex flex-col justify-center items-center text-center px-6 sm:px-12 max-w-2xl">
-    <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-6 leading-tight">
+  <div className="relative z-10 flex flex-col justify-center items-center text-center px-6 sm:px-12 max-w-2xl ml-0 lg:ml-auto lg:w-1/2">
+    <h1 className="text-4xl sm:text-5xl font-extrabold text-white lg:text-stone-900 mb-6 leading-tight">
       Dr. Marios Zisis
     </h1>
-    <p className="text-base sm:text-lg text-stone-200 mb-8 max-w-lg">
-      Recent Medical Graduate • Aspiring Cardiologist • Driven by <span className="text-cyan-400 font-semibold">Compassion</span> and Clinical Excellence.
+    <p className="text-base sm:text-lg text-stone-200 lg:text-stone-600 mb-8 max-w-lg">
+      Recent Medical Graduate • Aspiring Cardiologist • Driven by{" "}
+      <span className="text-cyan-400 lg:text-cyan-600 font-semibold">
+        Compassion
+      </span>{" "}
+      and Clinical Excellence.
     </p>
     <a
       href="/about"
-      className="inline-block rounded-full bg-cyan-600 text-white font-semibold text-base sm:text-lg px-6 py-3 hover:bg-cyan-700 hover:shadow-xl transition-all duration-300"
+      className="inline-block rounded-full bg-cyan-600 text-white font-semibold text-base sm:text-lg px-8 py-3 hover:bg-cyan-700 hover:shadow-xl transition-all duration-300"
     >
       Learn More
     </a>
   </div>
 
-  {/* Bouncing Icon */}
-  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
-    <ChevronDown size={32} className="text-cyan-400" />
+  {/* Chevron Down Icon */}
+  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+    <ChevronDown size={32} className="text-cyan-400 lg:text-cyan-600" />
   </div>
 </section>
-
-
 
 
         <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
