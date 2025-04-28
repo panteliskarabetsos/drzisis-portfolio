@@ -50,48 +50,48 @@ export default function HomePage() {
         </section> */}
 
                   {/* NEW HERO SECTION */}
-                  <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-white lg:bg-transparent">
-  {/* Background Image: Mobile full width, Desktop half width */}
-  <div
-    className="absolute inset-0 bg-cover bg-center lg:w-1/2 lg:left-0 lg:block hidden"
-    style={{ backgroundImage: 'url("/hero-bg.jpg")' }}
-  >
-    <div className="absolute inset-0 bg-black/30" />
-  </div>
+                <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-r from-white via-stone-100 to-white lg:bg-none">
+              {/* Background Image: Desktop Half */}
+              <div
+                className="absolute inset-0 hidden lg:block w-1/2 bg-cover bg-center"
+                style={{ backgroundImage: 'url("/hero-bg.jpg")' }}
+              >
+                <div className="absolute inset-0 bg-black/30" />
+              </div>
 
-  {/* Mobile background (different from lg) */}
-  <div
-    className="absolute inset-0 bg-cover bg-center lg:hidden"
-    style={{ backgroundImage: 'url("/hero-bg.jpg")' }}
-  >
-    <div className="absolute inset-0 bg-black/40" />
-  </div>
+              {/* Mobile Background Image */}
+              <div
+                className="absolute inset-0 block lg:hidden bg-cover bg-center"
+                style={{ backgroundImage: 'url("/hero-bg.jpg")' }}
+              >
+                <div className="absolute inset-0 bg-black/50" />
+              </div>
 
-  {/* Content */}
-  <div className="relative z-10 flex flex-col justify-center items-center text-center px-6 sm:px-12 max-w-2xl ml-0 lg:ml-auto lg:w-1/2">
-    <h1 className="text-4xl sm:text-5xl font-extrabold text-white lg:text-stone-900 mb-6 leading-tight">
-      Dr. Marios Zisis
-    </h1>
-    <p className="text-base sm:text-lg text-stone-200 lg:text-stone-600 mb-8 max-w-lg">
-      Recent Medical Graduate • Aspiring Cardiologist • Driven by{" "}
-      <span className="text-cyan-400 lg:text-cyan-600 font-semibold">
-        Compassion
-      </span>{" "}
-      and Clinical Excellence.
-    </p>
-    <a
-      href="/about"
-      className="inline-block rounded-full bg-cyan-600 text-white font-semibold text-base sm:text-lg px-8 py-3 hover:bg-cyan-700 hover:shadow-xl transition-all duration-300"
-    >
-      Learn More
-    </a>
-  </div>
+              {/* Content */}
+              <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 sm:px-12 max-w-2xl ml-0 lg:ml-auto lg:w-1/2 animate-fadeIn">
+                <h1 className="text-4xl sm:text-5xl font-extrabold text-white lg:text-stone-900 mb-4 sm:mb-6 leading-tight drop-shadow-md">
+                  Dr. Marios Zisis
+                </h1>
+                <p className="text-base sm:text-lg text-stone-200 lg:text-stone-600 mb-8 max-w-lg leading-relaxed">
+                  Recent Medical Graduate • Aspiring Cardiologist • Driven by{" "}
+                  <span className="text-cyan-400 lg:text-cyan-600 font-semibold">
+                    Compassion
+                  </span>{" "}
+                  and Clinical Excellence.
+                </p>
+                <a
+                  href="/about"
+                  className="inline-block rounded-full bg-cyan-600 text-white font-semibold text-base sm:text-lg px-8 py-3 hover:bg-cyan-700 hover:shadow-xl transition-all duration-300 animate-bounceIn"
+                >
+                  Learn More
+                </a>
+              </div>
 
-  {/* Chevron Down Icon */}
-  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
-    <ChevronDown size={32} className="text-cyan-400 lg:text-cyan-600" />
-  </div>
-</section>
+              {/* Chevron Icon */}
+              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+                <ChevronDown size={32} className="text-cyan-400 lg:text-cyan-600" />
+              </div>
+            </section>
 
 
         <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
@@ -109,141 +109,138 @@ export default function HomePage() {
           </div>
         </section>
 
-  {/* CORE VALUES SECTION */}
-<section className="bg-stone-50 py-20 px-4 sm:px-6 lg:px-8">
-  <div className="mx-auto max-w-7xl text-center">
-    <h2 className="text-4xl font-bold mb-8 text-stone-900">Core Values</h2>
-    <p className="text-stone-700 mb-12 max-w-2xl mx-auto leading-relaxed">
-      As an aspiring cardiologist, these values define my approach to patient care, research, and lifelong learning.
-    </p>
+          {/* CORE VALUES SECTION */}
+        <section className="bg-stone-50 py-20 px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl text-center">
+            <h2 className="text-4xl font-bold mb-8 text-stone-900">Core Values</h2>
+            <p className="text-stone-700 mb-12 max-w-2xl mx-auto leading-relaxed">
+              As an aspiring cardiologist, these values define my approach to patient care, research, and lifelong learning.
+            </p>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-      <FocusAreaCard
-        icon={<Heart size={40} className="text-red-500 mx-auto" />}
-        title="Compassion"
-        description="Placing patient needs, comfort, and dignity at the center of every decision."
-      />
-      <FocusAreaCard
-        icon={<Puzzle size={40} className="text-blue-600 mx-auto" />}
-        title="Critical Thinking"
-        description="Integrating clinical knowledge with evidence-based research for better outcomes."
-      />
-      <FocusAreaCard
-        icon={<Sun size={40} className="text-yellow-500 mx-auto" />}
-        title="Integrity"
-        description="Practicing medicine with honesty, accountability, and unwavering ethical standards."
-      />
-      <FocusAreaCard
-        icon={<Users size={40} className="text-cyan-600 mx-auto" />}
-        title="Collaboration"
-        description="Building strong partnerships with patients, families, and interdisciplinary teams."
-      />
-      <FocusAreaCard
-        icon={<FlaskConical size={40} className="text-purple-500 mx-auto" />}
-        title="Curiosity"
-        description="Embracing continuous learning to stay at the forefront of medical innovation."
-      />
-      <FocusAreaCard
-        icon={<BarChart3 size={40} className="text-green-600 mx-auto" />}
-        title="Excellence"
-        description="Striving for the highest standards in clinical practice, research, and education."
-      />
-    </div>
-  </div>
-</section>
-{/* CLINICAL PHILOSOPHY SECTION */}
-<section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
-  <div className="mx-auto max-w-6xl text-center">
-    <h2 className="text-4xl font-bold text-stone-900 mb-12">
-      Clinical Philosophy
-    </h2>
-    <p className="text-stone-700 mb-16 max-w-2xl mx-auto">
-      My approach to medicine blends evidence-based practice, patient-centered communication, and a strong commitment to prevention.
-    </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <FocusAreaCard
+                icon={<Heart size={40} className="text-red-500 mx-auto" />}
+                title="Compassion"
+                description="Placing patient needs, comfort, and dignity at the center of every decision."
+              />
+              <FocusAreaCard
+                icon={<Puzzle size={40} className="text-blue-600 mx-auto" />}
+                title="Critical Thinking"
+                description="Integrating clinical knowledge with evidence-based research for better outcomes."
+              />
+              <FocusAreaCard
+                icon={<Sun size={40} className="text-yellow-500 mx-auto" />}
+                title="Integrity"
+                description="Practicing medicine with honesty, accountability, and unwavering ethical standards."
+              />
+              <FocusAreaCard
+                icon={<Users size={40} className="text-cyan-600 mx-auto" />}
+                title="Collaboration"
+                description="Building strong partnerships with patients, families, and interdisciplinary teams."
+              />
+              <FocusAreaCard
+                icon={<FlaskConical size={40} className="text-purple-500 mx-auto" />}
+                title="Curiosity"
+                description="Embracing continuous learning to stay at the forefront of medical innovation."
+              />
+              <FocusAreaCard
+                icon={<BarChart3 size={40} className="text-green-600 mx-auto" />}
+                title="Excellence"
+                description="Striving for the highest standards in clinical practice, research, and education."
+              />
+            </div>
+          </div>
+        </section>
+        {/* CLINICAL PHILOSOPHY SECTION */}
+        <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl text-center">
+            <h2 className="text-4xl font-bold text-stone-900 mb-12">
+              Clinical Philosophy
+            </h2>
+            <p className="text-stone-700 mb-16 max-w-2xl mx-auto">
+              My approach to medicine blends evidence-based practice, patient-centered communication, and a strong commitment to prevention.
+            </p>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-      {/* Item 1 */}
-      <div className="flex flex-col items-center text-center px-6">
-        <FlaskConical size={48} className="text-cyan-600 mb-4" />
-        <h3 className="text-xl font-semibold text-stone-800 mb-2">Evidence-Based Care</h3>
-        <p className="text-stone-600">
-          Grounding clinical decisions in the latest scientific research to ensure optimal patient outcomes.
-        </p>
-      </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+              {/* Item 1 */}
+              <div className="flex flex-col items-center text-center px-6">
+                <FlaskConical size={48} className="text-cyan-600 mb-4" />
+                <h3 className="text-xl font-semibold text-stone-800 mb-2">Evidence-Based Care</h3>
+                <p className="text-stone-600">
+                  Grounding clinical decisions in the latest scientific research to ensure optimal patient outcomes.
+                </p>
+              </div>
 
-      {/* Item 2 */}
-      <div className="flex flex-col items-center text-center px-6">
-        <MessageSquare size={48} className="text-stone-700 mb-4" />
-        <h3 className="text-xl font-semibold text-stone-800 mb-2">Patient Communication</h3>
-        <p className="text-stone-600">
-          Prioritizing open, empathetic dialogue to empower patients and build lasting trust.
-        </p>
-      </div>
+              {/* Item 2 */}
+              <div className="flex flex-col items-center text-center px-6">
+                <MessageSquare size={48} className="text-stone-700 mb-4" />
+                <h3 className="text-xl font-semibold text-stone-800 mb-2">Patient Communication</h3>
+                <p className="text-stone-600">
+                  Prioritizing open, empathetic dialogue to empower patients and build lasting trust.
+                </p>
+              </div>
 
-      {/* Item 3 */}
-      <div className="flex flex-col items-center text-center px-6">
-        <Leaf size={48} className="text-green-600 mb-4" />
-        <h3 className="text-xl font-semibold text-stone-800 mb-2">Preventive Focus</h3>
-        <p className="text-stone-600">
-          Advocating for lifestyle interventions and early screening to minimize disease risk before it starts.
-        </p>
-      </div>
-    </div>
+              {/* Item 3 */}
+              <div className="flex flex-col items-center text-center px-6">
+                <Leaf size={48} className="text-green-600 mb-4" />
+                <h3 className="text-xl font-semibold text-stone-800 mb-2">Preventive Focus</h3>
+                <p className="text-stone-600">
+                  Advocating for lifestyle interventions and early screening to minimize disease risk before it starts.
+                </p>
+              </div>
+            </div>
 
-    {/* Optional CTA */}
-    <div className="mt-16">
-      <a
-        href="/about"
-        className="inline-block bg-cyan-600 text-white rounded-full px-8 py-3 text-lg hover:bg-cyan-700 transition-colors duration-300"
-      >
-        Learn More About Me
-      </a>
-    </div>
+            {/* Optional CTA */}
+            <div className="mt-16">
+              <a
+                href="/about"
+                className="inline-block bg-cyan-600 text-white rounded-full px-8 py-3 text-lg hover:bg-cyan-700 transition-colors duration-300"
+              >
+                Learn More About Me
+              </a>
+            </div>
 
-  </div>
-</section>
+          </div>
+        </section>
 
+      {/* RECOMMENDATIONS SECTION */}
+      <section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl text-center">
+          <h2 className="text-4xl font-bold text-stone-900 mb-8">
+            Endorsements
+          </h2>
+          <p className="text-stone-600 mb-16 max-w-2xl mx-auto leading-relaxed">
+            Insights from mentors and colleagues on my work ethic, clinical dedication, and passion for patient-centered care.
+          </p>
 
+          {/* Modern Testimonials */}
+          <div className="grid gap-12 sm:grid-cols-2 max-w-5xl mx-auto">
+            {/* Card 1 */}
+            <div className="relative bg-stone-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Quote size={40} className="absolute -top-6 left-6 text-cyan-600" />
+              <p className="text-stone-700 italic mb-6">
+              &quot;Marios consistently demonstrated eagerness to learn, remarkable empathy for patients, and strong research skills. He will be an asset to any residency program.&quot;
+              </p>
+              <div className="border-t pt-4">
+                <h4 className="font-semibold text-stone-800">Dr. Nikolaos P.</h4>
+                <p className="text-stone-500 text-sm">Professor of Cardiology, Athens Medical School</p>
+              </div>
+            </div>
 
-
-{/* RECOMMENDATIONS SECTION */}
-<section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
-  <div className="mx-auto max-w-6xl text-center">
-    <h2 className="text-4xl font-bold text-stone-900 mb-8">
-      Endorsements
-    </h2>
-    <p className="text-stone-600 mb-16 max-w-2xl mx-auto leading-relaxed">
-      Insights from mentors and colleagues on my work ethic, clinical dedication, and passion for patient-centered care.
-    </p>
-
-    {/* Modern Testimonials */}
-    <div className="grid gap-12 sm:grid-cols-2 max-w-5xl mx-auto">
-      {/* Card 1 */}
-      <div className="relative bg-stone-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
-        <Quote size={40} className="absolute -top-6 left-6 text-cyan-600" />
-        <p className="text-stone-700 italic mb-6">
-        &quot;Marios consistently demonstrated eagerness to learn, remarkable empathy for patients, and strong research skills. He will be an asset to any residency program.&quot;
-        </p>
-        <div className="border-t pt-4">
-          <h4 className="font-semibold text-stone-800">Dr. Nikolaos P.</h4>
-          <p className="text-stone-500 text-sm">Professor of Cardiology, Athens Medical School</p>
+            {/* Card 2 */}
+            <div className="relative bg-stone-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Quote size={40} className="absolute -top-6 left-6 text-cyan-600" />
+              <p className="text-stone-700 italic mb-6">
+              &quot;Marios impressed us with his clinical acumen, compassionate demeanor, and dedication to advancing patient care through research and collaboration.&quot;
+              </p>
+              <div className="border-t pt-4">
+                <h4 className="font-semibold text-stone-800">Dr. Georgia K.</h4>
+                <p className="text-stone-500 text-sm">Internal Medicine Attending</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      {/* Card 2 */}
-      <div className="relative bg-stone-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
-        <Quote size={40} className="absolute -top-6 left-6 text-cyan-600" />
-        <p className="text-stone-700 italic mb-6">
-        &quot;Marios impressed us with his clinical acumen, compassionate demeanor, and dedication to advancing patient care through research and collaboration.&quot;
-        </p>
-        <div className="border-t pt-4">
-          <h4 className="font-semibold text-stone-800">Dr. Georgia K.</h4>
-          <p className="text-stone-500 text-sm">Internal Medicine Attending</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
 
     </main>
