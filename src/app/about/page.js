@@ -1,10 +1,17 @@
 "use client";
 import { useEffect, useState } from "react";
 import { CheckCircleIcon, AcademicCapIcon, LightBulbIcon, HeartIcon, UsersIcon } from "@heroicons/react/24/solid";
+import { motion } from 'framer-motion';
 
 export default function AboutPage() {
   const [scrolled, setScrolled] = useState(false);
-
+  const timeline = [
+    { year: '2019', title: 'Medical School Begins', description: 'Entered Athens School of Medicine with a vision to provide holistic, evidence-based and patient-centered medical care.', icon: <AcademicCapIcon className="h-8 w-8 text-cyan-500" /> },
+    { year: '2022', title: 'Starting Clinical Rotations', description: 'Gained hands-on experience treating patients in multiple specialties, including cardiology and internal medicine.', icon: <HeartIcon className="h-8 w-8 text-red-500" /> },
+    { year: '2023', title: 'Starting Medical Research', description: 'Focusing on domains of Mitral valvular disease, Extracorporeal Mechanic Oxygenation (ECMO) and MASLD.', icon: <LightBulbIcon className="h-8 w-8 text-yellow-500" /> },
+    { year: '2025', title: 'Graduation & Beyond', description: 'Now seeking to specialize in advanced cardiac care, continuing my passion for patient-centered medicine.', icon: <CheckCircleIcon className="h-8 w-8 text-green-500" /> },
+  ];
+  
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -41,48 +48,68 @@ export default function AboutPage() {
         </div>
       </section>
 
+                {/* Timeline Section */}
+                <section className="py-20 px-4 sm:px-8 bg-white">
+                  <div className="relative max-w-6xl mx-auto">
+                    {/* Vertical Line */}
+                    <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 h-full w-1 bg-cyan-400" />
+
+                    <div className="flex flex-col space-y-20">
+                      {timeline.map((item, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 50 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: index * 0.2 }}
+                          viewport={{ once: true }}
+                          className="relative flex flex-col md:flex-row items-center"
+                        >
+                          {/* Left side (if even index) */}
+                          {index % 2 === 0 ? (
+                            <>
+                              <div className="w-full md:w-1/2 flex justify-end pr-6 md:pr-12 text-right">
+                                <div className="max-w-xs">
+                                  <h3 className="text-xl font-bold text-stone-900">{item.year}</h3>
+                                  <h4 className="text-cyan-600 font-semibold my-2">{item.title}</h4>
+                                  <p className="text-stone-600 text-sm">{item.description}</p>
+                                </div>
+                              </div>
+
+                              {/* Center Icon */}
+                              <div className="flex items-center justify-center w-14 h-14 bg-white border-2 border-cyan-400 rounded-full shadow-md z-10 my-6 md:my-0" >
+                                {item.icon}
+                              </div>
+
+                              {/* Right side empty */}
+                              <div className="hidden md:block w-1/2" />
+                            </>
+                          ) : (
+                            <>
+                              {/* Left side empty */}
+                              <div className="hidden md:block w-1/2" />
+
+                              {/* Center Icon */}
+                              <div className="flex items-center justify-center w-14 h-14 bg-white border-2 border-cyan-400 rounded-full shadow-md z-10 my-6 md:my-0" >
+                                {item.icon}
+                              </div>
+
+                              {/* Right side (if odd index) */}
+                              <div className="w-full md:w-1/2 flex justify-start pl-6 md:pl-12 text-left">
+                                <div className="max-w-xs">
+                                  <h3 className="text-xl font-bold text-stone-900">{item.year}</h3>
+                                  <h4 className="text-cyan-600 font-semibold my-2">{item.title}</h4>
+                                  <p className="text-stone-600 text-sm">{item.description}</p>
+                                </div>
+                              </div>
+                            </>
+                          )}
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
 
 
-        
-      {/* TIMELINE SECTION */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
-        <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12 sm:mb-16">
-          My Journey
-        </h2>
-
-        {/* Timeline Container */}
-        <div className="relative mx-auto max-w-3xl">
-          {/* Vertical Timeline Line (Desktop Only) */}
-          <div className="hidden sm:block absolute left-6 top-0 w-[4px] h-full bg-cyan-500"></div>
-
-          {[
-            { year: "2019", title: "Medical School Begins", description: "Entered Athens School of Medicine with a vision to provide holistic, evidence-based and patient-centered medical care.", icon: <AcademicCapIcon className="h-8 w-8 text-cyan-500" /> },
-            { year: "2022", title: "Starting Clinical Rotations", description: "Gained hands-on experience treating patients in multiple specialties, including cardiology and internal medicine.", icon: <HeartIcon className="h-8 w-8 text-red-500" /> },
-            { year: "2023", title: "Starting Medical Research", description: "Focusing on domains of Mitral valvular disease, Extracorporeal Mechanic Oxygenation (ECMO) and MASLD.", icon: <LightBulbIcon className="h-8 w-8 text-yellow-500" /> },
-            { year: "2025", title: "Graduation & Beyond", description: "Now seeking to specialize in advanced cardiac care, continuing my passion for patient-centered medicine.", icon: <CheckCircleIcon className="h-8 w-8 text-green-500" /> },
-          ].map((item, index) => (
-            <div key={index} className="relative flex flex-col sm:flex-row items-center sm:items-start space-y-6 sm:space-y-0 sm:space-x-6 mb-12">
-              
-              {/* Connector Line (Mobile Only) */}
-              {index !== 0 && (
-                <div className="absolute top-[-24px] left-[50%] sm:hidden w-[2px] h-[24px] bg-cyan-500"></div>
-              )}
-
-              {/* Circle with Icon */}
-              <div className="relative flex-shrink-0 w-14 h-14 flex items-center justify-center bg-white border-2 border-cyan-500 shadow-md rounded-full z-10 sm:ml-[-7px]">
-                {item.icon}
-              </div>
-
-              {/* Text Content */}
-              <div className="text-center sm:text-left max-w-md sm:pl-4">
-                <h3 className="text-2xl font-semibold">{item.year}</h3>
-                <h4 className="text-lg text-cyan-600 font-medium">{item.title}</h4>
-                <p className="text-stone-600">{item.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
         {/* CORE VALUES */}
         <section className="bg-gradient-to-b from-stone-50 via-white to-stone-50 py-20 px-4 sm:px-6">
