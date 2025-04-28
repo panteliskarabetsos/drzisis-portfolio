@@ -2,14 +2,36 @@
 import { useEffect, useState } from "react";
 import { CheckCircleIcon, AcademicCapIcon, LightBulbIcon, HeartIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { motion } from 'framer-motion';
+import { GraduationCap, Stethoscope, FlaskConical, BadgeCheck } from 'lucide-react';
 
 export default function AboutPage() {
   const [scrolled, setScrolled] = useState(false);
+
   const timeline = [
-    { year: '2019', title: 'Medical School Begins', description: 'Entered Athens School of Medicine with a vision to provide holistic, evidence-based and patient-centered medical care.', icon: <AcademicCapIcon className="h-8 w-8 text-cyan-500" /> },
-    { year: '2022', title: 'Starting Clinical Rotations', description: 'Gained hands-on experience treating patients in multiple specialties, including cardiology and internal medicine.', icon: <HeartIcon className="h-8 w-8 text-red-500" /> },
-    { year: '2023', title: 'Starting Medical Research', description: 'Focusing on domains of Mitral valvular disease, Extracorporeal Mechanic Oxygenation (ECMO) and MASLD.', icon: <LightBulbIcon className="h-8 w-8 text-yellow-500" /> },
-    { year: '2025', title: 'Graduation & Beyond', description: 'Now seeking to specialize in advanced cardiac care, continuing my passion for patient-centered medicine.', icon: <CheckCircleIcon className="h-8 w-8 text-green-500" /> },
+    {
+      year: "2019",
+      title: "Medical School Begins",
+      description: "Entered Athens School of Medicine with a vision to provide holistic, evidence-based and patient-centered medical care.",
+      icon: <GraduationCap className="w-8 h-8 text-cyan-500" />,
+    },
+    {
+      year: "2022",
+      title: "Starting Clinical Rotations",
+      description: "Gained hands-on experience treating patients in multiple specialties, including cardiology and internal medicine.",
+      icon: <Stethoscope className="w-8 h-8 text-red-500" />,
+    },
+    {
+      year: "2023",
+      title: "Starting Medical Research",
+      description: "Focusing on domains of Mitral valvular disease, Extracorporeal Mechanic Oxygenation (ECMO) and MASLD.",
+      icon: <FlaskConical className="w-8 h-8 text-yellow-500" />,
+    },
+    {
+      year: "2025",
+      title: "Graduation & Beyond",
+      description: "Now seeking to specialize in advanced cardiac care, continuing my passion for patient-centered medicine.",
+      icon: <BadgeCheck className="w-8 h-8 text-green-500" />,
+    },
   ];
   
   useEffect(() => {
@@ -49,76 +71,76 @@ export default function AboutPage() {
       </section>
 
                 {/* Timeline Section */}
-                <section className="py-20 px-4 sm:px-8 bg-white">
-  <div className="relative max-w-6xl mx-auto">
-    {/* Vertical Line (only on desktop) */}
-    <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 h-full w-1 bg-cyan-400" />
+             <section className="py-20 px-4 sm:px-8 bg-white">
+            <div className="relative max-w-6xl mx-auto">
+              {/* Vertical Line (only on desktop) */}
+              <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 h-full w-1 bg-cyan-400" />
 
-    <div className="flex flex-col space-y-20">
-      {timeline.map((item, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: index * 0.2 }}
-          viewport={{ once: true }}
-          className="relative flex flex-col md:flex-row items-center"
-        >
-          {/* MOBILE layout */}
-          <div className="flex flex-col items-center text-center md:hidden space-y-4">
-            <div className="flex items-center justify-center w-14 h-14 bg-white border-2 border-cyan-400 rounded-full shadow-md">
-              {item.icon}
+              <div className="flex flex-col space-y-20">
+                {timeline.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    viewport={{ once: true }}
+                    className="relative flex flex-col md:flex-row items-center"
+                  >
+                    {/* MOBILE layout */}
+                    <div className="flex flex-col items-center text-center md:hidden space-y-4">
+                      <div className="flex items-center justify-center w-14 h-14 bg-white border-2 border-cyan-400 rounded-full shadow-md">
+                        {item.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-stone-900">{item.year}</h3>
+                      <h4 className="text-cyan-600 font-semibold">{item.title}</h4>
+                      <p className="text-stone-600 text-sm max-w-xs">{item.description}</p>
+                    </div>
+
+                    {/* DESKTOP layout */}
+                    {index % 2 === 0 ? (
+                      <>
+                        {/* Left side */}
+                        <div className="hidden md:flex w-1/2 justify-end text-right pr-12">
+                          <div className="max-w-xs">
+                            <h3 className="text-xl font-bold text-stone-900">{item.year}</h3>
+                            <h4 className="text-cyan-600 font-semibold my-2">{item.title}</h4>
+                            <p className="text-stone-600 text-sm">{item.description}</p>
+                          </div>
+                        </div>
+
+                        {/* Icon center */}
+                        <div className="hidden md:flex items-center justify-center w-14 h-14 bg-white border-2 border-cyan-400 rounded-full shadow-md z-10">
+                          {item.icon}
+                        </div>
+
+                        {/* Right side empty */}
+                        <div className="hidden md:flex w-1/2" />
+                      </>
+                    ) : (
+                      <>
+                        {/* Left side empty */}
+                        <div className="hidden md:flex w-1/2" />
+
+                        {/* Icon center */}
+                        <div className="hidden md:flex items-center justify-center w-14 h-14 bg-white border-2 border-cyan-400 rounded-full shadow-md z-10">
+                          {item.icon}
+                        </div>
+
+                        {/* Right side */}
+                        <div className="hidden md:flex w-1/2 justify-start text-left pl-12">
+                          <div className="max-w-xs">
+                            <h3 className="text-xl font-bold text-stone-900">{item.year}</h3>
+                            <h4 className="text-cyan-600 font-semibold my-2">{item.title}</h4>
+                            <p className="text-stone-600 text-sm">{item.description}</p>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-stone-900">{item.year}</h3>
-            <h4 className="text-cyan-600 font-semibold">{item.title}</h4>
-            <p className="text-stone-600 text-sm max-w-xs">{item.description}</p>
-          </div>
-
-          {/* DESKTOP layout */}
-          {index % 2 === 0 ? (
-            <>
-              {/* Left side */}
-              <div className="hidden md:flex w-1/2 justify-end text-right pr-12">
-                <div className="max-w-xs">
-                  <h3 className="text-xl font-bold text-stone-900">{item.year}</h3>
-                  <h4 className="text-cyan-600 font-semibold my-2">{item.title}</h4>
-                  <p className="text-stone-600 text-sm">{item.description}</p>
-                </div>
-              </div>
-
-              {/* Icon center */}
-              <div className="hidden md:flex items-center justify-center w-14 h-14 bg-white border-2 border-cyan-400 rounded-full shadow-md z-10">
-                {item.icon}
-              </div>
-
-              {/* Right side empty */}
-              <div className="hidden md:flex w-1/2" />
-            </>
-          ) : (
-            <>
-              {/* Left side empty */}
-              <div className="hidden md:flex w-1/2" />
-
-              {/* Icon center */}
-              <div className="hidden md:flex items-center justify-center w-14 h-14 bg-white border-2 border-cyan-400 rounded-full shadow-md z-10">
-                {item.icon}
-              </div>
-
-              {/* Right side */}
-              <div className="hidden md:flex w-1/2 justify-start text-left pl-12">
-                <div className="max-w-xs">
-                  <h3 className="text-xl font-bold text-stone-900">{item.year}</h3>
-                  <h4 className="text-cyan-600 font-semibold my-2">{item.title}</h4>
-                  <p className="text-stone-600 text-sm">{item.description}</p>
-                </div>
-              </div>
-            </>
-          )}
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+          </section>
 
 
 
