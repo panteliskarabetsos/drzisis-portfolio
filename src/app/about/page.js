@@ -50,64 +50,76 @@ export default function AboutPage() {
 
                 {/* Timeline Section */}
                 <section className="py-20 px-4 sm:px-8 bg-white">
-                  <div className="relative max-w-6xl mx-auto">
-                    {/* Vertical Line */}
-                    <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 h-full w-1 bg-cyan-400" />
+  <div className="relative max-w-6xl mx-auto">
+    {/* Vertical Line (only on desktop) */}
+    <div className="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 h-full w-1 bg-cyan-400" />
 
-                    <div className="flex flex-col space-y-20">
-                      {timeline.map((item, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, y: 50 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.6, delay: index * 0.2 }}
-                          viewport={{ once: true }}
-                          className="relative flex flex-col md:flex-row items-center"
-                        >
-                          {/* Left side (if even index) */}
-                          {index % 2 === 0 ? (
-                            <>
-                              <div className="w-full md:w-1/2 flex justify-end pr-6 md:pr-12 text-right">
-                                <div className="max-w-xs">
-                                  <h3 className="text-xl font-bold text-stone-900">{item.year}</h3>
-                                  <h4 className="text-cyan-600 font-semibold my-2">{item.title}</h4>
-                                  <p className="text-stone-600 text-sm">{item.description}</p>
-                                </div>
-                              </div>
+    <div className="flex flex-col space-y-20">
+      {timeline.map((item, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.2 }}
+          viewport={{ once: true }}
+          className="relative flex flex-col md:flex-row items-center"
+        >
+          {/* MOBILE layout */}
+          <div className="flex flex-col items-center text-center md:hidden space-y-4">
+            <div className="flex items-center justify-center w-14 h-14 bg-white border-2 border-cyan-400 rounded-full shadow-md">
+              {item.icon}
+            </div>
+            <h3 className="text-xl font-bold text-stone-900">{item.year}</h3>
+            <h4 className="text-cyan-600 font-semibold">{item.title}</h4>
+            <p className="text-stone-600 text-sm max-w-xs">{item.description}</p>
+          </div>
 
-                              {/* Center Icon */}
-                              <div className="flex items-center justify-center w-14 h-14 bg-white border-2 border-cyan-400 rounded-full shadow-md z-10 my-6 md:my-0" >
-                                {item.icon}
-                              </div>
+          {/* DESKTOP layout */}
+          {index % 2 === 0 ? (
+            <>
+              {/* Left side */}
+              <div className="hidden md:flex w-1/2 justify-end text-right pr-12">
+                <div className="max-w-xs">
+                  <h3 className="text-xl font-bold text-stone-900">{item.year}</h3>
+                  <h4 className="text-cyan-600 font-semibold my-2">{item.title}</h4>
+                  <p className="text-stone-600 text-sm">{item.description}</p>
+                </div>
+              </div>
 
-                              {/* Right side empty */}
-                              <div className="hidden md:block w-1/2" />
-                            </>
-                          ) : (
-                            <>
-                              {/* Left side empty */}
-                              <div className="hidden md:block w-1/2" />
+              {/* Icon center */}
+              <div className="hidden md:flex items-center justify-center w-14 h-14 bg-white border-2 border-cyan-400 rounded-full shadow-md z-10">
+                {item.icon}
+              </div>
 
-                              {/* Center Icon */}
-                              <div className="flex items-center justify-center w-14 h-14 bg-white border-2 border-cyan-400 rounded-full shadow-md z-10 my-6 md:my-0" >
-                                {item.icon}
-                              </div>
+              {/* Right side empty */}
+              <div className="hidden md:flex w-1/2" />
+            </>
+          ) : (
+            <>
+              {/* Left side empty */}
+              <div className="hidden md:flex w-1/2" />
 
-                              {/* Right side (if odd index) */}
-                              <div className="w-full md:w-1/2 flex justify-start pl-6 md:pl-12 text-left">
-                                <div className="max-w-xs">
-                                  <h3 className="text-xl font-bold text-stone-900">{item.year}</h3>
-                                  <h4 className="text-cyan-600 font-semibold my-2">{item.title}</h4>
-                                  <p className="text-stone-600 text-sm">{item.description}</p>
-                                </div>
-                              </div>
-                            </>
-                          )}
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </section>
+              {/* Icon center */}
+              <div className="hidden md:flex items-center justify-center w-14 h-14 bg-white border-2 border-cyan-400 rounded-full shadow-md z-10">
+                {item.icon}
+              </div>
+
+              {/* Right side */}
+              <div className="hidden md:flex w-1/2 justify-start text-left pl-12">
+                <div className="max-w-xs">
+                  <h3 className="text-xl font-bold text-stone-900">{item.year}</h3>
+                  <h4 className="text-cyan-600 font-semibold my-2">{item.title}</h4>
+                  <p className="text-stone-600 text-sm">{item.description}</p>
+                </div>
+              </div>
+            </>
+          )}
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
 
 
