@@ -130,24 +130,51 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-      {/* TESTIMONIALS */}
-      <section className="py-16 px-4 sm:px-6">
-        <div className="mx-auto max-w-7xl text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-12">What Others Say</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {[
-              { name: "Dr. Nikolaos P.", role: "Professor of Neurosurgery, MD, PhD", quote: "Marios has an exceptional ability to blend technical expertise with genuine patient care. A promising future awaits him." },
-              { name: "Dr. Georgia K.", role: "Internal Medicine Specialist", quote: "His dedication to medicine and research is unmatched. Marios is a true asset to any medical institution." },
-            ].map((item, index) => (
-              <div key={index} className="p-6 bg-stone-50 shadow-lg rounded-lg hover:scale-105 transition-transform duration-300">
-                <p className="italic text-stone-600">&quot;{item.quote}&quot;</p>
-                <h4 className="text-lg font-semibold mt-4">{item.name}</h4>
-                <p className="text-sm text-cyan-600">{item.role}</p>
-              </div>
-            ))}
+          {/* TESTIMONIALS */}
+        <section className="py-20 px-4 sm:px-6 bg-gradient-to-b from-white via-stone-50 to-white">
+          <div className="mx-auto max-w-7xl text-center">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-stone-900 mb-6">
+              What Others Say
+            </h2>
+            <p className="text-stone-600 mb-14 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+              Insights from mentors and colleagues on my work ethic, clinical dedication, and patient-centered approach.
+            </p>
+
+            <div className="grid gap-10 sm:grid-cols-2 max-w-5xl mx-auto">
+              {[
+                { 
+                  name: "Dr. Nikolaos P.", 
+                  role: "Professor of Neurosurgery, MD, PhD", 
+                  quote: "Marios has an exceptional ability to blend technical expertise with genuine patient care. A promising future awaits him." 
+                },
+                { 
+                  name: "Dr. Georgia K.", 
+                  role: "Internal Medicine Specialist", 
+                  quote: "His dedication to medicine and research is unmatched. Marios is a true asset to any medical institution." 
+                },
+              ].map((item, index) => (
+                <div 
+                  key={index} 
+                  className="group relative bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center"
+                >
+                  <div className="absolute top-0 left-0 right-0 flex justify-center -translate-y-1/2">
+                    <div className="bg-cyan-600 p-2 rounded-full">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10 15a5 5 0 100-10 5 5 0 000 10zm0 3a8 8 0 110-16 8 8 0 010 16z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <p className="text-stone-700 italic mb-6 mt-8 leading-relaxed">&quot;{item.quote}&quot;</p>
+                  <div className="border-t border-stone-200 pt-4">
+                    <h4 className="font-semibold text-stone-900">{item.name}</h4>
+                    <p className="text-sm text-cyan-600 mt-1">{item.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
 
       {/* CTA - CONTACT */}
       <section className="bg-cyan-600 text-white py-14 text-center px-4">
