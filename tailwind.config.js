@@ -9,6 +9,10 @@ module.exports = {
     extend: {
       fontFamily: {
         montserrat: ["var(--font-montserrat)", "sans-serif"],
+<<<<<<< HEAD
+=======
+        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+>>>>>>> 806809b (Fix nested repository issue)
       },
     },
   },

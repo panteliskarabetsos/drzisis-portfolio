@@ -13,7 +13,11 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/forms": "^0.5.10",
+<<<<<<< HEAD
     "framer-motion": "^12.4.7",
+=======
+    "framer-motion": "^12.9.2",
+>>>>>>> 806809b (Fix nested repository issue)
     "lucide-react": "^0.479.0",
     "next": "15.2.0",
     "next-seo": "^6.6.0",

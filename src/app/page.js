@@ -4,20 +4,33 @@ import {
   AcademicCapIcon,
   DocumentTextIcon,
   CheckBadgeIcon, // renamed from BadgeCheckIcon
+<<<<<<< HEAD
   HandThumbUpIcon,
+=======
+  PuzzleIcon,
+>>>>>>> 806809b (Fix nested repository issue)
   HeartIcon,
   BeakerIcon,
   UserGroupIcon,
   BarChartIcon,
   NewspaperIcon,
+<<<<<<< HEAD
   PuzzleIcon,
   SunIcon,
   ClipboardDocumentListIcon,
 } from "@heroicons/react/24/solid";
+=======
+  SunIcon,
+  ClipboardDocumentListIcon,
+} from "@heroicons/react/24/solid";
+import { Heart, Puzzle, Sun, Users, FlaskConical, BarChart3, MessageSquare,Leaf,Quote, ChevronDown } from "lucide-react";
+
+>>>>>>> 806809b (Fix nested repository issue)
 
 export default function HomePage() {
   return (
     <main className="bg-white text-stone-800 min-h-screen">
+<<<<<<< HEAD
 
 {/* HERO SECTION */}
 <section
@@ -115,10 +128,130 @@ export default function HomePage() {
         icon={<HandThumbUpIcon className="h-10 w-10 text-yellow-500 mx-auto" />}
         number="50+"
         label="Volunteer Hours"
+=======
+        {/* HERO SECTION */}
+        {/* <section
+          className="
+            relative h-[85vh] sm:h-[75vh] flex flex-col items-center justify-center text-center px-6 sm:px-12
+            bg-cover bg-center bg-no-repeat
+          "
+          style={{
+            backgroundImage: 'url("/hero-bg.jpg")',
+          }}
+        >
+          <div className="absolute inset-0 bg-black/50 sm:bg-black/30" />
+          <div className="relative z-10 max-w-3xl mx-auto animate-fadeIn">
+            <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 drop-shadow-xl">
+              Dr. Marios Zisis
+            </h1>
+            <p className="text-xl sm:text-2xl text-white mb-8 font-light">
+              Recent Medical Graduate • Aspiring Cardiologist • Driven by <span className="text-cyan-400 font-semibold">Compassion</span>.
+            </p>
+            <a
+              href="/about"
+              className="
+                inline-block bg-cyan-600 text-white font-semibold text-lg px-8 py-3
+                rounded-full hover:bg-cyan-700 hover:shadow-2xl transition-all duration-300
+              "
+            >
+              Learn More
+            </a>
+          </div>
+        </section> */}
+
+                  {/* NEW HERO SECTION */}
+          <section className="relative min-h-[90vh] flex items-center justify-center bg-white overflow-hidden">
+         
+            <div
+              className="absolute inset-0 w-1/2 hidden lg:block bg-cover bg-center"
+              style={{ backgroundImage: 'url("/hero-bg.jpg")' }}
+            >
+              <div className="absolute inset-0 bg-black/30" />
+            </div>
+
+         
+            <div className="relative z-10 flex flex-col justify-center items-center text-center px-6 sm:px-12 max-w-2xl ml-auto lg:w-1/2">
+              <h1 className="text-5xl sm:text-6xl font-extrabold text-stone-900 mb-6 leading-tight">
+                Dr. Marios Zisis
+              </h1>
+              <p className="text-lg sm:text-xl text-stone-600 mb-8 max-w-lg">
+                Recent Medical Graduate • Aspiring Cardiologist • Driven by <span className="text-cyan-600 font-semibold">Compassion</span> and Clinical Excellence.
+              </p>
+              <a
+                href="/about"
+                className="inline-block rounded-full bg-cyan-600 text-white font-semibold text-lg px-8 py-3 hover:bg-cyan-700 hover:shadow-xl transition-all duration-300"
+              >
+                Learn More
+              </a>
+            </div>
+
+          
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+              <ChevronDown size={32} className="text-cyan-600" />
+            </div>
+          </section>
+
+
+
+        <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-4xl font-bold mb-6 text-stone-900">About Me</h2>
+            <p className="text-stone-700 mb-8 max-w-2xl mx-auto">
+              Passionate about cardiology and preventive medicine, dedicated to enhancing patient care through clinical excellence. Committed to continuous learning, research, and compassionate practice.
+            </p>
+            <a
+              href="/about"
+              className="text-stone-800 underline underline-offset-4 hover:text-cyan-700 font-medium transition-colors duration-200"
+            >
+              Full Bio →
+            </a>
+          </div>
+        </section>
+
+  {/* CORE VALUES SECTION */}
+<section className="bg-stone-50 py-20 px-4 sm:px-6 lg:px-8">
+  <div className="mx-auto max-w-7xl text-center">
+    <h2 className="text-4xl font-bold mb-8 text-stone-900">Core Values</h2>
+    <p className="text-stone-700 mb-12 max-w-2xl mx-auto leading-relaxed">
+      As an aspiring cardiologist, these values define my approach to patient care, research, and lifelong learning.
+    </p>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <FocusAreaCard
+        icon={<Heart size={40} className="text-red-500 mx-auto" />}
+        title="Compassion"
+        description="Placing patient needs, comfort, and dignity at the center of every decision."
+      />
+      <FocusAreaCard
+        icon={<Puzzle size={40} className="text-blue-600 mx-auto" />}
+        title="Critical Thinking"
+        description="Integrating clinical knowledge with evidence-based research for better outcomes."
+      />
+      <FocusAreaCard
+        icon={<Sun size={40} className="text-yellow-500 mx-auto" />}
+        title="Integrity"
+        description="Practicing medicine with honesty, accountability, and unwavering ethical standards."
+      />
+      <FocusAreaCard
+        icon={<Users size={40} className="text-cyan-600 mx-auto" />}
+        title="Collaboration"
+        description="Building strong partnerships with patients, families, and interdisciplinary teams."
+      />
+      <FocusAreaCard
+        icon={<FlaskConical size={40} className="text-purple-500 mx-auto" />}
+        title="Curiosity"
+        description="Embracing continuous learning to stay at the forefront of medical innovation."
+      />
+      <FocusAreaCard
+        icon={<BarChart3 size={40} className="text-green-600 mx-auto" />}
+        title="Excellence"
+        description="Striving for the highest standards in clinical practice, research, and education."
+>>>>>>> 806809b (Fix nested repository issue)
       />
     </div>
   </div>
 </section>
+<<<<<<< HEAD
 
 
 
@@ -165,6 +298,54 @@ export default function HomePage() {
         className="font-medium text-stone-800 underline underline-offset-4 hover:text-stone-400 transition-colors duration-200 text-lg"
       >
         Learn More &rarr;
+=======
+{/* CLINICAL PHILOSOPHY SECTION */}
+<section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
+  <div className="mx-auto max-w-6xl text-center">
+    <h2 className="text-4xl font-bold text-stone-900 mb-12">
+      Clinical Philosophy
+    </h2>
+    <p className="text-stone-700 mb-16 max-w-2xl mx-auto">
+      My approach to medicine blends evidence-based practice, patient-centered communication, and a strong commitment to prevention.
+    </p>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+      {/* Item 1 */}
+      <div className="flex flex-col items-center text-center px-6">
+        <FlaskConical size={48} className="text-cyan-600 mb-4" />
+        <h3 className="text-xl font-semibold text-stone-800 mb-2">Evidence-Based Care</h3>
+        <p className="text-stone-600">
+          Grounding clinical decisions in the latest scientific research to ensure optimal patient outcomes.
+        </p>
+      </div>
+
+      {/* Item 2 */}
+      <div className="flex flex-col items-center text-center px-6">
+        <MessageSquare size={48} className="text-stone-700 mb-4" />
+        <h3 className="text-xl font-semibold text-stone-800 mb-2">Patient Communication</h3>
+        <p className="text-stone-600">
+          Prioritizing open, empathetic dialogue to empower patients and build lasting trust.
+        </p>
+      </div>
+
+      {/* Item 3 */}
+      <div className="flex flex-col items-center text-center px-6">
+        <Leaf size={48} className="text-green-600 mb-4" />
+        <h3 className="text-xl font-semibold text-stone-800 mb-2">Preventive Focus</h3>
+        <p className="text-stone-600">
+          Advocating for lifestyle interventions and early screening to minimize disease risk before it starts.
+        </p>
+      </div>
+    </div>
+
+    {/* Optional CTA */}
+    <div className="mt-16">
+      <a
+        href="/about"
+        className="inline-block bg-cyan-600 text-white rounded-full px-8 py-3 text-lg hover:bg-cyan-700 transition-colors duration-300"
+      >
+        Learn More About Me
+>>>>>>> 806809b (Fix nested repository issue)
       </a>
     </div>
 
@@ -173,6 +354,7 @@ export default function HomePage() {
 
 
 
+<<<<<<< HEAD
 {/* RECOMMENDATIONS SECTION */}
 <section className="bg-stone-50 py-16 px-4 sm:px-6 lg:px-8">
   <div className="mx-auto max-w-7xl text-center">
@@ -200,11 +382,50 @@ export default function HomePage() {
   text="Marios consistently demonstrated an eagerness to learn, remarkable empathy for patients, and a strong aptitude for clinical research. He will be an asset to any &quot;residency&quot; program."
 />
 
+=======
+
+{/* RECOMMENDATIONS SECTION */}
+<section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
+  <div className="mx-auto max-w-6xl text-center">
+    <h2 className="text-4xl font-bold text-stone-900 mb-8">
+      Endorsements
+    </h2>
+    <p className="text-stone-600 mb-16 max-w-2xl mx-auto leading-relaxed">
+      Insights from mentors and colleagues on my work ethic, clinical dedication, and passion for patient-centered care.
+    </p>
+
+    {/* Modern Testimonials */}
+    <div className="grid gap-12 sm:grid-cols-2 max-w-5xl mx-auto">
+      {/* Card 1 */}
+      <div className="relative bg-stone-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <Quote size={40} className="absolute -top-6 left-6 text-cyan-600" />
+        <p className="text-stone-700 italic mb-6">
+          "Marios consistently demonstrated eagerness to learn, remarkable empathy for patients, and strong research skills. He will be an asset to any residency program."
+        </p>
+        <div className="border-t pt-4">
+          <h4 className="font-semibold text-stone-800">Dr. Nikolaos P.</h4>
+          <p className="text-stone-500 text-sm">Professor of Cardiology, Athens Medical School</p>
+        </div>
+      </div>
+
+      {/* Card 2 */}
+      <div className="relative bg-stone-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <Quote size={40} className="absolute -top-6 left-6 text-cyan-600" />
+        <p className="text-stone-700 italic mb-6">
+          "Marios impressed us with his clinical acumen, compassionate demeanor, and dedication to advancing patient care through research and collaboration."
+        </p>
+        <div className="border-t pt-4">
+          <h4 className="font-semibold text-stone-800">Dr. Georgia K.</h4>
+          <p className="text-stone-500 text-sm">Internal Medicine Attending</p>
+        </div>
+      </div>
+>>>>>>> 806809b (Fix nested repository issue)
     </div>
   </div>
 </section>
 
 
+<<<<<<< HEAD
      {/* LET’S CONNECT SECTION */}
 <section className="py-16 text-center px-4 sm:px-6 lg:px-8">
   <div className="mx-auto max-w-7xl">
@@ -225,6 +446,8 @@ export default function HomePage() {
   </div>
 </section>
 
+=======
+>>>>>>> 806809b (Fix nested repository issue)
     </main>
   );
 }
@@ -258,12 +481,15 @@ function StatBox({ icon, number, label }) {
     </div>
   );
 }
+<<<<<<< HEAD
 
 
 
 
 
 
+=======
+>>>>>>> 806809b (Fix nested repository issue)
 /**
  * Service card with an optional emoji icon.
  */
@@ -276,10 +502,13 @@ function ServiceCard({ icon, title, description }) {
     </div>
   );
 }
+<<<<<<< HEAD
 
 /**
  * Testimonial box with text only.
  */
+=======
+>>>>>>> 806809b (Fix nested repository issue)
 function Testimonial({ name, text }) {
   return (
     <div className="max-w-md mx-auto">
@@ -288,7 +517,10 @@ function Testimonial({ name, text }) {
     </div>
   );
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 806809b (Fix nested repository issue)
 /**
  * Card component for clinical/academic focus areas.
  * Displays an icon, a title, and a short description.
