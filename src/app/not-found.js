@@ -10,7 +10,7 @@ export default function NotFound() {
         <img
           src="/heart-icon.svg"
           alt="Heart icon"
-          className="w-20 h-20 mx-auto mb-6 animate-pulse-slow"
+          className="w-20 h-20 mx-auto mb-6 animate-pulse-slow user-select-none"
         />
 
        
