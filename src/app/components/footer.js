@@ -72,7 +72,7 @@ export default function Footer() {
 
         {/* Bottom Footer */}
         <div className="mt-8 border-t border-stone-200 pt-4 text-center text-xs text-stone-500">
-          © {new Date().getFullYear()} Dr. Marios Zisis. All rights reserved. Created by{' '}
+          © {new Date().getFullYear()} Dr. Marios Zisis. All rights reserved. Created by{' '} 
           <a
             href="http://panteliskarabetsos.com/"
             target="_blank"
@@ -81,6 +81,7 @@ export default function Footer() {
           >
             Pantelis
           </a>
+          .
         </div>
       </div>
     </footer>
