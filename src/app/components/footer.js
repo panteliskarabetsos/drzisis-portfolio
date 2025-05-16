@@ -58,7 +58,7 @@ export default function Footer() {
 
               {/* Instagram */}
               <a
-                href="https://www.instagram.com/maioszisis/"
+                href="https://www.instagram.com/marioszisis/"
                 aria-label="Instagram"
                 className="text-stone-500 hover:text-cyan-600 transition-colors"
                 target="_blank"

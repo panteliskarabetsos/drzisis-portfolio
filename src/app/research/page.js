@@ -114,14 +114,19 @@ export default function ResearchPage() {
           <p className="text-sm text-stone-500">Biomolecules, 2025</p>
         </div>
         <div className="mt-6">
-          <a
+        <a
             href="https://www.mdpi.com/2218-273X/15/3/324"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center text-cyan-600 font-medium transition-all duration-300 group-hover:gap-3"
+            className="group inline-flex items-center font-medium text-cyan-600 transition-all duration-300 relative focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2"
           >
-            View Publication
-            <ArrowRight size={18} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            <span className="relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-cyan-600 after:transition-all after:duration-300 group-hover:after:w-full group-focus:after:w-full">
+              View Publication
+            </span>
+            <ArrowRight
+              size={18}
+              className="ml-2 transition-transform duration-300 transform group-hover:translate-x-1 group-focus:translate-x-1"
+            />
           </a>
         </div>
       </motion.li>
@@ -141,21 +146,26 @@ export default function ResearchPage() {
           <p className="text-sm text-stone-500">Journal of Clinical Medicine, 2024</p>
         </div>
         <div className="mt-6">
-          <a
+        <a
             href="https://www.mdpi.com/2077-0383/13/19/6014"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center text-cyan-600 font-medium transition-all duration-300 group-hover:gap-3"
+            className="group inline-flex items-center font-medium text-cyan-600 transition-all duration-300 relative"
           >
-            View Publication
-            <ArrowRight size={18} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            <span className="relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-cyan-600 after:transition-all after:duration-300 group-hover:after:w-full">
+              View Publication
+            </span>
+            <ArrowRight
+              size={18}
+              className="ml-2 transition-transform duration-300 transform group-hover:translate-x-1"
+            />
           </a>
         </div>
       </motion.li>
 
-    </ul>
-  </div>
-</section>
+        </ul>
+      </div>
+    </section>
 
 
 
