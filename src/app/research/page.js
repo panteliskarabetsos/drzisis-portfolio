@@ -159,8 +159,8 @@ export default function ResearchPage() {
 
 
 
-      {/* CTA SECTION */}
-      <section className="py-12 sm:py-16 px-6 text-center bg-stone-50">
+      {/* COLLABORATION SECTION */}
+      <section className="py-12 sm:py-16 px-6 text-center bg-blue-100">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-xl sm:text-2xl font-semibold mb-6">Interested in Research Collaboration?</h2>
           <p className="text-stone-600 mb-6 max-w-xl mx-auto text-sm sm:text-lg">

@@ -44,7 +44,7 @@ export default function ContactPage() {
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-5xl font-bold text-stone-900 mb-6">Contact</h1>
         <p className="text-stone-600 mb-16 max-w-xl mx-auto">
-          Whether you&apos;re reaching out for collaborations, research opportunities, or general inquiries, I&apos;d love to hear from you.
+          Whether you&apos;re reaching out for collaborations, research opportunities or general inquiries, I&apos;d love to hear from you.
         </p>
 
         {/* Contact Info */}

@@ -48,7 +48,7 @@ export default function AboutPage() {
             
       <section className="relative h-[70vh] sm:h-[80vh] flex items-center justify-center text-center px-4">
         
-        {/* Background Image with Blur (Visible on Mobile Too) */}
+        {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
