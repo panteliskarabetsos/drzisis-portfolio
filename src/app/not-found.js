@@ -27,7 +27,7 @@ export default function NotFound() {
 
         <h1 className="text-4xl font-semibold text-red-700 mb-4">Looks like you are lost.</h1>
         <p className="text-gray-600 text-base mb-6">
-            The page you&aposre looking for does not exist.
+            The page you are looking for does not exist.
         </p>
         <Link
           href="/"
