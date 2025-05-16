@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function NotFound() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-6 py-24 bg-white text-center text-gray-800 user-select-none">
-      <div className="max-w-xl">
+      <div className="max-w-xl user-select-none">
         
         <img
           src="/heart-icon.svg"
