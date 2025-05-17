@@ -204,14 +204,14 @@ export default function AboutPage() {
             <div className="grid gap-10 sm:grid-cols-2 max-w-5xl mx-auto">
               {[
                 { 
-                  name: "Dr. Nikolaos P.", 
-                  role: "Professor of Neurosurgery, MD, PhD", 
-                  quote: "Marios has an exceptional ability to blend technical expertise with genuine patient care. A promising future awaits him." 
+                  name: "— Dr. Alexandros Briasoulis", 
+                  role: " Assistant Professor, National and Kapodistrian University of Athens & University of Iowa", 
+                  quote: "Marios Zisis demonstrates exceptional dedication, medical knowledge and initiative. He consistently excelles in clinical skills, diagnosis and teamwork. His positive attitude and collaborative spirit make him a valued team member." 
                 },
                 { 
-                  name: "Dr. Georgia K.", 
-                  role: "Internal Medicine Specialist", 
-                  quote: "His dedication to medicine and research is unmatched. Marios is a true asset to any medical institution." 
+                  name: " — Dr. Andreas Goules", 
+                  role: " Assistant Professor, University of Athens", 
+                  quote: "Marios stood out during his clinical training for his enthusiasm, meticulous work and strong clinical reasoning. Highly respected by colleagues for his collaborative spirit and clarity of thought. I recommend him without reservation." 
                 },
               ].map((item, index) => (
                 <div 

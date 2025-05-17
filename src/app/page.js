@@ -219,11 +219,11 @@ export default function HomePage() {
             <div className="relative bg-stone-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <Quote size={40} className="absolute -top-6 left-6 text-cyan-600" />
               <p className="text-stone-700 italic mb-6">
-              &quot;Marios consistently demonstrated eagerness to learn, remarkable empathy for patients, and strong research skills. He will be an asset to any residency program.&quot;
+              &quot; Marios Zisis demonstrates exceptional dedication, medical knowledge and initiative. He consistently excelles in clinical skills, diagnosis and teamwork. His positive attitude and collaborative spirit make him a valued team member.&quot;
               </p>
               <div className="border-t pt-4">
-                <h4 className="font-semibold text-stone-800">Dr. Nikolaos P.</h4>
-                <p className="text-stone-500 text-sm">Professor of Cardiology, Athens Medical School</p>
+                <h4 className="font-semibold text-stone-800"> — Dr. Alexandros Briasoulis</h4>
+                <p className="text-stone-500 text-sm"> Assistant Professor, National and Kapodistrian University of Athens & University of Iowa</p>
               </div>
             </div>
 
@@ -231,11 +231,11 @@ export default function HomePage() {
             <div className="relative bg-stone-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
               <Quote size={40} className="absolute -top-6 left-6 text-cyan-600" />
               <p className="text-stone-700 italic mb-6">
-              &quot;Marios impressed us with his clinical acumen, compassionate demeanor, and dedication to advancing patient care through research and collaboration.&quot;
+              &quot;Marios stood out during his clinical training for his enthusiasm, meticulous work and strong clinical reasoning. Highly respected by colleagues for his collaborative spirit and clarity of thought. I recommend him without reservation.&quot;
               </p>
               <div className="border-t pt-4">
-                <h4 className="font-semibold text-stone-800">Dr. Georgia K.</h4>
-                <p className="text-stone-500 text-sm">Internal Medicine Attending</p>
+                <h4 className="font-semibold text-stone-800"> — Dr. Andreas Goules</h4>
+                <p className="text-stone-500 text-sm"> Assistant Professor, University of Athens</p>
               </div>
             </div>
           </div>
