@@ -235,6 +235,25 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+          {/* SEE MY Resume */}
+          <section className="py-20 px-4 sm:px-6 bg-gradient-to-b from-stone-50 to-white text-center">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-4xl sm:text-5xl font-extrabold text-stone-900 mb-6">
+                See My Resume
+              </h2>
+              <p className="text-stone-600 mb-8 text-base sm:text-lg leading-relaxed">
+                Want a comprehensive overview of my academic journey, clinical training and research experience?
+              </p>
+              <a 
+                href="/resume.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block bg-cyan-600 text-white px-8 py-3 rounded-md font-semibold transition hover:bg-cyan-700"
+              >
+                View Resume (PDF)
+              </a>
+            </div>
+          </section>
 
 
       {/* CTA - CONTACT */}
