@@ -173,7 +173,10 @@ export default function HomePage() {
 
           </div>
         </section>
-    <div className="my-6 h-[3px] w-full bg-gradient-to-r from-cyan-400/0 via-cyan-500 to-cyan-400/0" />
+        {/* DIVIDER */}
+        <div className="w-full px-4 sm:px-6">
+        <div className="h-[2px] w-full bg-gradient-to-r from-cyan-400/0 via-cyan-500 to-cyan-400/0 my-12" />
+      </div>
 
       {/* RECOMMENDATIONS SECTION */}
       <section className="bg-white py-20 px-4 sm:px-6 lg:px-8 ">
