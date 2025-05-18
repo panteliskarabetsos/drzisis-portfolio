@@ -73,11 +73,10 @@ export default function HomePage() {
                   Dr. Marios Zisis
                 </h1>
                 <p className="text-base sm:text-lg text-stone-200 lg:text-stone-600 mb-8 max-w-lg leading-relaxed">
-                  Recent Medical Graduate • Aspiring Cardiologist • Driven by{" "}
+                  Aspiring Cardiologist • Driven by{" "}
                   <span className="text-cyan-400 lg:text-cyan-600 font-semibold">
                     Compassion
                   </span>{" "}
-                  and Clinical Excellence.
                 </p>
                 <a
                   href="/about"
