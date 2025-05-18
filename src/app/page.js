@@ -13,7 +13,9 @@ import {
   SunIcon,
   ClipboardDocumentListIcon,
 } from "@heroicons/react/24/solid";
-import { Heart, Puzzle, Sun, Users, FlaskConical, BarChart3, MessageSquare,Leaf,Quote, ChevronDown } from "lucide-react";
+import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Heart, Puzzle, Sun, Users, FlaskConical, BarChart3, MessageSquare,Leaf,Quote, ChevronDown, ChevronLeft , ChevronRight } from "lucide-react";
 
 
 export default function HomePage() {
@@ -49,9 +51,9 @@ export default function HomePage() {
           </div>
         </section> */}
 
-                  {/* NEW HERO SECTION */}
+                  {/*  HERO SECTION */}
                 <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-r from-white via-stone-100 to-white lg:bg-none">
-              {/* Background Image: Desktop Half */}
+              {/* Background Image */}
               <div
                 className="absolute inset-0 hidden lg:block w-1/2 bg-cover bg-center"
                 style={{ backgroundImage: 'url("/hero-bg.jpg")' }}
@@ -97,7 +99,7 @@ export default function HomePage() {
           <div className="text-center">
             <h2 className="text-4xl font-bold mb-6 text-stone-900">About Me</h2>
             <p className="text-stone-700 mb-8 max-w-2xl mx-auto">
-              Passionate about cardiology and preventive medicine, dedicated to enhancing patient care through clinical excellence. Committed to continuous learning, research, and compassionate practice.
+             Passionate about cardiology and preventive medicine, with a focus on enhancing patient outcomes through compassionate care and evidence-based clinical practice. Dedicated to promoting cardiovascular health by integrating precision medicine, early intervention and a patient-centered approach.
             </p>
             <a
               href="/about"
@@ -109,47 +111,17 @@ export default function HomePage() {
         </section>
 
           {/* CORE VALUES SECTION */}
-        <section className="bg-stone-50 py-20 px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl text-center">
-            <h2 className="text-4xl font-bold mb-8 text-stone-900">Core Values</h2>
-            <p className="text-stone-700 mb-12 max-w-2xl mx-auto leading-relaxed">
-              As an aspiring cardiologist, these values define my approach to patient care, research, and lifelong learning.
-            </p>
+     <section className="bg-stone-50 py-20 px-4 sm:px-6 lg:px-8">
+  <div className="mx-auto max-w-6xl text-center">
+    <h2 className="text-4xl font-bold mb-6 text-stone-900">Core Values</h2>
+    <p className="text-stone-700 mb-10 max-w-2xl mx-auto leading-relaxed">
+      As an aspiring cardiologist, these values define my approach to patient care, research, and lifelong learning.
+    </p>
+    <RotatingCoreValues />
+  </div>
+</section>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <FocusAreaCard
-                icon={<Heart size={40} className="text-red-500 mx-auto" />}
-                title="Compassion"
-                description="Placing patient needs, comfort, and dignity at the center of every decision."
-              />
-              <FocusAreaCard
-                icon={<Puzzle size={40} className="text-blue-600 mx-auto" />}
-                title="Critical Thinking"
-                description="Integrating clinical knowledge with evidence-based research for better outcomes."
-              />
-              <FocusAreaCard
-                icon={<Sun size={40} className="text-yellow-500 mx-auto" />}
-                title="Integrity"
-                description="Practicing medicine with honesty, accountability, and unwavering ethical standards."
-              />
-              <FocusAreaCard
-                icon={<Users size={40} className="text-cyan-600 mx-auto" />}
-                title="Collaboration"
-                description="Building strong partnerships with patients, families, and interdisciplinary teams."
-              />
-              <FocusAreaCard
-                icon={<FlaskConical size={40} className="text-purple-500 mx-auto" />}
-                title="Curiosity"
-                description="Embracing continuous learning to stay at the forefront of medical innovation."
-              />
-              <FocusAreaCard
-                icon={<BarChart3 size={40} className="text-green-600 mx-auto" />}
-                title="Excellence"
-                description="Striving for the highest standards in clinical practice, research, and education."
-              />
-            </div>
-          </div>
-        </section>
+
         {/* CLINICAL PHILOSOPHY SECTION */}
         <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl text-center">
@@ -257,6 +229,128 @@ export default function HomePage() {
  * Stats/achievements card with an optional icon, a bold number, and a label.
  * Features a circular background behind the icon for a modern look.
  */
+
+
+function RotatingCoreValues() {
+  const values = [
+    {
+      title: "Compassion",
+      description:
+        "Placing patient needs, comfort, and dignity at the center of every decision.",
+      icon: <Heart size={36} className="text-red-500" />,
+    },
+    {
+      title: "Critical Thinking",
+      description:
+        "Integrating clinical knowledge with evidence-based research for better outcomes.",
+      icon: <Puzzle size={36} className="text-blue-600" />,
+    },
+    {
+      title: "Integrity",
+      description:
+        "Practicing medicine with honesty, accountability, and unwavering ethical standards.",
+      icon: <Sun size={36} className="text-yellow-500" />,
+    },
+    {
+      title: "Collaboration",
+      description:
+        "Building strong partnerships with patients, families, and interdisciplinary teams.",
+      icon: <Users size={36} className="text-cyan-600" />,
+    },
+    {
+      title: "Curiosity",
+      description:
+        "Embracing continuous learning to stay at the forefront of medical innovation.",
+      icon: <FlaskConical size={36} className="text-purple-500" />,
+    },
+    {
+      title: "Excellence",
+      description:
+        "Striving for the highest standards in clinical practice, research, and education.",
+      icon: <BarChart3 size={36} className="text-green-600" />,
+    },
+  ];
+
+  const [index, setIndex] = useState(0);
+  const total = values.length;
+
+  const goTo = (newIndex) => {
+    setIndex((newIndex + total) % total);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => goTo(index + 1), 4000);
+    return () => clearInterval(interval);
+  }, [index]);
+
+  const getItem = (offset) => values[(index + offset + total) % total];
+
+ const renderCard = (item, position) => {
+  const isCenter = position === 0;
+  return (
+    <motion.div
+      key={item.title}
+      layout
+      initial={{ opacity: 0, scale: 0.8, y: 20 }}
+      animate={{
+        opacity: isCenter ? 1 : 0.6,
+        scale: isCenter ? 1 : 0.92,
+        y: 0,
+        filter: isCenter ? "blur(0px)" : "blur(2px)",
+      }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+        className={`
+        bg-white rounded-3xl shadow-xl px-6 py-8 w-full max-w-[18rem] 
+        text-center flex-shrink-0 mx-auto
+        ${isCenter ? "z-20" : "z-10"}
+      `}
+
+    >
+      <div className="flex flex-col items-center">
+        <div className="mb-4">{item.icon}</div>
+        <h3 className="text-lg font-semibold text-stone-900 mb-2">
+          {item.title}
+        </h3>
+        <p className="text-sm text-stone-600">{item.description}</p>
+      </div>
+    </motion.div>
+  );
+};
+
+
+return (
+  <div className="w-full overflow-x-hidden px-4 sm:px-6 lg:px-8 pb-12">
+    <div className="relative flex flex-col items-center w-full">
+      {/* Arrows */}
+      <div className="flex justify-between w-full max-w-4xl px-4 mb-8">
+        <button
+          onClick={() => goTo(index - 1)}
+          className="text-cyan-600 hover:text-cyan-800 transition"
+          aria-label="Previous"
+        >
+          <ChevronLeft size={32} />
+        </button>
+        <button
+          onClick={() => goTo(index + 1)}
+          className="text-cyan-600 hover:text-cyan-800 transition"
+          aria-label="Next"
+        >
+          <ChevronRight size={32} />
+        </button>
+      </div>
+
+      {/* Carousel */}
+      <div className="flex justify-center gap-6 items-center transition-transform duration-500 w-full">
+        {[-1, 0, 1].map((offset) =>
+          renderCard(getItem(offset), offset)
+        )}
+      </div>
+    </div>
+  </div>
+);
+
+}
+
 function StatBox({ icon, number, label }) {
   return (
     <div
