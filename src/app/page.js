@@ -173,9 +173,10 @@ export default function HomePage() {
 
           </div>
         </section>
+    <div className="my-20 h-[3px] w-full bg-gradient-to-r from-cyan-400/0 via-cyan-500 to-cyan-400/0" />
 
       {/* RECOMMENDATIONS SECTION */}
-      <section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-20 px-4 sm:px-6 lg:px-8 ">
         <div className="mx-auto max-w-6xl text-center">
           <h2 className="text-4xl font-bold text-stone-900 mb-8">
             Endorsements
@@ -248,13 +249,13 @@ function RotatingCoreValues() {
     {
       title: "Integrity",
       description:
-        "Practicing medicine with honesty, accountability, and unwavering ethical standards.",
+        "Practicing medicine with honesty, accountability and unwavering ethical standards.",
       icon: <Sun size={36} className="text-yellow-500" />,
     },
     {
       title: "Collaboration",
       description:
-        "Building strong partnerships with patients, families, and interdisciplinary teams.",
+        "Building strong partnerships with patients, families and interdisciplinary teams.",
       icon: <Users size={36} className="text-cyan-600" />,
     },
     {
@@ -266,7 +267,7 @@ function RotatingCoreValues() {
     {
       title: "Excellence",
       description:
-        "Striving for the highest standards in clinical practice, research, and education.",
+        "Striving for the highest standards in clinical practice, research and education.",
       icon: <BarChart3 size={36} className="text-green-600" />,
     },
   ];
