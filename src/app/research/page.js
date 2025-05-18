@@ -185,7 +185,26 @@ export default function ResearchPage() {
     </main>
   );
 }
-
+const cards = [
+  {
+    icon: <Heart size={36} className="text-cyan-600" />,
+    title: "Valvular Heart Disease",
+    description:
+      "3D-TEE implementation on the anatomic description of mitral valve regurgitation phenotypes",
+  },
+  {
+    icon: <Pill size={36} className="text-cyan-600" />,
+    title: "Cardiometabolic Health",
+    description:
+      "Reviewing conventional and novel cardiometabolic drug therapies on MASLD",
+  },
+  {
+    icon: <Brain size={36} className="text-cyan-600" />,
+    title: "ECMO & Stroke",
+    description:
+      "Exploring the role of ECMO in acute ischemic stroke management.",
+  },
+];
 /* COMPONENTS */
 function ResearchCard({ icon, title, description, onHover, onLeave }) {
   return (
@@ -206,6 +225,7 @@ function ResearchCard({ icon, title, description, onHover, onLeave }) {
     </div>
   );
 }
+
 
 function PublicationEntry({ title, journal, year, link }) {
   return (
