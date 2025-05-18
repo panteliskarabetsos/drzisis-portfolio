@@ -65,7 +65,7 @@ export default function AboutPage() {
             Elevating <span className="text-cyan-400">Cardiac Care</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white/90 mt-4">
-            A journey shaped by science, passion, and patient-focused care
+            A journey shaped by science, passion and patient-focused care
           </p>
         </div>
       </section>
