@@ -2,54 +2,51 @@
 
 import Link from 'next/link';
 import { HeartPulse } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-stone-100 to-stone-50 px-6">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative w-full max-w-xl bg-white/70 backdrop-blur-xl rounded-3xl shadow-xl p-8 sm:p-12 text-center border border-stone-200"
-      >
-        {/* Heart + Glow Ring */}
-        <div className="relative mb-6 flex justify-center">
-          <div className="absolute w-28 h-28 rounded-full bg-red-200/30 blur-2xl opacity-50 animate-ping-slow" />
-          <HeartPulse className="w-16 h-16 text-red-600 animate-beat z-10" />
+    <main className="min-h-screen flex flex-col items-center justify-center px-6 py-24 bg-gradient-to-b from-white via-stone-50 to-white text-center text-gray-800">
+      <div className="max-w-md w-full space-y-6">
+
+        {/* Heart Icon with Glow */}
+        <div className="relative flex justify-center">
+          <div className="absolute w-24 h-24 rounded-full bg-red-100 blur-2xl opacity-60 animate-ping-slow" />
+          <HeartPulse className="w-20 h-20 text-red-500 animate-beat" />
         </div>
 
-        {/* Title */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-red-700 mb-4">
-          You seem a bit off-track...
-        </h1>
+        {/* Stylized SVG divider */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-44 h-10 mx-auto text-red-500"
+          viewBox="0 0 200 40"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path d="M0 20 H40 L50 5 L60 35 L70 20 H100 M100 20 H200" />
+        </svg>
 
-        {/* Subtitle */}
-        <p className="text-stone-700 text-base sm:text-lg leading-relaxed mb-6">
-          The page you're looking for doesn't exist or has been moved.
+        <h1 className="text-3xl sm:text-4xl font-bold text-red-700">Oops, this page doesn't exist.</h1>
+
+        <p className="text-stone-600 text-base leading-relaxed">
+          We couldn't find what you were looking for. It may have been removed or relocated.
         </p>
 
-        {/* Return button */}
         <Link
           href="/"
-          className="inline-block bg-red-600 text-white px-6 py-3 rounded-full shadow hover:bg-red-700 hover:shadow-lg transition duration-300"
+          className="inline-block mt-4 px-6 py-3 bg-red-600 text-white rounded-full shadow hover:bg-red-700 transition"
         >
-          Return to Home
+          Back to Safety
         </Link>
+      </div>
 
-        {/* Optional quote */}
-        <p className="text-sm text-stone-500 mt-6 italic">
-          “Even a detour can lead to something meaningful.”
-        </p>
-      </motion.div>
-
-      {/* Custom Animations */}
+      {/* Animations */}
       <style jsx>{`
         .animate-beat {
-          animation: beat 1.6s ease-in-out infinite;
+          animation: beat 1.5s ease-in-out infinite;
         }
         .animate-ping-slow {
-          animation: ping 3.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+          animation: ping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
         }
         @keyframes beat {
           0%, 100% { transform: scale(1); }
