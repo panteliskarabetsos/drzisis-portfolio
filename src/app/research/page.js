@@ -55,14 +55,32 @@ export default function ResearchPage() {
       filter: backgroundImage ? "blur(2px) brightness(0.9)" : "none",
     }}
   />
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  {/* Title */}
+  <motion.h2
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true }}
+    className="text-3xl sm:text-4xl font-bold text-stone-900 mb-4"
+  >
+    Main Research Topics
+  </motion.h2>
 
-  {/* Main content */}
-  <div className="relative z-10 max-w-7xl mx-auto text-center">
-    <h2 className="text-4xl font-bold text-stone-900 mb-12">
-      Main Research Topics
-    </h2>
+  {/* Subheading */}
+  <motion.p
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.1 }}
+    viewport={{ once: true }}
+    className="text-stone-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed mb-12"
+  >
+    Clinical research with a focus on cardiovascular innovation, metabolic health, and life-saving interventions.
+  </motion.p>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+  {/* Research Cards */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 max-w-6xl mx-auto">
+    <div className="max-w-md w-full mx-auto">
       <ResearchCard
         icon={<Heart size={36} className="text-cyan-600" />}
         title="Valvular Heart Disease"
@@ -70,6 +88,8 @@ export default function ResearchPage() {
         onHover={() => setBackgroundImage("/vhd.jpeg")}
         onLeave={() => setBackgroundImage(null)}
       />
+    </div>
+    <div className="max-w-md w-full mx-auto">
       <ResearchCard
         icon={<Pill size={36} className="text-cyan-600" />}
         title="Cardiometabolic Health"
@@ -77,15 +97,20 @@ export default function ResearchPage() {
         onHover={() => setBackgroundImage("/lab-img.jpg")}
         onLeave={() => setBackgroundImage(null)}
       />
+    </div>
+    <div className="max-w-md w-full mx-auto">
       <ResearchCard
         icon={<Brain size={36} className="text-cyan-600" />}
-        title="Extacorporeal Membrane Oxygenation (ECMO)"
+        title="ECMO & Stroke"
         description="Exploring the role of ECMO in acute ischemic stroke management."
         onHover={() => setBackgroundImage("/ECMO.jpg")}
         onLeave={() => setBackgroundImage(null)}
       />
     </div>
   </div>
+</div>
+
+
 </section>
 
 
