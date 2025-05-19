@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { HeartPulse } from 'lucide-react';
+{/* eslint-disable react/no-unescaped-entities */}
 
 export default function NotFound() {
   return (
@@ -29,7 +30,7 @@ export default function NotFound() {
         <h1 className="text-3xl sm:text-4xl font-bold text-red-700">Oops, this page doesn't exist.</h1>
 
         <p className="text-stone-600 text-base leading-relaxed">
-          We couldn't find what you were looking for. It may have been removed or relocated.
+          We couldn not find what you were looking for. It may have been removed or relocated.
         </p>
 
         <Link
