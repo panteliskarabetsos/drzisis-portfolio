@@ -1,5 +1,5 @@
 // app/terms-of-use/page.jsx
-
+// eslint-disable-next-line
 "use client";
 
 export default function TermsOfUsePage() {
@@ -8,9 +8,10 @@ export default function TermsOfUsePage() {
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-stone-900 mb-6 text-center">Terms of Use</h1>
 
-        <p className="text-stone-700 mb-6">
-          Please read these Terms of Use ("Terms") carefully before using this website. By accessing or using the site, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you must not access or use the website.
+       <p className="text-stone-700 mb-6">
+        Please read these Terms of Use (<span className="italic">&quot;Terms&quot;</span>) carefully before using this website. By accessing or using the site, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you must not access or use the website.
         </p>
+
 
         <h2 className="text-2xl font-semibold text-stone-800 mt-8 mb-3">1. Website Purpose</h2>
         <p className="text-stone-700 mb-4">

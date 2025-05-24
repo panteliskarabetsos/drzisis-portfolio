@@ -6,7 +6,6 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Footer Grid */}
         <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center sm:text-left">
-
           {/* Branding */}
           <div>
             <h2 className="text-lg font-bold text-stone-900">Dr. Marios Zisis</h2>
@@ -25,12 +24,15 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Privacy Policy */}
+          {/* Legal */}
           <div>
             <h3 className="text-md font-semibold text-stone-900">Legal</h3>
             <nav className="mt-2 space-y-1 text-sm">
               <a href="/privacy-policy" className="block hover:text-cyan-600 transition">
                 Privacy Policy
+              </a>
+              <a href="/terms-of-use" className="block hover:text-cyan-600 transition">
+                Terms of Use
               </a>
             </nav>
           </div>
@@ -45,7 +47,6 @@ export default function Footer() {
             </div>
 
             <div className="flex justify-center sm:justify-start mt-4 space-x-4">
-              {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/in/marioszisis/"
                 aria-label="LinkedIn"
@@ -56,7 +57,6 @@ export default function Footer() {
                 <LinkedinIcon className="w-6 h-6" />
               </a>
 
-              {/* Instagram */}
               <a
                 href="https://www.instagram.com/marioszisis/"
                 aria-label="Instagram"
@@ -72,7 +72,7 @@ export default function Footer() {
 
         {/* Bottom Footer */}
         <div className="mt-8 border-t border-stone-200 pt-4 text-center text-xs text-stone-500">
-          © {new Date().getFullYear()} Dr. Marios Zisis. All rights reserved. Created by{' '} 
+          © {new Date().getFullYear()} Dr. Marios Zisis. All rights reserved. Created by{" "}
           <a
             href="http://panteliskarabetsos.com/"
             target="_blank"

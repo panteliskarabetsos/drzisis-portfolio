@@ -1,7 +1,14 @@
 {
+  "/api/contact/route": "app/api/contact/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/about/page": "app/about/page.js",
+  "/contact/page": "app/contact/page.js",
   "/legal/page": "app/legal/page.js",
   "/page": "app/page.js",
-  "/terms-of-use/page": "app/terms-of-use/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/contact/page": "app/contact/page.js"
+  "/privacy-policy/page": "app/privacy-policy/page.js",
+  "/research/page": "app/research/page.js",
+  "/terms-of-use/page": "app/terms-of-use/page.js"
 }
