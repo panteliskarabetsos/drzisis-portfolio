@@ -1,1 +1,7 @@
-{}
+{
+  "/legal/page": "app/legal/page.js",
+  "/page": "app/page.js",
+  "/terms-of-use/page": "app/terms-of-use/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/contact/page": "app/contact/page.js"
+}

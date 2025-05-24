@@ -119,6 +119,16 @@ export default function ContactPage() {
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </button>
+         <p className="text-[10px] sm:text-[11px] text-stone-400 italic text-center w-full mt-2">
+            By clicking “Send Message”, you agree to our{" "}
+            <a
+              href="/legal"
+              className="underline underline-offset-2 hover:text-cyan-600 transition-colors"
+            >
+              legal terms
+            </a>.
+          </p>
+
 
           {isSuccess && (
             <div className="mt-6 flex items-center justify-center text-green-600 animate-fadeIn">
