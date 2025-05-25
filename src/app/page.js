@@ -3,7 +3,7 @@
 import {
   AcademicCapIcon,
   DocumentTextIcon,
-  CheckBadgeIcon, // renamed from BadgeCheckIcon
+  CheckBadgeIcon,
   PuzzleIcon,
   HeartIcon,
   BeakerIcon,
@@ -21,35 +21,6 @@ import { Heart, Puzzle, Sun, Users, FlaskConical, BarChart3, MessageSquare,Leaf,
 export default function HomePage() {
   return (
     <main className="bg-white text-stone-800 min-h-screen">
-        {/* HERO SECTION */}
-        {/* <section
-          className="
-            relative h-[85vh] sm:h-[75vh] flex flex-col items-center justify-center text-center px-6 sm:px-12
-            bg-cover bg-center bg-no-repeat
-          "
-          style={{
-            backgroundImage: 'url("/hero-bg.jpg")',
-          }}
-        >
-          <div className="absolute inset-0 bg-black/50 sm:bg-black/30" />
-          <div className="relative z-10 max-w-3xl mx-auto animate-fadeIn">
-            <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 drop-shadow-xl">
-              Dr. Marios Zisis
-            </h1>
-            <p className="text-xl sm:text-2xl text-white mb-8 font-light">
-              Recent Medical Graduate • Aspiring Cardiologist • Driven by <span className="text-cyan-400 font-semibold">Compassion</span>.
-            </p>
-            <a
-              href="/about"
-              className="
-                inline-block bg-cyan-600 text-white font-semibold text-lg px-8 py-3
-                rounded-full hover:bg-cyan-700 hover:shadow-2xl transition-all duration-300
-              "
-            >
-              Learn More
-            </a>
-          </div>
-        </section> */}
 
                   {/*  HERO SECTION */}
                 <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-r from-white via-stone-100 to-white lg:bg-none">
@@ -112,14 +83,14 @@ export default function HomePage() {
 
           {/* CORE VALUES SECTION */}
      <section className="bg-stone-50 py-20 px-4 sm:px-6 lg:px-8">
-  <div className="mx-auto max-w-6xl text-center">
-    <h2 className="text-4xl font-bold mb-6 text-stone-900">Core Values</h2>
-    <p className="text-stone-700 mb-10 max-w-2xl mx-auto leading-relaxed">
-      As an aspiring cardiologist, these values define my approach to patient care, research, and lifelong learning.
-    </p>
-    <RotatingCoreValues />
-  </div>
-</section>
+        <div className="mx-auto max-w-6xl text-center">
+          <h2 className="text-4xl font-bold mb-6 text-stone-900">Core Values</h2>
+          <p className="text-stone-700 mb-10 max-w-2xl mx-auto leading-relaxed">
+            As an aspiring cardiologist, these values define my approach to patient care, research, and lifelong learning.
+          </p>
+          <RotatingCoreValues />
+        </div>
+      </section>
 
 
         {/* CLINICAL PHILOSOPHY SECTION */}
@@ -161,7 +132,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Optional CTA */}
+            {/* More About me */}
             <div className="mt-16">
               <a
                 href="/about"
@@ -173,6 +144,7 @@ export default function HomePage() {
 
           </div>
         </section>
+
         {/* DIVIDER */}
         <div className="w-full px-4 sm:px-6">
         <div className="h-[2px] w-full bg-gradient-to-r from-cyan-400/0 via-cyan-500 to-cyan-400/0 my-12" />
@@ -226,13 +198,6 @@ export default function HomePage() {
 /*  Reusable Components Below: Stats Box, Service Card, Testimonial,Recommendation  */
 /* -------------------------------------------------------------------------------- */
 
-/**
- * Stats/achievements card: displays a number and label.
- */
-/**
- * Stats/achievements card with an optional icon, a bold number, and a label.
- * Features a circular background behind the icon for a modern look.
- */
 
 
 function RotatingCoreValues() {
@@ -373,9 +338,7 @@ function StatBox({ icon, number, label }) {
     </div>
   );
 }
-/**
- * Service card with an optional emoji icon.
- */
+
 function ServiceCard({ icon, title, description }) {
   return (
     <div className="rounded-lg bg-white p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-200">
@@ -395,7 +358,7 @@ function Testimonial({ name, text }) {
 }
 /**
  * Card component for clinical/academic focus areas.
- * Displays an icon, a title, and a short description.
+ * Displays an icon, a title and a short description.
  */
 function FocusAreaCard({ icon, title, description }) {
   return (
@@ -412,7 +375,7 @@ function FocusAreaCard({ icon, title, description }) {
 
 /**
  * A "recommendation" or "endorsement" component more suited 
- * for a new graduate. Includes a references name, title, and quote.
+ * for a new graduate. Includes a references name, title  and quote.
  */
 function Recommendation({ name, title, text }) {
   return (

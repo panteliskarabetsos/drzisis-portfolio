@@ -12,7 +12,6 @@ export default function Header() {
 
   useEffect(() => {
     if (pathname === "/") {
-      // On the homepage, show name only after scrolling 460px.
       const handleScroll = () => {
         if (window.scrollY > 460) {
           setShowName(true);
@@ -21,11 +20,11 @@ export default function Header() {
         }
       };
       window.addEventListener("scroll", handleScroll);
-      // Run once on mount
+
       handleScroll();
       return () => window.removeEventListener("scroll", handleScroll);
     } else {
-      // On any other page, always show the name.
+
       setShowName(true);
     }
   }, [pathname]);
@@ -46,7 +45,7 @@ export default function Header() {
                   priority
                 />
               </div>
-              {/* Always render the span; toggle opacity */}
+       
               <span
                 className={`ml-2 inline-block text-xl font-bold text-stone-800 transition-opacity ease-in-out duration-500 ${
                   showName ? "opacity-100" : "opacity-0"
@@ -116,8 +115,7 @@ export default function Header() {
 }
 
 /**
- * A reusable component 
- * It adjusts padding for mobile vs. desktop links.
+ * reusable components
  */
 function AnimatedUnderlineLink({ href, children, mobile = false, ...props }) {
   return (
