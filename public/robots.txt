@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://drzisis.com
+
+# Sitemaps
+Sitemap: https://drzisis.com/sitemap.xml
