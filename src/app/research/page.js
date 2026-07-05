@@ -629,10 +629,8 @@ export default function ResearchPage() {
               </p>
 
               <h2 className="mt-7 max-w-4xl text-4xl font-semibold leading-[1] tracking-[-0.055em] sm:text-5xl lg:text-[4.5rem]">
-                Let's discuss
-                <span className="block text-cyan-200/55">
-                  research ideas or questions.
-                </span>
+               Let&apos;s collaborate 
+
               </h2>
 
               <p className="mt-7 max-w-xl text-sm leading-7 text-cyan-100/75">

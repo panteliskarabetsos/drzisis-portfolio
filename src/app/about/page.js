@@ -522,16 +522,16 @@ export default function AboutPage() {
               </p>
 
               <h2 className="mt-7 max-w-4xl text-4xl font-semibold leading-[1] tracking-[-0.055em] sm:text-5xl lg:text-[4.5rem]">
-                Let's connect and
+               Let&apos;s connect and
                 <span className="block text-cyan-200/55">
                   exchange ideas.
                 </span>
               </h2>
 
               <p className="mt-7 max-w-xl text-sm leading-7 text-cyan-100/75">
-                If you're interested in collaborating, discussing research
-                initiatives, or sharing insights on patient care, I would be glad
-                to hear from you.
+              If you&apos;re interested in collaborating, discussing research
+              initiatives, or sharing insights on patient care, I would be glad
+              to hear from you.
               </p>
             </div>
 
