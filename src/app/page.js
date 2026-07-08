@@ -398,8 +398,7 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                <PulseDot dot="bg-cyan-300" ping="bg-cyan-300" />
-              </motion.div>
+        </motion.div>
             </motion.div>
           </div>
         </div>
