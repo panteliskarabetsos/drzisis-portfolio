@@ -1,7 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useInView,
+  animate,
+} from "framer-motion";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -23,6 +32,47 @@ const fadeUp = {
     ease,
   },
 };
+
+const heroStagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.09,
+      delayChildren: 0.15,
+    },
+  },
+};
+
+const lineReveal = {
+  initial: { y: "120%" },
+  animate: {
+    y: 0,
+    transition: {
+      duration: 0.95,
+      ease,
+    },
+  },
+};
+
+const heroItem = {
+  initial: { opacity: 0, y: 22 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease,
+    },
+  },
+};
+
+const marqueeItems = [
+  "Valvular Heart Disease",
+  "Cardiometabolic Health",
+  "ECMO & Stroke",
+  "Cardiac Imaging",
+  "Clinical Trials",
+  "Translational Research",
+];
 
 const researchTopics = [
   {
@@ -105,24 +155,56 @@ const collaborationAreas = [
 
 export default function ResearchPage() {
   const [activeTopic, setActiveTopic] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
+
+  const heroRef = useRef(null);
+  const { scrollYProgress: heroProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const heroImageY = useTransform(heroProgress, [0, 1], ["0%", "14%"]);
+  const heroContentY = useTransform(heroProgress, [0, 1], ["0px", "60px"]);
+  const heroContentOpacity = useTransform(heroProgress, [0, 0.8], [1, 0]);
 
   const selectedTopic = researchTopics[activeTopic];
 
   return (
-  <main className="min-h-screen w-full max-w-none overflow-hidden bg-[#f8f8f6] text-stone-950 selection:bg-cyan-100 selection:text-cyan-950">    {/* HERO */}
-      <section className="relative min-h-[92svh] overflow-hidden bg-stone-950">
+  <main className="relative min-h-screen w-full max-w-none overflow-hidden bg-[#f8f8f6] text-stone-950 selection:bg-cyan-100 selection:text-cyan-950">
+      <ScrollProgress />
+
+      <Grain />
+
+      {/* HERO */}
+      <section
+        ref={heroRef}
+        className="relative min-h-[92svh] overflow-hidden bg-stone-950"
+      >
         <motion.div
-          initial={{ scale: 1.08 }}
-          animate={{ scale: 1 }}
-          transition={{
-            duration: 1.8,
-            ease,
-          }}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: 'url("/lab-img.jpg")',
-          }}
-        />
+          style={
+            shouldReduceMotion
+              ? undefined
+              : { y: heroImageY }
+          }
+          className="absolute -inset-y-[8%] inset-x-0"
+        >
+          <motion.div
+            initial={
+              shouldReduceMotion
+                ? false
+                : { scale: 1.1 }
+            }
+            animate={{ scale: 1.02 }}
+            transition={{
+              duration: 1.8,
+              ease,
+            }}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: 'url("/lab-img.jpg")',
+            }}
+          />
+        </motion.div>
 
         <div className="absolute inset-0 bg-stone-950/50" />
 
@@ -130,65 +212,107 @@ export default function ResearchPage() {
 
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-stone-950/10" />
 
-        <div
+        <motion.div
           aria-hidden="true"
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : {
+                  opacity: [0.6, 1, 0.6],
+                  scale: [1, 1.12, 1],
+                }
+          }
+          transition={{
+            duration: 9,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           className="absolute left-[5%] top-[14%] h-96 w-96 rounded-full bg-cyan-500/10 blur-[150px]"
         />
 
         <div className="relative mx-auto grid min-h-[92svh] max-w-7xl items-end px-6 pb-16 pt-32 sm:px-10 sm:pb-20 lg:grid-cols-[1fr_0.35fr] lg:pb-24">
           <motion.div
-            initial={{ opacity: 0, y: 38 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.95,
-              delay: 0.15,
-              ease,
-            }}
+            style={
+              shouldReduceMotion
+                ? undefined
+                : {
+                    y: heroContentY,
+                    opacity: heroContentOpacity,
+                  }
+            }
             className="max-w-5xl"
           >
-            <div className="flex items-center gap-4">
-              <span className="h-px w-10 bg-cyan-400" />
+            <motion.div
+              variants={heroStagger}
+              initial={shouldReduceMotion ? false : "initial"}
+              animate="animate"
+            >
+              <motion.div
+                variants={heroItem}
+                className="flex items-center gap-4"
+              >
+                <span className="h-px w-10 bg-cyan-400" />
 
-              <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-300">
-                Research & Publications
-              </p>
-            </div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-300">
+                  Research & Publications
+                </p>
 
-            <h1 className="mt-8 text-[clamp(4rem,8vw,8rem)] font-semibold leading-[0.82] tracking-[-0.075em] text-white">
-              Research shaped
-              <span className="block text-white/30">
-                by clinical questions.
-              </span>
-            </h1>
+                <PulseDot dot="bg-cyan-300" ping="bg-cyan-300" />
+              </motion.div>
 
-            <p className="mt-10 max-w-2xl border-l border-white/25 pl-6 text-base leading-8 text-stone-300 sm:text-lg">
-              Clinical and translational research focused on cardiovascular
-              medicine, metabolic disease and complex challenges in critical
-              care.
-            </p>
+              <h1 className="mt-8 text-[clamp(4rem,8vw,8rem)] font-semibold leading-[0.82] tracking-[-0.075em] text-white">
+                <span className="block overflow-hidden pb-[0.04em]">
+                  <motion.span
+                    variants={lineReveal}
+                    className="block"
+                  >
+                    Research shaped
+                  </motion.span>
+                </span>
+
+                <span className="block overflow-hidden pb-[0.04em]">
+                  <motion.span
+                    variants={lineReveal}
+                    className="block text-white/30"
+                  >
+                    by clinical questions.
+                  </motion.span>
+                </span>
+              </h1>
+
+              <motion.p
+                variants={heroItem}
+                className="mt-10 max-w-2xl border-l border-white/25 pl-6 text-base leading-8 text-stone-300 sm:text-lg"
+              >
+                Clinical and translational research focused on cardiovascular
+                medicine, metabolic disease and complex challenges in critical
+                care.
+              </motion.p>
+            </motion.div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.8,
-            }}
+            variants={heroStagger}
+            initial={shouldReduceMotion ? false : "initial"}
+            animate="animate"
             className="mt-16 hidden border-l border-white/15 pl-8 lg:block"
           >
-            <p className="text-[9px] font-semibold uppercase tracking-[0.25em] text-white/40">
+            <motion.p
+              variants={heroItem}
+              className="text-[9px] font-semibold uppercase tracking-[0.25em] text-white/40"
+            >
               Current themes
-            </p>
+            </motion.p>
 
             <div className="mt-7 space-y-5">
               {researchTopics.map((topic) => (
-                <p
+                <motion.p
                   key={topic.title}
+                  variants={heroItem}
                   className="text-sm text-white/70"
                 >
                   {topic.shortTitle}
-                </p>
+                </motion.p>
               ))}
             </div>
           </motion.div>
@@ -199,9 +323,25 @@ export default function ResearchPage() {
           aria-label="Explore research"
           className="absolute bottom-7 left-1/2 hidden h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border border-white/20 text-white/70 transition duration-300 hover:border-white hover:bg-white hover:text-stone-950 lg:flex"
         >
-          <ArrowDown size={17} />
+          <motion.span
+            animate={
+              shouldReduceMotion
+                ? undefined
+                : { y: [0, 4, 0] }
+            }
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <ArrowDown size={17} />
+          </motion.span>
         </a>
       </section>
+
+      {/* KINETIC MARQUEE */}
+      <Marquee reduceMotion={shouldReduceMotion} />
 
       {/* RESEARCH INTRODUCTION */}
       <section
@@ -258,12 +398,12 @@ export default function ResearchPage() {
             className="mt-24 grid border-y border-stone-300 sm:grid-cols-3 lg:mt-32"
           >
             <ResearchStat
-              value="03"
+              value={3}
               label="Core research themes"
             />
 
             <ResearchStat
-              value={String(publications.length).padStart(2, "0")}
+              value={publications.length}
               label="Peer-reviewed publications"
             />
 
@@ -503,7 +643,7 @@ export default function ResearchPage() {
                   delay: index * 0.08,
                   ease,
                 }}
-                className="group grid gap-8 border-b border-stone-300 py-10 sm:py-12 lg:grid-cols-[90px_1fr_200px] lg:items-center lg:gap-14 lg:py-16"
+                className="group grid gap-8 border-b border-stone-300 py-10 transition-colors duration-500 hover:bg-stone-50/60 sm:py-12 lg:grid-cols-[90px_1fr_200px] lg:items-center lg:gap-14 lg:py-16"
               >
                 <div className="flex items-center justify-between lg:block">
                   <span className="text-xs tabular-nums text-stone-400">
@@ -612,13 +752,33 @@ export default function ResearchPage() {
         {...fadeUp}
         className="relative w-full overflow-hidden bg-cyan-800 px-6 py-20 text-white sm:px-10 lg:px-20 lg:py-24"
       >
-          <div
+          <motion.div
             aria-hidden="true"
+            animate={
+              shouldReduceMotion
+                ? undefined
+                : { rotate: 360 }
+            }
+            transition={{
+              duration: 90,
+              repeat: Infinity,
+              ease: "linear",
+            }}
             className="absolute -right-20 -top-40 h-[500px] w-[500px] rounded-full border border-white/10"
           />
 
-          <div
+          <motion.div
             aria-hidden="true"
+            animate={
+              shouldReduceMotion
+                ? undefined
+                : { rotate: -360 }
+            }
+            transition={{
+              duration: 120,
+              repeat: Infinity,
+              ease: "linear",
+            }}
             className="absolute -right-40 -top-20 h-[500px] w-[500px] rounded-full border border-white/10"
           />
 
@@ -629,7 +789,7 @@ export default function ResearchPage() {
               </p>
 
               <h2 className="mt-7 max-w-4xl text-4xl font-semibold leading-[1] tracking-[-0.055em] sm:text-5xl lg:text-[4.5rem]">
-               Let&apos;s collaborate 
+               Let&apos;s collaborate
 
               </h2>
 
@@ -693,6 +853,102 @@ export default function ResearchPage() {
   );
 }
 
+function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 30,
+    mass: 0.2,
+  });
+
+  return (
+    <motion.div
+      aria-hidden="true"
+      style={{ scaleX }}
+      className="fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-600"
+    />
+  );
+}
+
+function Grain() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-[45] opacity-[0.04]"
+      style={{
+        backgroundImage:
+          "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+      }}
+    />
+  );
+}
+
+function PulseDot({
+  dot = "bg-cyan-300",
+  ping = "bg-cyan-400",
+  size = "h-1.5 w-1.5",
+}) {
+  return (
+    <span className={`relative flex ${size}`}>
+      <span
+        className={`absolute inline-flex h-full w-full animate-ping rounded-full ${ping} opacity-75`}
+      />
+
+      <span
+        className={`relative inline-flex rounded-full ${size} ${dot}`}
+      />
+    </span>
+  );
+}
+
+function Marquee({ reduceMotion }) {
+  const row = (
+    <div className="flex shrink-0 items-center">
+      {marqueeItems.map((item) => (
+        <span
+          key={item}
+          className="flex items-center"
+        >
+          <span className="whitespace-nowrap px-6 text-2xl font-medium tracking-[-0.03em] text-white sm:px-10 sm:text-4xl">
+            {item}
+          </span>
+
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+        </span>
+      ))}
+    </div>
+  );
+
+  return (
+    <section
+      aria-hidden="true"
+      className="relative flex overflow-hidden border-y border-white/10 bg-[#11110f] py-6 sm:py-8"
+    >
+      {reduceMotion ? (
+        <div className="flex px-6">{row}</div>
+      ) : (
+        <motion.div
+          className="flex"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            duration: 24,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        >
+          {row}
+          {row}
+        </motion.div>
+      )}
+
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#11110f] to-transparent sm:w-28" />
+
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#11110f] to-transparent sm:w-28" />
+    </section>
+  );
+}
+
 function SectionLabel({ children, light = false }) {
   return (
     <div className="flex items-center gap-4">
@@ -718,16 +974,25 @@ function ResearchStat({
   label,
   compact = false,
 }) {
+  const isNumber = typeof value === "number";
+
   return (
-    <div className="border-b border-stone-300 py-9 last:border-b-0 sm:border-b-0 sm:border-r sm:px-8 sm:first:pl-0 sm:last:border-r-0 sm:last:pr-0 lg:px-12 lg:py-10">
+    <div className="border-b border-stone-300 py-9 last:border-b-0 sm:border-b-0 sm:border-r sm:px-8 sm:first:pl-0 sm:last:border-r-0 lg:px-12 lg:py-10">
       <p
-        className={`font-semibold tracking-[-0.055em] text-stone-950 ${
+        className={`font-semibold tracking-[-0.055em] text-stone-950 tabular-nums ${
           compact
             ? "text-3xl sm:text-4xl lg:text-5xl"
             : "text-5xl lg:text-6xl"
         }`}
       >
-        {value}
+        {isNumber ? (
+          <CountUp
+            value={value}
+            format={(v) => String(Math.round(v)).padStart(2, "0")}
+          />
+        ) : (
+          value
+        )}
       </p>
 
       <p className="mt-4 text-xs leading-6 text-stone-500">
@@ -735,4 +1000,43 @@ function ResearchStat({
       </p>
     </div>
   );
+}
+
+function CountUp({
+  value,
+  format = (v) => String(Math.round(v)),
+  duration = 1.5,
+}) {
+  const shouldReduceMotion = useReducedMotion();
+  const ref = useRef(null);
+  const inView = useInView(ref, {
+    once: true,
+    amount: 0.6,
+  });
+
+  const [display, setDisplay] = useState(() => format(0));
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      setDisplay(format(value));
+      return undefined;
+    }
+
+    if (!inView) {
+      return undefined;
+    }
+
+    const controls = animate(0, value, {
+      duration,
+      ease,
+      onUpdate: (latest) => {
+        setDisplay(format(latest));
+      },
+    });
+
+    return () => controls.stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, value, shouldReduceMotion]);
+
+  return <span ref={ref}>{display}</span>;
 }

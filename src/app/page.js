@@ -304,8 +304,7 @@ export default function HomePage() {
               </span>
             </div>
 
-            <PulseDot dot="bg-cyan-300" ping="bg-cyan-300" />
-          </motion.div>
+              </motion.div>
 
           {/* MOBILE CONTENT */}
           <div className="relative z-10 flex min-h-[88svh] items-end px-5 pb-7 pt-28">
@@ -638,8 +637,7 @@ export default function HomePage() {
       {/* ======================================================
           KINETIC MARQUEE
       ====================================================== */}
-      <Marquee reduceMotion={shouldReduceMotion} />
-
+    
       {/* ======================================================
           ABOUT
       ====================================================== */}

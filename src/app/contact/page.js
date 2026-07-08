@@ -1,9 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
-  ArrowDown,
+  motion,
+  AnimatePresence,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+} from "framer-motion";
+import {
   ArrowUpRight,
   CheckCircle2,
   Mail,
@@ -21,6 +26,38 @@ const fadeUp = {
   transition: {
     duration: 0.7,
     ease,
+  },
+};
+
+const heroStagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.09,
+      delayChildren: 0.12,
+    },
+  },
+};
+
+const lineReveal = {
+  initial: { y: "120%" },
+  animate: {
+    y: 0,
+    transition: {
+      duration: 0.95,
+      ease,
+    },
+  },
+};
+
+const heroItem = {
+  initial: { opacity: 0, y: 22 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease,
+    },
   },
 };
 
@@ -47,6 +84,8 @@ const contactDetails = [
 ];
 
 export default function ContactPage() {
+  const shouldReduceMotion = useReducedMotion();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -115,62 +154,115 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen w-full max-w-none overflow-hidden bg-[#f8f8f6] text-stone-950 selection:bg-cyan-100 selection:text-cyan-950">
+    <main className="relative min-h-screen w-full max-w-none overflow-hidden bg-[#f8f8f6] text-stone-950 selection:bg-cyan-100 selection:text-cyan-950">
+      <ScrollProgress />
+
+      <Grain />
+
       {/* HERO */}
-     {/* HERO */}
-<section className="relative min-h-[48svh] w-full overflow-hidden bg-[#11110f] text-white">
-  <div
-    aria-hidden="true"
-    className="absolute -left-40 top-0 h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-[160px]"
-  />
+      <section className="relative min-h-[48svh] w-full overflow-hidden bg-[#11110f] text-white">
+        <motion.div
+          aria-hidden="true"
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : {
+                  opacity: [0.6, 1, 0.6],
+                  scale: [1, 1.12, 1],
+                }
+          }
+          transition={{
+            duration: 9,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute -left-40 top-0 h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-[160px]"
+        />
 
-  <div
-    aria-hidden="true"
-    className="absolute -right-56 -top-72 h-[620px] w-[620px] rounded-full border border-white/[0.06]"
-  />
+        <motion.div
+          aria-hidden="true"
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : { rotate: 360 }
+          }
+          transition={{
+            duration: 90,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute -right-56 -top-72 h-[620px] w-[620px] rounded-full border border-white/[0.06]"
+        />
 
-  <div
-    aria-hidden="true"
-    className="absolute -right-28 -top-56 h-[620px] w-[620px] rounded-full border border-white/[0.06]"
-  />
+        <motion.div
+          aria-hidden="true"
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : { rotate: -360 }
+          }
+          transition={{
+            duration: 120,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute -right-28 -top-56 h-[620px] w-[620px] rounded-full border border-white/[0.06]"
+        />
 
-  <div className="relative mx-auto flex min-h-[48svh] max-w-7xl items-end px-6 pb-14 pt-28 sm:px-10 sm:pb-16 lg:pb-20">
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.8,
-        delay: 0.1,
-        ease,
-      }}
-      className="w-full"
-    >
-      <div className="flex items-center gap-4">
-        <span className="h-px w-10 bg-cyan-400" />
+        <div className="relative mx-auto flex min-h-[48svh] max-w-7xl items-end px-6 pb-14 pt-28 sm:px-10 sm:pb-16 lg:pb-20">
+          <motion.div
+            variants={heroStagger}
+            initial={shouldReduceMotion ? false : "initial"}
+            animate="animate"
+            className="w-full"
+          >
+            <motion.div
+              variants={heroItem}
+              className="flex items-center gap-4"
+            >
+              <span className="h-px w-10 bg-cyan-400" />
 
-        <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-300">
-          Contact
-        </p>
-      </div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-300">
+                Contact
+              </p>
 
-      <div className="mt-7 grid gap-8 lg:grid-cols-[1fr_0.52fr] lg:items-end">
-        <h1 className="max-w-4xl text-[clamp(3.5rem,6vw,6.5rem)] font-semibold leading-[0.86] tracking-[-0.07em] text-white">
-          Get in
-          <span className="block text-white/30">
-            touch.
-          </span>
-        </h1>
+              <PulseDot dot="bg-cyan-300" ping="bg-cyan-300" />
+            </motion.div>
 
-        <div className="border-l border-white/20 pl-6">
-          <p className="max-w-md text-sm leading-7 text-stone-300 sm:text-base">
-            For research collaborations, academic opportunities or professional
-            inquiries, I would be glad to hear from you.
-          </p>
+            <div className="mt-7 grid gap-8 lg:grid-cols-[1fr_0.52fr] lg:items-end">
+              <h1 className="max-w-4xl text-[clamp(3.5rem,6vw,6.5rem)] font-semibold leading-[0.86] tracking-[-0.07em] text-white">
+                <span className="block overflow-hidden pb-[0.04em]">
+                  <motion.span
+                    variants={lineReveal}
+                    className="block"
+                  >
+                    Get in
+                  </motion.span>
+                </span>
+
+                <span className="block overflow-hidden pb-[0.04em]">
+                  <motion.span
+                    variants={lineReveal}
+                    className="block text-white/30"
+                  >
+                    touch.
+                  </motion.span>
+                </span>
+              </h1>
+
+              <motion.div
+                variants={heroItem}
+                className="border-l border-white/20 pl-6"
+              >
+                <p className="max-w-md text-sm leading-7 text-stone-300 sm:text-base">
+                  For research collaborations, academic opportunities or professional
+                  inquiries, I would be glad to hear from you.
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
-      </div>
-    </motion.div>
-  </div>
-</section>
+      </section>
 
       {/* CONTACT */}
       <section
@@ -282,7 +374,7 @@ export default function ContactPage() {
                     Send a message
                   </p>
 
-                  <span className="h-2 w-2 rounded-full bg-cyan-700" />
+                  <PulseDot dot="bg-cyan-700" ping="bg-cyan-600" />
                 </div>
 
                 <form
@@ -472,6 +564,55 @@ export default function ContactPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 30,
+    mass: 0.2,
+  });
+
+  return (
+    <motion.div
+      aria-hidden="true"
+      style={{ scaleX }}
+      className="fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-600"
+    />
+  );
+}
+
+function Grain() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-[45] opacity-[0.04]"
+      style={{
+        backgroundImage:
+          "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+      }}
+    />
+  );
+}
+
+function PulseDot({
+  dot = "bg-cyan-300",
+  ping = "bg-cyan-400",
+  size = "h-2 w-2",
+}) {
+  return (
+    <span className={`relative flex ${size}`}>
+      <span
+        className={`absolute inline-flex h-full w-full animate-ping rounded-full ${ping} opacity-75`}
+      />
+
+      <span
+        className={`relative inline-flex rounded-full ${size} ${dot}`}
+      />
+    </span>
   );
 }
 
