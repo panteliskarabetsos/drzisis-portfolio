@@ -1,12 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import {
-  CheckCircleIcon,
-  LightBulbIcon,
-  UsersIcon,
-} from "@heroicons/react/24/solid";
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useInView,
+  animate,
+} from "framer-motion";
 import {
+  ArrowDown,
   ArrowUpRight,
   BadgeCheck,
   FileText,
@@ -27,6 +32,61 @@ const fadeUp = {
     ease,
   },
 };
+
+const heroStagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.09,
+      delayChildren: 0.15,
+    },
+  },
+};
+
+const lineReveal = {
+  initial: { y: "120%" },
+  animate: {
+    y: 0,
+    transition: {
+      duration: 0.95,
+      ease,
+    },
+  },
+};
+
+const heroItem = {
+  initial: { opacity: 0, y: 22 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease,
+    },
+  },
+};
+
+const quickFacts = [
+  {
+    value: 2019,
+    format: (v) => String(Math.round(v)),
+    label: "In medicine since",
+  },
+  {
+    value: 5,
+    format: (v) => String(Math.round(v)).padStart(2, "0"),
+    label: "Career milestones",
+  },
+  {
+    value: 2,
+    format: (v) => String(Math.round(v)).padStart(2, "0"),
+    label: "Peer-reviewed publications",
+  },
+  {
+    value: "Athens",
+    format: null,
+    label: "Based in Greece",
+  },
+];
 
 const timeline = [
   {
@@ -67,30 +127,6 @@ const timeline = [
   },
 ];
 
-const patientCare = [
-  {
-    number: "01",
-    title: "Meeting the Person First",
-    description:
-      "Taking time to understand each patient's story, concerns and goals, not just their symptoms. Building trust from the very first encounter.",
-    icon: UsersIcon,
-  },
-  {
-    number: "02",
-    title: "Thoughtful, Evidence-Based Decisions",
-    description:
-      "Combining up-to-date guidelines with clinical judgment, while clearly explaining options so decisions are genuinely shared with patients.",
-    icon: CheckCircleIcon,
-  },
-  {
-    number: "03",
-    title: "Clear Communication & Continuity",
-    description:
-      "Using clear, jargon-free language, aligning plans with the patient's life and emphasizing follow-up to support long-term heart health.",
-    icon: LightBulbIcon,
-  },
-];
-
 const endorsements = [
   {
     name: "Dr. Alexandros Briasoulis",
@@ -107,61 +143,137 @@ const endorsements = [
 ];
 
 export default function AboutPage() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const heroRef = useRef(null);
+  const { scrollYProgress: heroProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const heroImageY = useTransform(heroProgress, [0, 1], ["0%", "14%"]);
+  const heroContentY = useTransform(heroProgress, [0, 1], ["0px", "60px"]);
+  const heroContentOpacity = useTransform(heroProgress, [0, 0.8], [1, 0]);
+
   return (
-    <main className="overflow-hidden bg-[#f8f8f6] text-stone-950 selection:bg-cyan-100 selection:text-cyan-950">
+    <main className="relative overflow-hidden bg-[#f8f8f6] text-stone-950 selection:bg-cyan-100 selection:text-cyan-950">
+      <ScrollProgress />
+
+      <Grain />
+
       {/* HERO */}
-      <section className="relative min-h-[78svh] overflow-hidden bg-stone-950">
+      <section
+        ref={heroRef}
+        className="relative min-h-[78svh] overflow-hidden bg-stone-950"
+      >
         <motion.div
-          initial={{ scale: 1.06 }}
-          animate={{ scale: 1 }}
-          transition={{
-            duration: 1.6,
-            ease,
-          }}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: 'url("/about-img.jpg")',
-          }}
-        />
+          style={
+            shouldReduceMotion
+              ? undefined
+              : {
+                  y: heroImageY,
+                }
+          }
+          className="absolute -inset-y-[8%] inset-x-0"
+        >
+          <motion.div
+            initial={
+              shouldReduceMotion
+                ? false
+                : { scale: 1.08 }
+            }
+            animate={{ scale: 1.02 }}
+            transition={{
+              duration: 1.8,
+              ease,
+            }}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: 'url("/about-img.jpg")',
+            }}
+          />
+        </motion.div>
 
         <div className="absolute inset-0 bg-stone-950/55" />
         <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-950/55 to-stone-950/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent" />
 
-        <div
+        <motion.div
           aria-hidden="true"
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : {
+                  opacity: [0.6, 1, 0.6],
+                  scale: [1, 1.12, 1],
+                }
+          }
+          transition={{
+            duration: 9,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
           className="absolute left-[5%] top-[15%] h-80 w-80 rounded-full bg-cyan-500/10 blur-[130px]"
         />
 
         <div className="relative mx-auto flex min-h-[78svh] max-w-7xl items-end px-6 pb-16 pt-32 sm:px-10 sm:pb-20 lg:pb-24">
           <motion.div
-            initial={{ opacity: 0, y: 34 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.9,
-              delay: 0.15,
-              ease,
-            }}
+            style={
+              shouldReduceMotion
+                ? undefined
+                : {
+                    y: heroContentY,
+                    opacity: heroContentOpacity,
+                  }
+            }
             className="max-w-4xl"
           >
-            <div className="flex items-center gap-4">
-              <span className="h-px w-10 bg-cyan-400" />
+            <motion.div
+              variants={heroStagger}
+              initial={shouldReduceMotion ? false : "initial"}
+              animate="animate"
+            >
+              <motion.div
+                variants={heroItem}
+                className="flex items-center gap-4"
+              >
+             
+                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-300">
+                  About Dr. Marios Zisis
+                </p>
 
-              <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-300">
-                About Dr. Marios Zisis
-              </p>
-            </div>
+                <PulseDot dot="bg-cyan-300" ping="bg-cyan-300" />
+              </motion.div>
 
-            <h1 className="mt-8 max-w-4xl text-[clamp(3.5rem,7vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.07em] text-white">
-              A journey toward
-              <span className="block text-white/35">cardiac care.</span>
-            </h1>
+              <h1 className="mt-8 max-w-4xl text-[clamp(3.5rem,7vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.07em] text-white">
+                <span className="block overflow-hidden pb-[0.04em]">
+                  <motion.span
+                    variants={lineReveal}
+                    className="block"
+                  >
+                    A journey toward
+                  </motion.span>
+                </span>
 
-            <p className="mt-9 max-w-2xl border-l border-white/25 pl-6 text-base leading-8 text-stone-300 sm:text-lg">
-              From the first day of medical school to a dedicated future in
-              cardiology, my path has been guided by curiosity, compassion and
-              evidence-based medicine.
-            </p>
+                <span className="block overflow-hidden pb-[0.04em]">
+                  <motion.span
+                    variants={lineReveal}
+                    className="block text-white/35"
+                  >
+                    cardiac care.
+                  </motion.span>
+                </span>
+              </h1>
+
+              <motion.p
+                variants={heroItem}
+                className="mt-9 max-w-2xl border-l border-white/25 pl-6 text-base leading-8 text-stone-300 sm:text-lg"
+              >
+                From the first day of medical school to a dedicated future in
+                cardiology, my path has been guided by curiosity, compassion and
+                evidence-based medicine.
+              </motion.p>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -173,10 +285,32 @@ export default function AboutPage() {
             Athens · Cardiology · Research
           </p>
         </div>
+
+        {/* SCROLL CUE */}
+        <a
+          href="#intro"
+          aria-label="Scroll to introduction"
+          className="absolute bottom-7 left-1/2 z-10 hidden h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border border-white/20 text-white/70 transition duration-300 hover:border-white hover:bg-white hover:text-stone-950 lg:flex"
+        >
+          <motion.span
+            animate={
+              shouldReduceMotion
+                ? undefined
+                : { y: [0, 4, 0] }
+            }
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <ArrowDown size={17} />
+          </motion.span>
+        </a>
       </section>
 
       {/* INTRO */}
-      <section className="px-6 py-24 sm:px-10 lg:py-36">
+      <section id="intro" className="px-6 py-24 sm:px-10 lg:py-36">
         <div className="mx-auto max-w-7xl">
           <motion.div
             {...fadeUp}
@@ -216,6 +350,26 @@ export default function AboutPage() {
               </div>
             </div>
           </motion.div>
+
+          {/* QUICK FACTS */}
+          <motion.div
+            {...fadeUp}
+            transition={{
+              duration: 0.7,
+              delay: 0.1,
+              ease,
+            }}
+            className="mt-20 grid border-y border-stone-300 sm:mt-28 sm:grid-cols-2 lg:mt-32 lg:grid-cols-4"
+          >
+            {quickFacts.map((fact) => (
+              <Stat
+                key={fact.label}
+                value={fact.value}
+                format={fact.format}
+                label={fact.label}
+              />
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -240,173 +394,14 @@ export default function AboutPage() {
               continue to shape my path towards cardiology.
             </p>
 
-       
+
           </motion.div>
 
           {/* TIMELINE */}
-          <div className="relative">
-            {/* vertical line */}
-            <div className="absolute bottom-0 left-[23px] top-0 w-px bg-stone-200 sm:left-[27px]" />
-
-            <div>
-              {timeline.map((item, index) => {
-                const Icon = item.icon;
-
-                return (
-                  <motion.article
-                    key={item.year}
-                    initial={{ opacity: 0, y: 32 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{
-                      once: true,
-                      amount: 0.25,
-                    }}
-                    transition={{
-                      duration: 0.7,
-                      delay: index * 0.06,
-                      ease,
-                    }}
-                    className="group relative grid grid-cols-[48px_1fr] gap-6 border-b border-stone-200 py-10 first:pt-0 sm:grid-cols-[56px_1fr] sm:gap-8 lg:py-14"
-                  >
-                    {/* MARKER */}
-                    <div className="relative z-10">
-                      <span
-                        className={`flex h-12 w-12 items-center justify-center rounded-full border bg-white transition-all duration-500 sm:h-14 sm:w-14 ${
-                         item.current
-                            ? "border-cyan-700 bg-cyan-700 text-white"
-                            : "border-stone-300 text-cyan-800 group-hover:border-cyan-700 group-hover:bg-cyan-700 group-hover:text-white"
-                        }`}
-                      >
-                        <Icon size={19} strokeWidth={1.7} />
-                      </span>
-                    </div>
-
-                    {/* CONTENT */}
-                    <div className="relative min-w-0">
-                      <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                        <div>
-                          <div className="flex items-center gap-4">
-                            <span
-                              className={`text-sm font-semibold tabular-nums ${
-                              item.current
-                                  ? "text-cyan-800"
-                                  : "text-stone-400"
-                              }`}
-                            >
-                              {item.year}
-                            </span>
-
-                            {item.current && (
-                              <span className="rounded-full bg-cyan-50 px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-cyan-800">
-                                Current
-                              </span>
-                            )}
-                          </div>
-
-                          <h3 className="mt-5 max-w-xl text-2xl font-medium tracking-[-0.035em] text-stone-950 sm:text-3xl">
-                            {item.title}
-                          </h3>
-                        </div>
-
-                        <span className="hidden text-[11px] font-medium tabular-nums text-stone-300 sm:block">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                      </div>
-
-                      <p className="mt-5 max-w-xl text-sm leading-7 text-stone-500">
-                        {item.description}
-                      </p>
-
-                      <div className="mt-8 flex items-center gap-3">
-                        <span
-                          className={`h-px transition-all duration-500 ${
-                            item.current
-                              ? "w-12 bg-cyan-700"
-                              : "w-7 bg-stone-300 group-hover:w-12 group-hover:bg-cyan-700"
-                          }`}
-                        />
-
-                        <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-stone-400">
-                          {item.current ? "Present direction" : "Milestone"}
-                        </span>
-                      </div>
-                    </div>
-                  </motion.article>
-                );
-              })}
-            </div>
-          </div>
+          <Timeline shouldReduceMotion={shouldReduceMotion} />
         </div>
       </div>
     </section>
-
-      {/* PATIENT CARE */}
-      <section className="relative overflow-hidden bg-[#11110f] px-6 py-24 text-white sm:px-10 lg:py-32">
-        <div
-          aria-hidden="true"
-          className="absolute right-0 top-0 h-[480px] w-[480px] translate-x-1/3 -translate-y-1/3 rounded-full bg-cyan-600/10 blur-[140px]"
-        />
-
-        <div className="relative mx-auto max-w-7xl">
-          <motion.div
-            {...fadeUp}
-            className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]"
-          >
-            <SectionLabel light>Patient Care</SectionLabel>
-
-            <div>
-              <h2 className="max-w-4xl text-4xl font-semibold leading-[1.04] tracking-[-0.05em] sm:text-5xl lg:text-[4rem]">
-                Approach to
-                <span className="block text-stone-500">patient care.</span>
-              </h2>
-
-              <p className="mt-8 max-w-xl text-sm leading-7 text-stone-400">
-                How I aim to show up for patients in everyday clinical
-                practice—beyond diagnoses and test results.
-              </p>
-            </div>
-          </motion.div>
-
-          <div className="mt-20 grid border-t border-white/10 md:grid-cols-3">
-            {patientCare.map((item, index) => {
-              const Icon = item.icon;
-
-              return (
-                <motion.article
-                  key={item.title}
-                  {...fadeUp}
-                  transition={{
-                    duration: 0.7,
-                    delay: index * 0.08,
-                    ease,
-                  }}
-                  className="group relative border-b border-white/10 py-10 md:border-b-0 md:border-r md:px-8 md:py-12 md:first:pl-0 md:last:border-r-0 md:last:pr-0 lg:px-12"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs tabular-nums text-stone-600">
-                      {item.number}
-                    </span>
-
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-cyan-300 transition duration-500 group-hover:border-cyan-400 group-hover:bg-cyan-400 group-hover:text-stone-950">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                  </div>
-
-                  <h3 className="mt-16 max-w-xs text-2xl font-medium tracking-[-0.035em] text-white">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-5 max-w-sm text-sm leading-7 text-stone-400">
-                    {item.description}
-                  </p>
-
-                  <div className="mt-10 h-px w-8 bg-cyan-400 transition-all duration-500 group-hover:w-16" />
-                </motion.article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* ENDORSEMENTS */}
       <section className="bg-white px-6 py-24 sm:px-10 lg:py-36">
@@ -504,13 +499,33 @@ export default function AboutPage() {
         {...fadeUp}
         className="relative w-full overflow-hidden bg-cyan-800 px-6 py-20 text-white sm:px-10 lg:px-20 lg:py-24"
       >
-        <div
+        <motion.div
           aria-hidden="true"
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : { rotate: 360 }
+          }
+          transition={{
+            duration: 90,
+            repeat: Infinity,
+            ease: "linear",
+          }}
           className="absolute -right-20 -top-40 h-[500px] w-[500px] rounded-full border border-white/10"
         />
 
-        <div
+        <motion.div
           aria-hidden="true"
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : { rotate: -360 }
+          }
+          transition={{
+            duration: 120,
+            repeat: Infinity,
+            ease: "linear",
+          }}
           className="absolute -right-40 -top-20 h-[500px] w-[500px] rounded-full border border-white/10"
         />
 
@@ -551,6 +566,236 @@ export default function AboutPage() {
     </section>
     </main>
   );
+}
+
+function Timeline({ shouldReduceMotion }) {
+  const timelineRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 80%", "end 55%"],
+  });
+
+  const lineScaleY = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    mass: 0.4,
+  });
+
+  return (
+    <div ref={timelineRef} className="relative">
+      {/* base line */}
+      <div className="absolute bottom-0 left-[23px] top-0 w-px bg-stone-200 sm:left-[27px]" />
+
+      {/* animated progress line */}
+      <motion.div
+        aria-hidden="true"
+        style={
+          shouldReduceMotion
+            ? { scaleY: 1 }
+            : { scaleY: lineScaleY }
+        }
+        className="absolute bottom-0 left-[23px] top-0 w-px origin-top bg-gradient-to-b from-cyan-600 via-cyan-500 to-cyan-400 sm:left-[27px]"
+      />
+
+      <div>
+        {timeline.map((item, index) => {
+          const Icon = item.icon;
+
+          return (
+            <motion.article
+              key={item.year}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{
+                once: true,
+                amount: 0.25,
+              }}
+              transition={{
+                duration: 0.7,
+                delay: index * 0.06,
+                ease,
+              }}
+              className="group relative grid grid-cols-[48px_1fr] gap-6 border-b border-stone-200 py-10 first:pt-0 sm:grid-cols-[56px_1fr] sm:gap-8 lg:py-14"
+            >
+              {/* MARKER */}
+              <div className="relative z-10">
+                <span
+                  className={`flex h-12 w-12 items-center justify-center rounded-full border bg-white transition-all duration-500 sm:h-14 sm:w-14 ${
+                   item.current
+                      ? "border-cyan-700 bg-cyan-700 text-white"
+                      : "border-stone-300 text-cyan-800 group-hover:border-cyan-700 group-hover:bg-cyan-700 group-hover:text-white"
+                  }`}
+                >
+                  <Icon size={19} strokeWidth={1.7} />
+                </span>
+              </div>
+
+              {/* CONTENT */}
+              <div className="relative min-w-0">
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <div className="flex items-center gap-4">
+                      <span
+                        className={`text-sm font-semibold tabular-nums ${
+                        item.current
+                            ? "text-cyan-800"
+                            : "text-stone-400"
+                        }`}
+                      >
+                        {item.year}
+                      </span>
+
+                      {item.current && (
+                        <span className="flex items-center gap-2 rounded-full bg-cyan-50 px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-cyan-800">
+                          <PulseDot dot="bg-cyan-600" ping="bg-cyan-500" />
+                          Current
+                        </span>
+                      )}
+                    </div>
+
+                    <h3 className="mt-5 max-w-xl text-2xl font-medium tracking-[-0.035em] text-stone-950 sm:text-3xl">
+                      {item.title}
+                    </h3>
+                  </div>
+
+                  <span className="hidden text-[11px] font-medium tabular-nums text-stone-300 sm:block">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+
+                <p className="mt-5 max-w-xl text-sm leading-7 text-stone-500">
+                  {item.description}
+                </p>
+
+                <div className="mt-8 flex items-center gap-3">
+                  <span
+                    className={`h-px transition-all duration-500 ${
+                      item.current
+                        ? "w-12 bg-cyan-700"
+                        : "w-7 bg-stone-300 group-hover:w-12 group-hover:bg-cyan-700"
+                    }`}
+                  />
+
+                  <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-stone-400">
+                    {item.current ? "Present direction" : "Milestone"}
+                  </span>
+                </div>
+              </div>
+            </motion.article>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 30,
+    mass: 0.2,
+  });
+
+  return (
+    <motion.div
+      aria-hidden="true"
+      style={{ scaleX }}
+      className="fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-600"
+    />
+  );
+}
+
+function Grain() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-[45] opacity-[0.04]"
+      style={{
+        backgroundImage:
+          "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+      }}
+    />
+  );
+}
+
+function PulseDot({
+  dot = "bg-cyan-300",
+  ping = "bg-cyan-400",
+  size = "h-1.5 w-1.5",
+}) {
+  return (
+    <span className={`relative flex ${size}`}>
+      <span
+        className={`absolute inline-flex h-full w-full animate-ping rounded-full ${ping} opacity-75`}
+      />
+
+      <span
+        className={`relative inline-flex rounded-full ${size} ${dot}`}
+      />
+    </span>
+  );
+}
+
+function Stat({ value, format, label }) {
+  const isNumber = typeof value === "number" && format;
+
+  return (
+    <div className="border-b border-stone-300 py-9 last:border-b-0 sm:border-b-0 sm:px-8 sm:first:pl-0 lg:border-r lg:px-10 lg:py-10 lg:first:pl-0 lg:last:border-r-0">
+      <p className="text-4xl font-semibold tracking-[-0.055em] text-stone-950 tabular-nums sm:text-5xl lg:text-6xl">
+        {isNumber ? (
+          <CountUp value={value} format={format} />
+        ) : (
+          value
+        )}
+      </p>
+
+      <p className="mt-4 text-xs leading-6 text-stone-500">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+function CountUp({
+  value,
+  format = (v) => String(Math.round(v)),
+  duration = 1.5,
+}) {
+  const shouldReduceMotion = useReducedMotion();
+  const ref = useRef(null);
+  const inView = useInView(ref, {
+    once: true,
+    amount: 0.6,
+  });
+
+  const [display, setDisplay] = useState(() => format(0));
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      setDisplay(format(value));
+      return undefined;
+    }
+
+    if (!inView) {
+      return undefined;
+    }
+
+    const controls = animate(0, value, {
+      duration,
+      ease,
+      onUpdate: (latest) => {
+        setDisplay(format(latest));
+      },
+    });
+
+    return () => controls.stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, value, shouldReduceMotion]);
+
+  return <span ref={ref}>{display}</span>;
 }
 
 function SectionLabel({ children, light = false }) {
