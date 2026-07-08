@@ -1,7 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useInView,
+  animate,
+} from "framer-motion";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -38,6 +46,71 @@ const fadeUp = {
     ease,
   },
 };
+
+// Hero orchestration
+const heroStagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.09,
+      delayChildren: 0.12,
+    },
+  },
+};
+
+const lineReveal = {
+  initial: { y: "120%" },
+  animate: {
+    y: 0,
+    transition: {
+      duration: 0.95,
+      ease,
+    },
+  },
+};
+
+const heroItem = {
+  initial: { opacity: 0, y: 22 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease,
+    },
+  },
+};
+
+const marqueeItems = [
+  "Cardiology",
+  "Preventive Medicine",
+  "Clinical Research",
+  "Patient-Centered Care",
+  "Evidence-Based",
+  "Cardiovascular Health",
+];
+
+const stats = [
+  {
+    value: 2,
+    format: (v) => String(Math.round(v)).padStart(2, "0"),
+    label: "Peer-reviewed publications",
+  },
+  {
+    value: 3,
+    format: (v) => String(Math.round(v)).padStart(2, "0"),
+    label: "Core research themes",
+  },
+  {
+    value: 2025,
+    format: (v) => String(Math.round(v)),
+    label: "Medical graduate",
+  },
+  {
+    value: 2026,
+    format: (v) => String(Math.round(v)),
+    label: "MSc — expected",
+  },
+];
 
 const focusAreas = [
   "Preventive cardiology & cardiovascular risk assessment",
@@ -127,12 +200,29 @@ const endorsements = [
 export default function HomePage() {
   const shouldReduceMotion = useReducedMotion();
 
+  const heroRef = useRef(null);
+  const { scrollYProgress: heroProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const heroImageY = useTransform(heroProgress, [0, 1], ["0%", "12%"]);
+  const heroContentY = useTransform(heroProgress, [0, 1], ["0px", "64px"]);
+  const heroContentOpacity = useTransform(heroProgress, [0, 0.75], [1, 0]);
+
   return (
-    <main className="min-h-screen w-full overflow-x-hidden bg-[#f8f8f6] text-stone-950 selection:bg-cyan-100 selection:text-cyan-950">
+    <main className="relative min-h-screen w-full overflow-x-hidden bg-[#f8f8f6] text-stone-950 selection:bg-cyan-100 selection:text-cyan-950">
+      <ScrollProgress />
+
+      <Grain />
+
       {/* ======================================================
           HERO
       ====================================================== */}
-      <section className="relative w-full overflow-hidden bg-white lg:min-h-[94svh]">
+      <section
+        ref={heroRef}
+        className="relative w-full overflow-hidden bg-white lg:min-h-[94svh]"
+      >
         {/* ==================================================
             MOBILE HERO — BLURRED BACKGROUND
         ================================================== */}
@@ -167,8 +257,21 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-r from-stone-950/30 via-transparent to-transparent" />
 
           {/* MOBILE AMBIENT GLOW */}
-          <div
+          <motion.div
             aria-hidden="true"
+            animate={
+              shouldReduceMotion
+                ? undefined
+                : {
+                    opacity: [0.7, 1, 0.7],
+                    scale: [1, 1.12, 1],
+                  }
+            }
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
             className="absolute -left-24 top-[38%] h-72 w-72 rounded-full bg-cyan-500/10 blur-[100px]"
           />
 
@@ -201,46 +304,48 @@ export default function HomePage() {
               </span>
             </div>
 
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
+            <PulseDot dot="bg-cyan-300" ping="bg-cyan-300" />
           </motion.div>
 
           {/* MOBILE CONTENT */}
           <div className="relative z-10 flex min-h-[88svh] items-end px-5 pb-7 pt-28">
             <motion.div
-              initial={
-                shouldReduceMotion
-                  ? false
-                  : {
-                      opacity: 0,
-                      y: 30,
-                    }
-              }
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.9,
-                delay: 0.2,
-                ease,
-              }}
+              variants={heroStagger}
+              initial={shouldReduceMotion ? false : "initial"}
+              animate="animate"
               className="w-full"
             >
-              <p className="mb-4 text-[9px] font-medium uppercase tracking-[0.2em] text-white/50">
+              <motion.p
+                variants={heroItem}
+                className="mb-4 text-[9px] font-medium uppercase tracking-[0.2em] text-white/50"
+              >
                 Medicine · Cardiology · Prevention
-              </p>
+              </motion.p>
 
               <h1 className="text-[clamp(3.35rem,16vw,5.2rem)] font-semibold leading-[0.82] tracking-[-0.075em] text-white">
-                <span className="block whitespace-nowrap">
-                  Dr. Marios
+                <span className="block overflow-hidden pb-[0.04em]">
+                  <motion.span
+                    variants={lineReveal}
+                    className="block whitespace-nowrap"
+                  >
+                    Dr. Marios
+                  </motion.span>
                 </span>
 
-                <span className="block text-white/35">
-                  Zisis.
+                <span className="block overflow-hidden pb-[0.04em]">
+                  <motion.span
+                    variants={lineReveal}
+                    className="block text-white/35"
+                  >
+                    Zisis.
+                  </motion.span>
                 </span>
               </h1>
 
-              <div className="mt-6 max-w-sm border-l border-white/30 pl-4">
+              <motion.div
+                variants={heroItem}
+                className="mt-6 max-w-sm border-l border-white/30 pl-4"
+              >
                 <p className="text-[15px] leading-7 tracking-[-0.015em] text-white/75">
                   Aspiring Cardiologist
                   <span className="mx-2 text-white/30">
@@ -251,10 +356,13 @@ export default function HomePage() {
                     compassion.
                   </span>
                 </p>
-              </div>
+              </motion.div>
 
               {/* MOBILE ACTIONS */}
-              <div className="mt-8 flex items-center gap-3">
+              <motion.div
+                variants={heroItem}
+                className="mt-8 flex items-center gap-3"
+              >
                 <a
                   href="/about"
                   className="group inline-flex h-[52px] flex-1 touch-manipulation items-center justify-between rounded-full bg-white pl-6 pr-2 text-sm font-semibold text-stone-950 transition duration-500 active:scale-[0.98]"
@@ -273,10 +381,13 @@ export default function HomePage() {
                 >
                   <ArrowDown size={17} />
                 </a>
-              </div>
+              </motion.div>
 
               {/* MOBILE META */}
-              <div className="mt-7 flex items-end justify-between border-t border-white/20 pt-5">
+              <motion.div
+                variants={heroItem}
+                className="mt-7 flex items-end justify-between border-t border-white/20 pt-5"
+              >
                 <div>
                   <p className="text-[8px] font-semibold uppercase tracking-[0.22em] text-white/40">
                     Clinical outlook
@@ -287,8 +398,8 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
-              </div>
+                <PulseDot dot="bg-cyan-300" ping="bg-cyan-300" />
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -299,120 +410,165 @@ export default function HomePage() {
         <div className="hidden min-h-[94svh] w-full lg:grid lg:grid-cols-[1fr_0.93fr]">
           {/* DESKTOP CONTENT */}
           <div className="relative flex items-center px-16 py-20 xl:px-24 2xl:px-32">
-            <div
+            <motion.div
               aria-hidden="true"
+              animate={
+                shouldReduceMotion
+                  ? undefined
+                  : {
+                      opacity: [0.55, 0.85, 0.55],
+                      scale: [1, 1.1, 1],
+                    }
+              }
+              transition={{
+                duration: 9,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               className="absolute left-[12%] top-[14%] h-72 w-72 rounded-full bg-cyan-100/60 blur-[100px]"
             />
 
             <motion.div
-              initial={
+              style={
                 shouldReduceMotion
-                  ? false
+                  ? undefined
                   : {
-                      opacity: 0,
-                      y: 32,
+                      y: heroContentY,
+                      opacity: heroContentOpacity,
                     }
               }
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.9,
-                delay: 0.15,
-                ease,
-              }}
               className="relative w-full max-w-2xl"
             >
-              <div className="mb-10 flex items-center gap-4">
-                <span className="h-px w-10 bg-cyan-700" />
-
-                <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-800">
-                  Aspiring Cardiologist
-                </span>
-              </div>
-
-              <h1 className="text-[clamp(4rem,7vw,8rem)] font-semibold leading-[0.82] tracking-[-0.075em] text-stone-950">
-                <span className="block whitespace-nowrap">
-                  Dr. Marios
-                </span>
-
-                <span className="block text-stone-300">
-                  Zisis.
-                </span>
-              </h1>
-
-              <div className="mt-10 max-w-lg border-l border-stone-300 pl-6">
-                <p className="text-xl leading-8 tracking-[-0.015em] text-stone-600">
-                  Aspiring Cardiologist
-                  <span className="mx-2 text-stone-300">
-                    —
-                  </span>
-                  driven by{" "}
-                  <span className="font-medium text-stone-950">
-                    compassion.
-                  </span>
-                </p>
-              </div>
-
-              <div className="mt-12 flex items-center gap-6">
-                <a
-                  href="/about"
-                  className="group inline-flex h-14 items-center gap-8 rounded-full bg-stone-950 pl-7 pr-2 text-sm font-medium text-white transition duration-500 hover:bg-cyan-800"
+              <motion.div
+                variants={heroStagger}
+                initial={shouldReduceMotion ? false : "initial"}
+                animate="animate"
+              >
+                <motion.div
+                  variants={heroItem}
+                  className="mb-10 flex items-center gap-4"
                 >
-                  Learn more
+                  <span className="h-px w-10 bg-cyan-700" />
 
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-stone-950 transition-transform duration-500 group-hover:rotate-45">
-                    <ArrowUpRight size={17} />
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-800">
+                    Aspiring Cardiologist
                   </span>
-                </a>
 
-                <a
-                  href="#about"
-                  className="group inline-flex items-center gap-3 text-sm font-medium text-stone-500 transition-colors hover:text-stone-950"
+                  <PulseDot dot="bg-cyan-600" ping="bg-cyan-500" />
+                </motion.div>
+
+                <h1 className="text-[clamp(4rem,7vw,8rem)] font-semibold leading-[0.82] tracking-[-0.075em] text-stone-950">
+                  <span className="block overflow-hidden pb-[0.04em]">
+                    <motion.span
+                      variants={lineReveal}
+                      className="block whitespace-nowrap"
+                    >
+                      Dr. Marios
+                    </motion.span>
+                  </span>
+
+                  <span className="block overflow-hidden pb-[0.04em]">
+                    <motion.span
+                      variants={lineReveal}
+                      className="block text-stone-300"
+                    >
+                      Zisis.
+                    </motion.span>
+                  </span>
+                </h1>
+
+                <motion.div
+                  variants={heroItem}
+                  className="mt-10 max-w-lg border-l border-stone-300 pl-6"
                 >
-                  Explore profile
+                  <p className="text-xl leading-8 tracking-[-0.015em] text-stone-600">
+                    Aspiring Cardiologist
+                    <span className="mx-2 text-stone-300">
+                      —
+                    </span>
+                    driven by{" "}
+                    <span className="font-medium text-stone-950">
+                      compassion.
+                    </span>
+                  </p>
+                </motion.div>
 
-                  <span className="h-px w-7 bg-stone-300 transition-all duration-500 group-hover:w-12 group-hover:bg-cyan-700" />
-                </a>
-              </div>
+                <motion.div
+                  variants={heroItem}
+                  className="mt-12 flex items-center gap-6"
+                >
+                  <a
+                    href="/about"
+                    className="group inline-flex h-14 items-center gap-8 rounded-full bg-stone-950 pl-7 pr-2 text-sm font-medium text-white transition duration-500 hover:bg-cyan-800"
+                  >
+                    Learn more
 
-              <div className="mt-20 flex items-center gap-5 text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400">
-                <span>Medicine</span>
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-stone-950 transition-transform duration-500 group-hover:rotate-45">
+                      <ArrowUpRight size={17} />
+                    </span>
+                  </a>
 
-                <span className="h-1 w-1 rounded-full bg-cyan-600" />
+                  <a
+                    href="#about"
+                    className="group inline-flex items-center gap-3 text-sm font-medium text-stone-500 transition-colors hover:text-stone-950"
+                  >
+                    Explore profile
 
-                <span>Cardiology</span>
+                    <span className="h-px w-7 bg-stone-300 transition-all duration-500 group-hover:w-12 group-hover:bg-cyan-700" />
+                  </a>
+                </motion.div>
 
-                <span className="h-1 w-1 rounded-full bg-cyan-600" />
+                <motion.div
+                  variants={heroItem}
+                  className="mt-20 flex items-center gap-5 text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-400"
+                >
+                  <span>Medicine</span>
 
-                <span>Prevention</span>
-              </div>
+                  <span className="h-1 w-1 rounded-full bg-cyan-600" />
+
+                  <span>Cardiology</span>
+
+                  <span className="h-1 w-1 rounded-full bg-cyan-600" />
+
+                  <span>Prevention</span>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
 
           {/* DESKTOP IMAGE — NO BLUR */}
           <div className="relative min-h-full overflow-hidden">
             <motion.div
-              initial={
+              style={
                 shouldReduceMotion
-                  ? false
+                  ? undefined
                   : {
-                      scale: 1.08,
+                      y: heroImageY,
                     }
               }
-              animate={{
-                scale: 1,
-              }}
-              transition={{
-                duration: 1.6,
-                ease,
-              }}
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: 'url("/hero-bg.jpg")',
-              }}
-            />
+              className="absolute -inset-y-[8%] inset-x-0"
+            >
+              <motion.div
+                initial={
+                  shouldReduceMotion
+                    ? false
+                    : {
+                        scale: 1.1,
+                      }
+                }
+                animate={{
+                  scale: 1.02,
+                }}
+                transition={{
+                  duration: 1.8,
+                  ease,
+                }}
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: 'url("/hero-bg.jpg")',
+                }}
+              />
+            </motion.div>
 
             <div className="absolute inset-0 bg-gradient-to-t from-stone-950/40 via-transparent to-transparent" />
 
@@ -449,7 +605,7 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                <span className="h-2 w-2 rounded-full bg-cyan-300" />
+                <PulseDot dot="bg-cyan-300" ping="bg-cyan-300" size="h-2 w-2" />
               </div>
             </motion.div>
           </div>
@@ -461,9 +617,29 @@ export default function HomePage() {
           aria-label="Scroll to about"
           className="absolute bottom-7 left-1/2 z-10 hidden h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 shadow-sm transition duration-300 hover:border-stone-950 hover:bg-stone-950 hover:text-white lg:flex"
         >
-          <ArrowDown size={17} />
+          <motion.span
+            animate={
+              shouldReduceMotion
+                ? undefined
+                : {
+                    y: [0, 4, 0],
+                  }
+            }
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <ArrowDown size={17} />
+          </motion.span>
         </a>
       </section>
+
+      {/* ======================================================
+          KINETIC MARQUEE
+      ====================================================== */}
+      <Marquee reduceMotion={shouldReduceMotion} />
 
       {/* ======================================================
           ABOUT
@@ -521,6 +697,37 @@ export default function HomePage() {
                   className="text-cyan-700 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                 />
               </a>
+            </div>
+          </motion.div>
+
+          {/* STATS */}
+          <motion.div
+            {...fadeUp}
+            transition={{
+              duration: 0.7,
+              delay: 0.1,
+              ease,
+            }}
+            className="mt-16 sm:mt-24 lg:mt-32"
+          >
+            <SectionLabel>By the numbers</SectionLabel>
+
+            <h3 className="mt-6 max-w-xl text-[1.7rem] font-medium leading-[1.05] tracking-[-0.04em] sm:text-3xl">
+              A path measured in{" "}
+              <span className="text-cyan-800">
+                evidence.
+              </span>
+            </h3>
+
+            <div className="mt-9 grid border-t border-stone-300 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
+              {stats.map((stat) => (
+                <HomeStat
+                  key={stat.label}
+                  value={stat.value}
+                  format={stat.format}
+                  label={stat.label}
+                />
+              ))}
             </div>
           </motion.div>
 
@@ -769,6 +976,155 @@ export default function HomePage() {
       </section>
     </main>
   );
+}
+
+function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 30,
+    mass: 0.2,
+  });
+
+  return (
+    <motion.div
+      aria-hidden="true"
+      style={{ scaleX }}
+      className="fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-600"
+    />
+  );
+}
+
+function Grain() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-[45] opacity-[0.04]"
+      style={{
+        backgroundImage:
+          "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+      }}
+    />
+  );
+}
+
+function PulseDot({
+  dot = "bg-cyan-300",
+  ping = "bg-cyan-400",
+  size = "h-1.5 w-1.5",
+}) {
+  return (
+    <span className={`relative flex ${size}`}>
+      <span
+        className={`absolute inline-flex h-full w-full animate-ping rounded-full ${ping} opacity-75`}
+      />
+
+      <span
+        className={`relative inline-flex rounded-full ${size} ${dot}`}
+      />
+    </span>
+  );
+}
+
+function Marquee({ reduceMotion }) {
+  const row = (
+    <div className="flex shrink-0 items-center">
+      {marqueeItems.map((item) => (
+        <span
+          key={item}
+          className="flex items-center"
+        >
+          <span className="whitespace-nowrap px-6 text-2xl font-medium tracking-[-0.03em] text-white sm:px-10 sm:text-4xl">
+            {item}
+          </span>
+
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+        </span>
+      ))}
+    </div>
+  );
+
+  return (
+    <section
+      aria-hidden="true"
+      className="relative flex overflow-hidden border-y border-white/10 bg-[#11110f] py-6 sm:py-8"
+    >
+      {reduceMotion ? (
+        <div className="flex px-6">{row}</div>
+      ) : (
+        <motion.div
+          className="flex"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            duration: 24,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        >
+          {row}
+          {row}
+        </motion.div>
+      )}
+
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#11110f] to-transparent sm:w-28" />
+
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#11110f] to-transparent sm:w-28" />
+    </section>
+  );
+}
+
+function HomeStat({ value, format, label }) {
+  return (
+    <div className="border-b border-stone-300 py-8 last:border-b-0 sm:py-9 lg:border-b-0 lg:border-r lg:px-10 lg:py-10 lg:first:pl-0 lg:last:border-r-0">
+      <p className="text-5xl font-semibold tracking-[-0.055em] text-stone-950 tabular-nums lg:text-6xl">
+        <CountUp value={value} format={format} />
+      </p>
+
+      <p className="mt-4 text-xs leading-6 text-stone-500">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+function CountUp({
+  value,
+  format = (v) => String(Math.round(v)),
+  duration = 1.5,
+}) {
+  const shouldReduceMotion = useReducedMotion();
+  const ref = useRef(null);
+  const inView = useInView(ref, {
+    once: true,
+    amount: 0.6,
+  });
+
+  const [display, setDisplay] = useState(() => format(0));
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      setDisplay(format(value));
+      return undefined;
+    }
+
+    if (!inView) {
+      return undefined;
+    }
+
+    const controls = animate(0, value, {
+      duration,
+      ease,
+      onUpdate: (latest) => {
+        setDisplay(format(latest));
+      },
+    });
+
+    return () => controls.stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView, value, shouldReduceMotion]);
+
+  return <span ref={ref}>{display}</span>;
 }
 
 function SectionLabel({
