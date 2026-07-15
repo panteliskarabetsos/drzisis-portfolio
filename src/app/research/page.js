@@ -340,8 +340,6 @@ export default function ResearchPage() {
         </a>
       </section>
 
-      {/* KINETIC MARQUEE */}
-      <Marquee reduceMotion={shouldReduceMotion} />
 
       {/* RESEARCH INTRODUCTION */}
       <section
