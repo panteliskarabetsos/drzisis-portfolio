@@ -202,7 +202,7 @@ export default function Footer() {
           <p className="flex items-center gap-2">
             <span className="text-stone-600">Designed &amp; built by</span>
             <a
-              href="http://panteliskarabetsos.com/"
+              href="http://pkarabetsos.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-stone-300 underline decoration-white/20 underline-offset-4 transition-colors hover:text-cyan-300 hover:decoration-cyan-300"
