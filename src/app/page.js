@@ -634,10 +634,6 @@ export default function HomePage() {
         </a>
       </section>
 
-      {/* ======================================================
-          KINETIC MARQUEE
-      ====================================================== */}
-      <Marquee reduceMotion={shouldReduceMotion} />
 
       {/* ======================================================
           ABOUT
