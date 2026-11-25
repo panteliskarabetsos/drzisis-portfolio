@@ -551,12 +551,51 @@ Reply directly to this email to contact ${name} at ${email}.
   `.trim();
 }
 
+function isSameOrigin(request) {
+  const origin = request.headers.get("origin");
+
+  // Browsers always send Origin on cross-site POSTs; requests without it
+  // (for example from server-side tools) are left to the other checks.
+  if (!origin) {
+    return true;
+  }
+
+  let originHost;
+
+  try {
+    originHost = new URL(origin).host;
+  } catch {
+    return false;
+  }
+
+  const allowedHosts = [
+    request.headers.get("host"),
+    request.headers.get("x-forwarded-host"),
+  ].filter(Boolean);
+
+  return allowedHosts.includes(originHost);
+}
+
 export async function POST(request) {
   try {
-    const contentType =
-      request.headers.get("content-type") || "";
+    if (!isSameOrigin(request)) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Forbidden.",
+        },
+        {
+          status: 403,
+        }
+      );
+    }
 
-    if (!contentType.includes("application/json")) {
+    const mediaType = (request.headers.get("content-type") || "")
+      .split(";")[0]
+      .trim()
+      .toLowerCase();
+
+    if (mediaType !== "application/json") {
       return NextResponse.json(
         {
           success: false,
