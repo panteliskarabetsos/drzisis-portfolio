@@ -346,11 +346,7 @@ export default function HomePage() {
                 className="mt-6 max-w-sm border-l border-white/30 pl-4"
               >
                 <p className="text-[15px] leading-7 tracking-[-0.015em] text-white/75">
-                  Aspiring Cardiologist
-                  <span className="mx-2 text-white/30">
-                    —
-                  </span>
-                  driven by{" "}
+                  Driven by{" "}
                   <span className="font-medium text-white">
                     compassion.
                   </span>
@@ -451,8 +447,6 @@ export default function HomePage() {
                   <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-800">
                     Aspiring Cardiologist
                   </span>
-
-                  <PulseDot dot="bg-cyan-600" ping="bg-cyan-500" />
                 </motion.div>
 
                 <h1 className="text-[clamp(4rem,7vw,8rem)] font-semibold leading-[0.82] tracking-[-0.075em] text-stone-950">
@@ -480,11 +474,7 @@ export default function HomePage() {
                   className="mt-10 max-w-lg border-l border-stone-300 pl-6"
                 >
                   <p className="text-xl leading-8 tracking-[-0.015em] text-stone-600">
-                    Aspiring Cardiologist
-                    <span className="mx-2 text-stone-300">
-                      —
-                    </span>
-                    driven by{" "}
+                    Driven by{" "}
                     <span className="font-medium text-stone-950">
                       compassion.
                     </span>

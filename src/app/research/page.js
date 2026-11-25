@@ -116,6 +116,14 @@ const researchTopics = [
 const publications = [
   {
     title:
+      "Antidiabetic Therapy and Atrial Fibrillation: Pathophysiological Links, Therapeutic Implications, and Evidence-Based Outcomes",
+    journal: "Current Cardiology Reviews",
+    year: "2026",
+    type: "Narrative Review",
+    link: "https://doi.org/10.2174/011573403X487530260806114153",
+  },
+  {
+    title:
       "Linking Cardiovascular Disease and Metabolic Dysfunction-Associated Steatotic Liver Disease (MASLD): The Role of Cardiometabolic Drugs in MASLD Treatment",
     journal: "Biomolecules",
     year: "2025",
