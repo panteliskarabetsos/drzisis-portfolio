@@ -16,6 +16,11 @@ import {
   Phone,
   ShieldCheck,
 } from "lucide-react";
+import {
+  MAX_EMAIL_LENGTH,
+  MAX_MESSAGE_LENGTH,
+  MAX_NAME_LENGTH,
+} from "@/lib/contact-limits";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -466,6 +471,7 @@ export default function ContactPage() {
                       type="text"
                       required
                       autoComplete="name"
+                      maxLength={MAX_NAME_LENGTH}
                       placeholder="Your full name"
                       value={formData.name}
                       onChange={handleChange}
@@ -485,6 +491,7 @@ export default function ContactPage() {
                       type="email"
                       required
                       autoComplete="email"
+                      maxLength={MAX_EMAIL_LENGTH}
                       placeholder="you@example.com"
                       value={formData.email}
                       onChange={handleChange}
@@ -504,11 +511,27 @@ export default function ContactPage() {
                       name="message"
                       required
                       rows={6}
+                      maxLength={MAX_MESSAGE_LENGTH}
+                      aria-describedby="message-count"
                       placeholder="Tell me what you would like to discuss..."
                       value={formData.message}
                       onChange={handleChange}
                       className="w-full resize-none border-0 bg-transparent p-0 text-lg font-medium leading-8 tracking-[-0.02em] text-stone-950 outline-none placeholder:text-stone-300 focus:ring-0 sm:text-xl"
                     />
+
+                    <p
+                      id="message-count"
+                      className={`mt-3 text-right text-[10px] font-medium tabular-nums tracking-[0.08em] transition-colors duration-300 ${
+                        formData.message.length >= MAX_MESSAGE_LENGTH
+                          ? "text-rose-600"
+                          : formData.message.length >= MAX_MESSAGE_LENGTH * 0.9
+                            ? "text-amber-600"
+                            : "text-stone-400"
+                      }`}
+                    >
+                      {formData.message.length.toLocaleString("en-US")} /{" "}
+                      {MAX_MESSAGE_LENGTH.toLocaleString("en-US")}
+                    </p>
                   </FormField>
 
                   {/* STATUS */}
