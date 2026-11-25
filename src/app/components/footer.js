@@ -44,11 +44,11 @@ export default function Footer() {
         className="pointer-events-none absolute -right-52 -top-40 h-[560px] w-[560px] rounded-full border border-white/[0.05]"
       />
 
-      <div className="relative mx-auto w-full max-w-[1800px] px-5 pt-20 sm:px-8 sm:pt-24 lg:px-10 lg:pt-28 xl:px-16">
+      <div className="relative mx-auto w-full max-w-[1800px] px-5 pt-12 sm:px-8 sm:pt-24 lg:px-10 lg:pt-28 xl:px-16">
         {/* ===============================================
             TOP — STATEMENT + CTA
         =============================================== */}
-        <div className="grid gap-12 border-b border-white/10 pb-16 lg:grid-cols-[1.35fr_1fr] lg:gap-20 lg:pb-20">
+        <div className="grid gap-9 border-b border-white/10 pb-10 sm:gap-12 sm:pb-16 lg:grid-cols-[1.35fr_1fr] lg:gap-20 lg:pb-20">
           <div>
             <div className="flex items-center gap-4">
               <span className="h-px w-8 bg-cyan-400" />
@@ -57,7 +57,7 @@ export default function Footer() {
               </p>
             </div>
 
-            <h2 className="mt-8 max-w-2xl text-[2.6rem] font-semibold leading-[1] tracking-[-0.05em] sm:text-5xl lg:text-[4.2rem]">
+            <h2 className="mt-5 max-w-2xl text-[2.15rem] font-semibold leading-[1] tracking-[-0.05em] sm:mt-8 sm:text-5xl lg:text-[4.2rem]">
               Let&apos;s advance
               <span className="block text-stone-500">
                 cardiovascular care.
@@ -66,7 +66,7 @@ export default function Footer() {
 
             <a
               href="mailto:contact@drzisis.com"
-              className="group mt-10 inline-flex h-14 w-full items-center justify-between rounded-full bg-white pl-7 pr-2 text-sm font-semibold text-stone-950 transition duration-500 hover:bg-cyan-50 min-[420px]:w-fit min-[420px]:gap-10"
+              className="group mt-7 inline-flex h-14 w-full sm:mt-10 items-center justify-between rounded-full bg-white pl-7 pr-2 text-sm font-semibold text-stone-950 transition duration-500 hover:bg-cyan-50 min-[420px]:w-fit min-[420px]:gap-10"
             >
               contact@drzisis.com
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-stone-950 text-white transition-transform duration-500 group-hover:rotate-45">
@@ -76,19 +76,19 @@ export default function Footer() {
           </div>
 
           {/* NAV COLUMNS */}
-          <div className="grid grid-cols-2 gap-10 lg:justify-items-end lg:pt-2">
+          <div className="grid grid-cols-2 gap-6 sm:gap-10 lg:justify-items-end lg:pt-2">
             {/* EXPLORE */}
             <div className="w-full lg:max-w-[220px]">
               <p className="text-[9px] font-semibold uppercase tracking-[0.24em] text-stone-500">
                 Explore
               </p>
 
-              <nav className="mt-6 border-t border-white/10">
+              <nav className="mt-4 border-t border-white/10 sm:mt-6">
                 {explore.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="group flex items-center justify-between border-b border-white/10 py-4"
+                    className="group flex items-center justify-between border-b border-white/10 py-3 sm:py-4"
                   >
                     <span className="flex items-baseline gap-3">
                       <span className="text-[9px] tabular-nums text-stone-600 transition-colors group-hover:text-cyan-300">
@@ -114,12 +114,12 @@ export default function Footer() {
                 Legal
               </p>
 
-              <nav className="mt-6 border-t border-white/10">
+              <nav className="mt-4 border-t border-white/10 sm:mt-6">
                 {legal.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="group flex items-center justify-between border-b border-white/10 py-4"
+                    className="group flex items-center justify-between border-b border-white/10 py-3 sm:py-4"
                   >
                     <span className="text-sm text-stone-400 transition-all duration-300 group-hover:translate-x-1 group-hover:text-white">
                       {item.label}
@@ -136,7 +136,7 @@ export default function Footer() {
         {/* ===============================================
             META ROW — IDENTITY + SOCIAL
         =============================================== */}
-        <div className="grid gap-10 border-b border-white/10 py-12 sm:grid-cols-2 lg:grid-cols-[1.35fr_1fr] lg:items-center lg:gap-20">
+        <div className="grid gap-6 border-b border-white/10 py-8 sm:grid-cols-2 sm:gap-10 sm:py-12 lg:grid-cols-[1.35fr_1fr] lg:items-center lg:gap-20">
           <div className="flex items-center gap-4">
             <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/15 bg-white/[0.04]">
               <Image
@@ -182,7 +182,7 @@ export default function Footer() {
         {/* ===============================================
             OVERSIZED WORDMARK
         =============================================== */}
-        <div className="pointer-events-none select-none pt-14 sm:pt-16 lg:pt-20">
+        <div className="pointer-events-none select-none pt-8 sm:pt-16 lg:pt-20">
           <p className="bg-gradient-to-b from-white/[0.13] to-white/[0.02] bg-clip-text text-[clamp(3.6rem,15.5vw,15rem)] font-semibold leading-[0.72] tracking-[-0.07em] text-transparent">
             Zisis.
           </p>

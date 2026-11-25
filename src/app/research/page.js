@@ -360,17 +360,17 @@ export default function ResearchPage() {
       {/* RESEARCH INTRODUCTION */}
       <section
         id="research-intro"
-        className="px-6 py-24 sm:px-10 lg:py-36"
+        className="px-6 py-14 sm:px-10 sm:py-24 lg:py-36"
       >
         <div className="mx-auto max-w-7xl">
           <motion.div
             {...fadeUp}
-            className="grid gap-12 lg:grid-cols-[0.65fr_1.35fr] lg:gap-24"
+            className="grid gap-7 sm:gap-12 lg:grid-cols-[0.65fr_1.35fr] lg:gap-24"
           >
             <div>
               <SectionLabel>Research</SectionLabel>
 
-              <h2 className="mt-7 max-w-lg text-4xl font-semibold leading-[1.02] tracking-[-0.05em] sm:text-5xl lg:text-[4rem]">
+              <h2 className="mt-5 max-w-lg text-4xl font-semibold leading-[1.02] tracking-[-0.05em] sm:mt-7 sm:text-5xl lg:text-[4rem]">
                 From bedside
                 <span className="block text-cyan-800">
                   to evidence.
@@ -379,13 +379,13 @@ export default function ResearchPage() {
             </div>
 
             <div className="lg:pt-9">
-              <p className="max-w-3xl text-xl leading-[1.6] tracking-[-0.025em] text-stone-700 sm:text-2xl lg:text-[1.7rem]">
+              <p className="max-w-3xl text-lg leading-[1.6] tracking-[-0.025em] text-stone-700 sm:text-2xl lg:text-[1.7rem]">
                 My research interests are shaped by questions that emerge from
                 clinical practice and the need to better understand complex
                 cardiovascular conditions.
               </p>
 
-              <div className="mt-12 grid gap-8 border-t border-stone-300 pt-9 sm:grid-cols-2 sm:gap-12">
+              <div className="mt-8 grid gap-5 border-t border-stone-300 pt-7 sm:mt-12 sm:grid-cols-2 sm:gap-12 sm:pt-9">
                 <p className="text-sm leading-7 text-stone-500">
                   I am particularly interested in cardiovascular imaging,
                   cardiometabolic disease and the intersection between critical
@@ -409,7 +409,7 @@ export default function ResearchPage() {
               delay: 0.1,
               ease,
             }}
-            className="mt-24 grid border-y border-stone-300 sm:grid-cols-3 lg:mt-32"
+            className="mt-12 grid grid-cols-2 gap-x-6 border-y border-stone-300 sm:mt-24 sm:grid-cols-3 sm:gap-x-0 lg:mt-32"
           >
             <ResearchStat
               value={3}
@@ -431,7 +431,7 @@ export default function ResearchPage() {
       </section>
 
       {/* RESEARCH AREAS */}
-      <section className="relative overflow-hidden bg-[#11110f] px-6 py-24 text-white sm:px-10 lg:py-36">
+      <section className="relative overflow-hidden bg-[#11110f] px-6 py-14 text-white sm:px-10 sm:py-24 lg:py-36">
         <div
           aria-hidden="true"
           className="absolute right-0 top-0 h-[600px] w-[600px] translate-x-1/3 -translate-y-1/3 rounded-full bg-cyan-500/10 blur-[160px]"
@@ -440,7 +440,7 @@ export default function ResearchPage() {
         <div className="relative mx-auto max-w-7xl">
           <motion.div
             {...fadeUp}
-            className="grid gap-10 lg:grid-cols-[0.65fr_1.35fr]"
+            className="grid gap-6 sm:gap-10 lg:grid-cols-[0.65fr_1.35fr]"
           >
             <SectionLabel light>Research Areas</SectionLabel>
 
@@ -452,7 +452,7 @@ export default function ResearchPage() {
                 </span>
               </h2>
 
-              <p className="mt-8 max-w-xl text-sm leading-7 text-stone-400">
+              <p className="mt-5 max-w-xl text-sm leading-7 text-stone-400 sm:mt-8">
                 Research themes connected by a common interest in improving
                 cardiovascular understanding and clinical decision-making.
               </p>
@@ -466,7 +466,7 @@ export default function ResearchPage() {
               delay: 0.1,
               ease,
             }}
-            className="mt-20 grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16"
+            className="mt-9 grid gap-8 sm:mt-20 sm:gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16"
           >
             {/* RESEARCH INDEX */}
             <div className="border-t border-white/10">
@@ -481,7 +481,7 @@ export default function ResearchPage() {
                     onClick={() => setActiveTopic(index)}
                     onMouseEnter={() => setActiveTopic(index)}
                     onFocus={() => setActiveTopic(index)}
-                    className="group w-full border-b border-white/10 py-7 text-left sm:py-9"
+                    className="group w-full border-b border-white/10 py-5 text-left sm:py-9"
                   >
                     <div className="grid grid-cols-[36px_1fr_auto] items-center gap-4 sm:grid-cols-[52px_1fr_auto]">
                       <span
@@ -535,7 +535,7 @@ export default function ResearchPage() {
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <p className="ml-[36px] mt-5 max-w-lg text-sm leading-7 text-stone-400 sm:ml-[52px]">
+                        <p className="ml-[36px] mt-3 max-w-lg text-sm leading-6 text-stone-400 sm:ml-[52px] sm:mt-5 sm:leading-7">
                           {topic.description}
                         </p>
                       </div>
@@ -546,7 +546,7 @@ export default function ResearchPage() {
             </div>
 
             {/* TOPIC VISUAL */}
-            <div className="relative min-h-[500px] overflow-hidden sm:min-h-[600px]">
+            <div className="relative min-h-[380px] overflow-hidden sm:min-h-[600px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selectedTopic.image}
@@ -598,18 +598,18 @@ export default function ResearchPage() {
                     duration: 0.5,
                     ease,
                   }}
-                  className="absolute bottom-0 left-0 right-0 p-7 sm:p-10"
+                  className="absolute bottom-0 left-0 right-0 p-6 sm:p-10"
                 >
-                  <div className="border-t border-white/25 pt-7">
+                  <div className="border-t border-white/25 pt-5 sm:pt-7">
                     <p className="text-[9px] font-semibold uppercase tracking-[0.24em] text-cyan-300">
                       {selectedTopic.category}
                     </p>
 
-                    <h3 className="mt-4 text-2xl font-medium tracking-[-0.04em] text-white sm:text-3xl">
+                    <h3 className="mt-3 text-2xl font-medium tracking-[-0.04em] text-white sm:mt-4 sm:text-3xl">
                       {selectedTopic.title}
                     </h3>
 
-                    <p className="mt-5 max-w-xl text-sm leading-7 text-stone-300">
+                    <p className="mt-3 max-w-xl text-sm leading-6 text-stone-300 sm:mt-5 sm:leading-7">
                       {selectedTopic.detail}
                     </p>
                   </div>
@@ -623,12 +623,12 @@ export default function ResearchPage() {
       {/* PUBLICATIONS */}
       <section
         id="publications"
-        className="bg-white px-6 py-24 sm:px-10 lg:py-36"
+        className="bg-white px-6 py-14 sm:px-10 sm:py-24 lg:py-36"
       >
         <div className="mx-auto max-w-7xl">
           <motion.div
             {...fadeUp}
-            className="grid gap-10 lg:grid-cols-[0.65fr_1.35fr]"
+            className="grid gap-6 sm:gap-10 lg:grid-cols-[0.65fr_1.35fr]"
           >
             <SectionLabel>Publications</SectionLabel>
 
@@ -640,14 +640,14 @@ export default function ResearchPage() {
                 </span>
               </h2>
 
-              <p className="mt-8 max-w-xl text-sm leading-7 text-stone-500">
+              <p className="mt-5 max-w-xl text-sm leading-7 text-stone-500 sm:mt-8">
                 Peer-reviewed academic work across cardiometabolic medicine and
                 neurological complications of extracorporeal life support.
               </p>
             </div>
           </motion.div>
 
-          <div className="mt-20 border-t border-stone-300">
+          <div className="mt-9 border-t border-stone-300 sm:mt-20">
             {publications.map((publication, index) => (
               <motion.article
                 key={publication.title}
@@ -657,7 +657,7 @@ export default function ResearchPage() {
                   delay: index * 0.08,
                   ease,
                 }}
-                className="group grid gap-8 border-b border-stone-300 py-10 transition-colors duration-500 hover:bg-stone-50/60 sm:py-12 lg:grid-cols-[90px_1fr_200px] lg:items-center lg:gap-14 lg:py-16"
+                className="group grid gap-4 border-b border-stone-300 py-7 transition-colors duration-500 hover:bg-stone-50/60 sm:gap-8 sm:py-12 lg:grid-cols-[90px_1fr_200px] lg:items-center lg:gap-14 lg:py-16"
               >
                 <div className="flex items-center justify-between lg:block">
                   <span className="text-xs tabular-nums text-stone-400">
@@ -682,7 +682,7 @@ export default function ResearchPage() {
                     </p>
                   </div>
 
-                  <h3 className="mt-5 max-w-4xl text-xl font-medium leading-[1.55] tracking-[-0.025em] text-stone-700 transition-colors duration-300 group-hover:text-stone-950 sm:text-2xl">
+                  <h3 className="mt-3 max-w-4xl text-lg font-medium leading-[1.45] tracking-[-0.025em] text-stone-700 transition-colors duration-300 group-hover:text-stone-950 sm:mt-5 sm:text-2xl sm:leading-[1.55]">
                     {publication.title}
                   </h3>
                 </div>
@@ -696,7 +696,7 @@ export default function ResearchPage() {
                   >
                     View publication
 
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full border border-stone-300 text-cyan-800 transition duration-500 group-hover/link:rotate-45 group-hover/link:border-cyan-800 group-hover/link:bg-cyan-800 group-hover/link:text-white">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 text-cyan-800 transition duration-500 sm:h-11 sm:w-11 group-hover/link:rotate-45 group-hover/link:border-cyan-800 group-hover/link:bg-cyan-800 group-hover/link:text-white">
                       <ArrowUpRight size={16} />
                     </span>
                   </a>
@@ -722,11 +722,11 @@ export default function ResearchPage() {
       </section>
 
       {/* RESEARCH DIRECTION */}
-      <section className="border-y border-stone-300 px-6 py-24 sm:px-10 lg:py-36">
+      <section className="border-y border-stone-300 px-6 py-14 sm:px-10 sm:py-24 lg:py-36">
         <div className="mx-auto max-w-7xl">
           <motion.div
             {...fadeUp}
-            className="grid gap-14 lg:grid-cols-[0.65fr_1.35fr]"
+            className="grid gap-6 sm:gap-14 lg:grid-cols-[0.65fr_1.35fr]"
           >
             <div>
               <SectionLabel>Perspective</SectionLabel>
@@ -739,7 +739,7 @@ export default function ResearchPage() {
                 className="text-cyan-800"
               />
 
-              <p className="mt-10 max-w-5xl text-3xl font-medium leading-[1.4] tracking-[-0.045em] text-stone-800 sm:text-4xl lg:text-[3.2rem]">
+              <p className="mt-6 max-w-5xl text-2xl font-medium leading-[1.4] tracking-[-0.045em] text-stone-800 sm:mt-10 sm:text-4xl lg:text-[3.2rem]">
                 “Research becomes meaningful when clinical questions are
                 translated into evidence that can{" "}
                 <span className="text-stone-400">
@@ -748,7 +748,7 @@ export default function ResearchPage() {
                 ”
               </p>
 
-              <div className="mt-12 flex items-center gap-4">
+              <div className="mt-8 flex items-center gap-4 sm:mt-12">
                 <span className="h-px w-10 bg-cyan-800" />
 
                 <p className="text-[10px] font-semibold uppercase tracking-[0.23em] text-stone-500">
@@ -764,7 +764,7 @@ export default function ResearchPage() {
      <section className="w-full bg-cyan-800">
       <motion.div
         {...fadeUp}
-        className="relative w-full overflow-hidden bg-cyan-800 px-6 py-20 text-white sm:px-10 lg:px-20 lg:py-24"
+        className="relative w-full overflow-hidden bg-cyan-800 px-6 py-14 text-white sm:px-10 sm:py-20 lg:px-20 lg:py-24"
       >
           <motion.div
             aria-hidden="true"
@@ -991,12 +991,12 @@ function ResearchStat({
   const isNumber = typeof value === "number";
 
   return (
-    <div className="border-b border-stone-300 py-9 last:border-b-0 sm:border-b-0 sm:border-r sm:px-8 sm:first:pl-0 sm:last:border-r-0 lg:px-12 lg:py-10">
+    <div className="border-b border-stone-300 py-6 last:col-span-2 last:border-b-0 sm:border-b-0 sm:border-r sm:px-8 sm:py-9 sm:first:pl-0 sm:last:col-span-1 sm:last:border-r-0 lg:px-12 lg:py-10">
       <p
         className={`font-semibold tracking-[-0.055em] text-stone-950 tabular-nums ${
           compact
             ? "text-3xl sm:text-4xl lg:text-5xl"
-            : "text-5xl lg:text-6xl"
+            : "text-4xl sm:text-5xl lg:text-6xl"
         }`}
       >
         {isNumber ? (
@@ -1009,7 +1009,7 @@ function ResearchStat({
         )}
       </p>
 
-      <p className="mt-4 text-xs leading-6 text-stone-500">
+      <p className="mt-2 text-xs leading-5 text-stone-500 sm:mt-4 sm:leading-6">
         {label}
       </p>
     </div>

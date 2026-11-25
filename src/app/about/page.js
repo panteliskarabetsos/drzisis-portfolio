@@ -325,16 +325,16 @@ export default function AboutPage() {
       </section>
 
       {/* INTRO */}
-      <section id="intro" className="px-6 py-24 sm:px-10 lg:py-36">
+      <section id="intro" className="px-6 py-14 sm:px-10 sm:py-24 lg:py-36">
         <div className="mx-auto max-w-7xl">
           <motion.div
             {...fadeUp}
-            className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24"
+            className="grid gap-7 sm:gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24"
           >
             <div>
               <SectionLabel>My Path</SectionLabel>
 
-              <h2 className="mt-7 max-w-lg text-4xl font-semibold leading-[1.02] tracking-[-0.05em] sm:text-5xl lg:text-[4rem]">
+              <h2 className="mt-5 max-w-lg text-4xl font-semibold leading-[1.02] tracking-[-0.05em] sm:mt-7 sm:text-5xl lg:text-[4rem]">
                 Shaped by
                 <span className="block text-cyan-800">
                   curiosity and care.
@@ -343,14 +343,14 @@ export default function AboutPage() {
             </div>
 
             <div className="lg:pt-9">
-              <p className="max-w-3xl text-xl leading-[1.6] tracking-[-0.025em] text-stone-700 sm:text-2xl lg:text-[1.7rem]">
+              <p className="max-w-3xl text-lg leading-[1.6] tracking-[-0.025em] text-stone-700 sm:text-2xl lg:text-[1.7rem]">
                 My medical training has strengthened my interest in
                 cardiovascular medicine and the connection between scientific
                 evidence, careful clinical reasoning and meaningful patient
                 relationships.
               </p>
 
-              <div className="mt-12 grid gap-8 border-t border-stone-300 pt-9 sm:grid-cols-2 sm:gap-12">
+              <div className="mt-8 grid gap-5 border-t border-stone-300 pt-7 sm:mt-12 sm:grid-cols-2 sm:gap-12 sm:pt-9">
                 <p className="text-sm leading-7 text-stone-500">
                   Clinical rotations provided exposure to a broad range of
                   specialties and reinforced the importance of understanding
@@ -374,7 +374,7 @@ export default function AboutPage() {
               delay: 0.1,
               ease,
             }}
-            className="mt-20 grid border-y border-stone-300 sm:mt-28 sm:grid-cols-2 lg:mt-32 lg:grid-cols-4"
+            className="mt-12 grid grid-cols-2 gap-x-6 border-y border-stone-300 sm:mt-28 sm:gap-x-0 lg:mt-32 lg:grid-cols-4"
           >
             {quickFacts.map((fact) => (
               <Stat
@@ -389,9 +389,9 @@ export default function AboutPage() {
       </section>
 
       {/* JOURNEY */}
-    <section className="border-y border-stone-300 bg-white px-6 py-24 sm:px-10 lg:py-36">
+    <section className="border-y border-stone-300 bg-white px-6 py-14 sm:px-10 sm:py-24 lg:py-36">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-16 lg:grid-cols-[0.55fr_1fr] lg:gap-24">
+        <div className="grid gap-10 sm:gap-16 lg:grid-cols-[0.55fr_1fr] lg:gap-24">
           {/* LEFT */}
           <motion.div
             {...fadeUp}
@@ -399,12 +399,12 @@ export default function AboutPage() {
           >
             <SectionLabel>Journey</SectionLabel>
 
-            <h2 className="mt-7 max-w-md text-4xl font-semibold leading-[1.02] tracking-[-0.05em] sm:text-5xl lg:text-[4rem]">
+            <h2 className="mt-5 max-w-md text-4xl font-semibold leading-[1.02] tracking-[-0.05em] sm:mt-7 sm:text-5xl lg:text-[4rem]">
               Journey in
               <span className="block text-stone-400">medicine.</span>
             </h2>
 
-            <p className="mt-7 max-w-sm text-sm leading-7 text-stone-500">
+            <p className="mt-5 max-w-sm text-sm leading-7 text-stone-500 sm:mt-7">
               A chronology of the clinical, academic and research experiences that
               continue to shape my path towards cardiology.
             </p>
@@ -419,7 +419,7 @@ export default function AboutPage() {
     </section>
 
       {/* ENDORSEMENTS */}
-      <section className="bg-white px-6 py-24 sm:px-10 lg:py-36">
+      <section className="bg-white px-6 py-14 sm:px-10 sm:py-24 lg:py-36">
         <div className="mx-auto max-w-7xl">
           <motion.div {...fadeUp}>
             <h2 className="text-4xl font-semibold tracking-[-0.05em] text-stone-950 sm:text-5xl lg:text-[4rem]">
@@ -427,7 +427,7 @@ export default function AboutPage() {
             </h2>
           </motion.div>
 
-          <div className="mt-16 border-t border-stone-300">
+          <div className="mt-8 border-t border-stone-300 sm:mt-16">
             {endorsements.map((endorsement, index) => (
               <motion.article
                 key={endorsement.name}
@@ -437,17 +437,17 @@ export default function AboutPage() {
                   delay: index * 0.08,
                   ease,
                 }}
-                className="group grid gap-10 border-b border-stone-300 py-12 lg:grid-cols-[0.16fr_1fr_0.42fr] lg:gap-12 lg:py-16"
+                className="group grid gap-4 border-b border-stone-300 py-7 sm:gap-10 sm:py-12 lg:grid-cols-[0.16fr_1fr_0.42fr] lg:gap-12 lg:py-16"
               >
                 <div>
                   <Quote
                     size={34}
                     strokeWidth={1.2}
-                    className="text-cyan-700"
+                    className="h-6 w-6 text-cyan-700 sm:h-[34px] sm:w-[34px]"
                   />
                 </div>
 
-                <blockquote className="max-w-3xl text-xl leading-[1.65] tracking-[-0.025em] text-stone-700 sm:text-2xl lg:text-[1.7rem]">
+                <blockquote className="max-w-3xl text-[1.05rem] leading-7 tracking-[-0.025em] text-stone-700 sm:text-2xl sm:leading-[1.65] lg:text-[1.7rem]">
                   “{endorsement.quote}”
                 </blockquote>
 
@@ -456,11 +456,11 @@ export default function AboutPage() {
                     {endorsement.name}
                   </p>
 
-                  <p className="mt-3 max-w-sm text-sm leading-6 text-stone-500">
+                  <p className="mt-2 max-w-sm text-sm leading-6 text-stone-500 sm:mt-3">
                     {endorsement.role}
                   </p>
 
-                  <span className="mt-8 block h-px w-8 bg-cyan-700 transition-all duration-500 group-hover:w-14" />
+                  <span className="mt-4 block h-px w-8 bg-cyan-700 transition-all duration-500 group-hover:w-14 sm:mt-8" />
                 </div>
               </motion.article>
             ))}
@@ -469,11 +469,11 @@ export default function AboutPage() {
       </section>
 
       {/* RESUME */}
-      <section className="border-t border-stone-300 px-6 py-24 sm:px-10 lg:py-32">
+      <section className="border-t border-stone-300 px-6 py-14 sm:px-10 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <motion.div
             {...fadeUp}
-            className="grid gap-12 lg:grid-cols-[1fr_0.7fr] lg:items-end"
+            className="grid gap-6 sm:gap-12 lg:grid-cols-[1fr_0.7fr] lg:items-end"
           >
             <div>
               <SectionLabel>Curriculum Vitae</SectionLabel>
@@ -512,7 +512,7 @@ export default function AboutPage() {
     <section className="w-full bg-cyan-800">
       <motion.div
         {...fadeUp}
-        className="relative w-full overflow-hidden bg-cyan-800 px-6 py-20 text-white sm:px-10 lg:px-20 lg:py-24"
+        className="relative w-full overflow-hidden bg-cyan-800 px-6 py-14 text-white sm:px-10 sm:py-20 lg:px-20 lg:py-24"
       >
         <motion.div
           aria-hidden="true"
@@ -600,7 +600,7 @@ function Timeline({ shouldReduceMotion }) {
   return (
     <div ref={timelineRef} className="relative">
       {/* base line */}
-      <div className="absolute bottom-0 left-[23px] top-0 w-px bg-stone-200 sm:left-[27px]" />
+      <div className="absolute bottom-0 left-[19px] top-0 w-px bg-stone-200 sm:left-[27px]" />
 
       {/* animated progress line */}
       <motion.div
@@ -610,7 +610,7 @@ function Timeline({ shouldReduceMotion }) {
             ? { scaleY: 1 }
             : { scaleY: lineScaleY }
         }
-        className="absolute bottom-0 left-[23px] top-0 w-px origin-top bg-gradient-to-b from-cyan-600 via-cyan-500 to-cyan-400 sm:left-[27px]"
+        className="absolute bottom-0 left-[19px] top-0 w-px origin-top bg-gradient-to-b from-cyan-600 via-cyan-500 to-cyan-400 sm:left-[27px]"
       />
 
       <div>
@@ -631,12 +631,12 @@ function Timeline({ shouldReduceMotion }) {
                 delay: index * 0.06,
                 ease,
               }}
-              className="group relative grid grid-cols-[48px_1fr] gap-6 border-b border-stone-200 py-10 first:pt-0 sm:grid-cols-[56px_1fr] sm:gap-8 lg:py-14"
+              className="group relative grid grid-cols-[40px_1fr] gap-4 border-b border-stone-200 py-7 first:pt-0 sm:grid-cols-[56px_1fr] sm:gap-8 sm:py-10 lg:py-14"
             >
               {/* MARKER */}
               <div className="relative z-10">
                 <span
-                  className={`flex h-12 w-12 items-center justify-center rounded-full border bg-white transition-all duration-500 sm:h-14 sm:w-14 ${
+                  className={`flex h-10 w-10 items-center justify-center rounded-full border bg-white transition-all duration-500 sm:h-14 sm:w-14 ${
                    item.current
                       ? "border-cyan-700 bg-cyan-700 text-white"
                       : "border-stone-300 text-cyan-800 group-hover:border-cyan-700 group-hover:bg-cyan-700 group-hover:text-white"
@@ -669,7 +669,7 @@ function Timeline({ shouldReduceMotion }) {
                       )}
                     </div>
 
-                    <h3 className="mt-5 max-w-xl text-2xl font-medium tracking-[-0.035em] text-stone-950 sm:text-3xl">
+                    <h3 className="mt-2 max-w-xl text-xl font-medium leading-snug tracking-[-0.035em] text-stone-950 sm:mt-5 sm:text-3xl sm:leading-[1.2]">
                       {item.title}
                     </h3>
                   </div>
@@ -679,11 +679,11 @@ function Timeline({ shouldReduceMotion }) {
                   </span>
                 </div>
 
-                <p className="mt-5 max-w-xl text-sm leading-7 text-stone-500">
+                <p className="mt-3 max-w-xl text-sm leading-6 text-stone-500 sm:mt-5 sm:leading-7">
                   {item.description}
                 </p>
 
-                <div className="mt-8 flex items-center gap-3">
+                <div className="mt-8 hidden items-center gap-3 sm:flex">
                   <span
                     className={`h-px transition-all duration-500 ${
                       item.current
@@ -758,7 +758,7 @@ function Stat({ value, format, label }) {
   const isNumber = typeof value === "number" && format;
 
   return (
-    <div className="border-b border-stone-300 py-9 last:border-b-0 sm:border-b-0 sm:px-8 sm:first:pl-0 lg:border-r lg:px-10 lg:py-10 lg:first:pl-0 lg:last:border-r-0">
+    <div className="border-b border-stone-300 py-6 sm:border-b-0 sm:px-8 sm:py-9 sm:first:pl-0 lg:border-r lg:px-10 lg:py-10 lg:first:pl-0 lg:last:border-r-0 [&:nth-last-child(-n+2)]:border-b-0">
       <p className="text-4xl font-semibold tracking-[-0.055em] text-stone-950 tabular-nums sm:text-5xl lg:text-6xl">
         {isNumber ? (
           <CountUp value={value} format={format} />
@@ -767,7 +767,7 @@ function Stat({ value, format, label }) {
         )}
       </p>
 
-      <p className="mt-4 text-xs leading-6 text-stone-500">
+      <p className="mt-2 text-xs leading-5 text-stone-500 sm:mt-4 sm:leading-6">
         {label}
       </p>
     </div>

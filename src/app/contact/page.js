@@ -279,10 +279,10 @@ export default function ContactPage() {
       {/* CONTACT */}
       <section
         id="contact"
-        className="w-full px-6 py-24 sm:px-10 lg:py-36"
+        className="w-full px-6 py-14 sm:px-10 sm:py-24 lg:py-36"
       >
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-20 lg:grid-cols-[0.72fr_1.28fr] lg:gap-28">
+          <div className="grid gap-12 sm:gap-20 lg:grid-cols-[0.72fr_1.28fr] lg:gap-28">
             {/* CONTACT INFORMATION */}
             <motion.div
               {...fadeUp}
@@ -297,12 +297,12 @@ export default function ContactPage() {
                 </span>
               </h2>
 
-              <div className="mt-14 border-t border-stone-300">
+              <div className="mt-9 border-t border-stone-300 sm:mt-14">
                 {contactDetails.map((detail) => {
                   const Icon = detail.icon;
 
                   const content = (
-                    <div className="group grid grid-cols-[34px_42px_1fr_auto] items-center gap-4 border-b border-stone-300 py-6">
+                    <div className="group grid grid-cols-[34px_42px_1fr_auto] items-center gap-4 border-b border-stone-300 py-4 sm:py-6">
                       <span className="text-[9px] font-medium tabular-nums text-stone-400">
                         {detail.number}
                       </span>
@@ -383,7 +383,7 @@ export default function ContactPage() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -8 }}
                       transition={{ duration: 0.5, ease }}
-                      className="relative flex flex-col items-center overflow-hidden px-6 py-20 text-center sm:py-24"
+                      className="relative flex flex-col items-center overflow-hidden px-6 py-14 text-center sm:py-24"
                     >
                       <div
                         aria-hidden
@@ -627,7 +627,7 @@ export default function ContactPage() {
 
       {/* CLOSING STRIP */}
       <section className="w-full border-t border-stone-300 bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:py-20">
+        <div className="mx-auto max-w-7xl px-6 py-10 sm:px-10 sm:py-16 lg:py-20">
           <motion.div
             {...fadeUp}
             className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-center"
@@ -732,10 +732,10 @@ function FormField({
 }) {
   return (
     <div
-      className={`group grid gap-5 border-b border-stone-300 py-8 transition-colors duration-300 focus-within:border-cyan-700 sm:grid-cols-[58px_180px_1fr] sm:gap-6 ${
+      className={`group grid gap-3 border-b border-stone-300 py-5 transition-colors duration-300 focus-within:border-cyan-700 sm:grid-cols-[58px_180px_1fr] sm:gap-6 ${
         large
           ? "sm:items-start sm:py-10"
-          : "sm:items-center"
+          : "sm:items-center sm:py-8"
       }`}
     >
       <span className="text-[9px] font-medium tabular-nums text-stone-400 transition-colors duration-300 group-focus-within:text-cyan-800">

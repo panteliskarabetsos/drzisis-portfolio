@@ -630,7 +630,7 @@ export default function HomePage() {
       ====================================================== */}
       <section
         id="about"
-        className="relative w-full px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-36"
+        className="relative w-full px-5 py-14 sm:px-8 sm:py-24 lg:px-10 lg:py-36"
       >
         <div className="mx-auto max-w-7xl">
           <motion.div
@@ -692,7 +692,7 @@ export default function HomePage() {
               delay: 0.1,
               ease,
             }}
-            className="mt-16 sm:mt-24 lg:mt-32"
+            className="mt-12 sm:mt-24 lg:mt-32"
           >
             <SectionLabel>By the numbers</SectionLabel>
 
@@ -703,7 +703,7 @@ export default function HomePage() {
               </span>
             </h3>
 
-            <div className="mt-9 grid border-t border-stone-300 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-7 grid grid-cols-2 gap-x-6 border-t border-stone-300 sm:mt-12 sm:gap-x-0 lg:grid-cols-4">
               {stats.map((stat) => (
                 <HomeStat
                   key={stat.label}
@@ -723,10 +723,10 @@ export default function HomePage() {
               delay: 0.1,
               ease,
             }}
-            className="mt-16 border-y border-stone-300 sm:mt-24 lg:mt-32"
+            className="mt-12 border-y border-stone-300 sm:mt-24 lg:mt-32"
           >
             <div className="grid lg:grid-cols-[0.42fr_1fr]">
-              <div className="flex flex-col justify-between border-b border-stone-300 py-8 lg:border-b-0 lg:border-r lg:py-12 lg:pr-12">
+              <div className="flex flex-col justify-between border-b border-stone-300 py-6 sm:py-8 lg:border-b-0 lg:border-r lg:py-12 lg:pr-12">
                 <div>
                   <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-cyan-800 sm:text-[10px] sm:tracking-[0.25em]">
                     Clinical interests
@@ -740,7 +740,7 @@ export default function HomePage() {
                   </h3>
                 </div>
 
-                <span className="mt-6 text-[11px] text-stone-400 sm:mt-10 sm:text-xs">
+                <span className="mt-4 text-[11px] text-stone-400 sm:mt-10 sm:text-xs">
                   04 focus areas
                 </span>
               </div>
@@ -749,7 +749,7 @@ export default function HomePage() {
                 {focusAreas.map((area, index) => (
                   <div
                     key={area}
-                    className="group grid grid-cols-[32px_1fr_32px] items-center gap-3 border-b border-stone-300 py-6 last:border-b-0 sm:grid-cols-[60px_1fr_auto] sm:py-9"
+                    className="group grid grid-cols-[32px_1fr_32px] items-center gap-3 border-b border-stone-300 py-4 last:border-b-0 sm:grid-cols-[60px_1fr_auto] sm:py-9"
                   >
                     <span className="text-[10px] tabular-nums text-stone-400 sm:text-xs">
                       {String(index + 1).padStart(2, "0")}
@@ -773,7 +773,7 @@ export default function HomePage() {
       {/* ======================================================
           CORE VALUES
       ====================================================== */}
-      <section className="relative w-full overflow-hidden bg-[#11110f] px-5 py-20 text-white sm:px-8 sm:py-24 lg:px-10 lg:py-32">
+      <section className="relative w-full overflow-hidden bg-[#11110f] px-5 py-14 text-white sm:px-8 sm:py-24 lg:px-10 lg:py-32">
         <div
           aria-hidden="true"
           className="absolute right-0 top-0 h-[420px] w-[420px] translate-x-1/3 -translate-y-1/3 rounded-full bg-cyan-600/10 blur-[120px] sm:h-[500px] sm:w-[500px] sm:blur-[140px]"
@@ -820,11 +820,11 @@ export default function HomePage() {
       {/* ======================================================
           CLINICAL PHILOSOPHY
       ====================================================== */}
-      <section className="w-full px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-36">
+      <section className="w-full px-5 py-14 sm:px-8 sm:py-24 lg:px-10 lg:py-36">
         <div className="mx-auto max-w-7xl">
           <motion.div
             {...fadeUp}
-            className="grid gap-8 sm:gap-10 lg:grid-cols-[0.7fr_1.3fr]"
+            className="grid gap-6 sm:gap-10 lg:grid-cols-[0.7fr_1.3fr]"
           >
             <SectionLabel>
               Clinical Philosophy
@@ -849,7 +849,7 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          <div className="mt-12 border-t border-stone-300 sm:mt-20 md:grid md:grid-cols-3">
+          <div className="mt-9 border-t border-stone-300 sm:mt-20 md:grid md:grid-cols-3">
             {clinicalPhilosophy.map((item, index) => {
               const Icon = item.icon;
 
@@ -862,7 +862,7 @@ export default function HomePage() {
                     delay: index * 0.08,
                     ease,
                   }}
-                  className="group relative border-b border-stone-300 py-8 md:border-b-0 md:border-r md:px-8 md:py-12 md:first:pl-0 md:last:border-r-0 md:last:pr-0 lg:px-12"
+                  className="group relative border-b border-stone-300 py-6 sm:py-8 md:border-b-0 md:border-r md:px-8 md:py-12 md:first:pl-0 md:last:border-r-0 md:last:pr-0 lg:px-12"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] tabular-nums text-stone-400 sm:text-xs">
@@ -874,15 +874,15 @@ export default function HomePage() {
                     </span>
                   </div>
 
-                  <h3 className="mt-10 text-[1.4rem] font-medium tracking-[-0.035em] sm:mt-16 sm:text-2xl">
+                  <h3 className="mt-5 text-[1.4rem] font-medium tracking-[-0.035em] sm:mt-16 sm:text-2xl">
                     {item.title}
                   </h3>
 
-                  <p className="mt-4 max-w-sm text-sm leading-7 text-stone-500 sm:mt-5">
+                  <p className="mt-3 max-w-sm text-sm leading-7 text-stone-500 sm:mt-5">
                     {item.description}
                   </p>
 
-                  <div className="mt-7 h-px w-8 bg-cyan-700 transition-all duration-500 group-hover:w-16 sm:mt-10" />
+                  <div className="mt-5 h-px w-8 bg-cyan-700 transition-all duration-500 group-hover:w-16 sm:mt-10" />
                 </motion.article>
               );
             })}
@@ -910,7 +910,7 @@ export default function HomePage() {
       {/* ======================================================
           ENDORSEMENTS
       ====================================================== */}
-      <section className="w-full border-t border-stone-300 bg-white px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-36">
+      <section className="w-full border-t border-stone-300 bg-white px-5 py-14 sm:px-8 sm:py-24 lg:px-10 lg:py-36">
         <div className="mx-auto max-w-7xl">
           <motion.div {...fadeUp}>
             <h2 className="text-[2.6rem] font-semibold tracking-[-0.05em] text-stone-950 sm:text-5xl lg:text-[4rem]">
@@ -918,7 +918,7 @@ export default function HomePage() {
             </h2>
           </motion.div>
 
-          <div className="mt-10 border-t border-stone-300 sm:mt-16">
+          <div className="mt-8 border-t border-stone-300 sm:mt-16">
             {endorsements.map((endorsement, index) => (
               <motion.article
                 key={endorsement.name}
@@ -928,21 +928,21 @@ export default function HomePage() {
                   delay: index * 0.08,
                   ease,
                 }}
-                className="group grid gap-6 border-b border-stone-300 py-9 sm:gap-8 sm:py-12 lg:grid-cols-[0.16fr_1fr_0.42fr] lg:gap-12 lg:py-16"
+                className="group grid gap-4 border-b border-stone-300 py-7 sm:gap-8 sm:py-12 lg:grid-cols-[0.16fr_1fr_0.42fr] lg:gap-12 lg:py-16"
               >
                 <div>
                   <Quote
-                    size={28}
+                    size={24}
                     strokeWidth={1.2}
                     className="text-cyan-700 sm:h-[34px] sm:w-[34px]"
                   />
                 </div>
 
-                <blockquote className="max-w-3xl text-lg leading-8 tracking-[-0.02em] text-stone-700 sm:text-2xl sm:leading-[1.65] lg:text-[1.7rem]">
+                <blockquote className="max-w-3xl text-[1.05rem] leading-7 tracking-[-0.02em] text-stone-700 sm:text-2xl sm:leading-[1.65] lg:text-[1.7rem]">
                   “{endorsement.quote}”
                 </blockquote>
 
-                <div className="border-t border-stone-200 pt-6 lg:border-l lg:border-t-0 lg:border-stone-300 lg:pl-10 lg:pt-0">
+                <div className="border-t border-stone-200 pt-5 sm:pt-6 lg:border-l lg:border-t-0 lg:border-stone-300 lg:pl-10 lg:pt-0">
                   <p className="font-semibold text-stone-950">
                     {endorsement.name}
                   </p>
@@ -951,7 +951,7 @@ export default function HomePage() {
                     {endorsement.role}
                   </p>
 
-                  <span className="mt-6 block h-px w-8 bg-cyan-700 transition-all duration-500 group-hover:w-14 sm:mt-8" />
+                  <span className="mt-4 block h-px w-8 bg-cyan-700 transition-all duration-500 group-hover:w-14 sm:mt-8" />
                 </div>
               </motion.article>
             ))}
@@ -1060,12 +1060,12 @@ function Marquee({ reduceMotion }) {
 
 function HomeStat({ value, format, label }) {
   return (
-    <div className="border-b border-stone-300 py-8 last:border-b-0 sm:py-9 lg:border-b-0 lg:border-r lg:px-10 lg:py-10 lg:first:pl-0 lg:last:border-r-0">
-      <p className="text-5xl font-semibold tracking-[-0.055em] text-stone-950 tabular-nums lg:text-6xl">
+    <div className="border-b border-stone-300 py-6 sm:py-9 lg:border-b-0 lg:border-r lg:px-10 lg:py-10 lg:first:pl-0 lg:last:border-r-0 [&:nth-last-child(-n+2)]:border-b-0">
+      <p className="text-4xl font-semibold tracking-[-0.055em] text-stone-950 tabular-nums sm:text-5xl lg:text-6xl">
         <CountUp value={value} format={format} />
       </p>
 
-      <p className="mt-4 text-xs leading-6 text-stone-500">
+      <p className="mt-2 text-xs leading-5 text-stone-500 sm:mt-4 sm:leading-6">
         {label}
       </p>
     </div>
