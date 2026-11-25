@@ -113,12 +113,6 @@ export default function PrivacyPolicy() {
               Access to the email account where messages are received is
               restricted and protected by industry-standard security measures.
             </li>
-            <li>
-              The contact form includes an automated <strong>spam check</strong>{" "}
-              (a hidden field that only automated bots fill in). Submissions
-              identified as spam are discarded and are never delivered to my
-              inbox.
-            </li>
           </ul>
           <p className="text-sm sm:text-base leading-relaxed mt-3">
             Despite these efforts, no method of transmission or storage over the

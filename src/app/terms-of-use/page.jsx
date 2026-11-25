@@ -115,10 +115,6 @@ export default function TermsOfUsePage() {
               Names are limited to 100 characters, email addresses to 254
               characters and messages to 5,000 characters.
             </li>
-            <li>
-              Automated spam protection is applied. Submissions identified as
-              spam are discarded without notice and are not delivered.
-            </li>
           </ul>
           <p className="text-stone-700 text-sm sm:text-base leading-relaxed mt-2">
             By using the contact form, you consent to being contacted via the
