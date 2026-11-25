@@ -10,7 +10,7 @@ import {
 } from "framer-motion";
 import {
   ArrowUpRight,
-  CheckCircle2,
+  Check,
   Mail,
   MapPin,
   Phone,
@@ -361,18 +361,99 @@ export default function ContactPage() {
               }}
             >
               <div className="border-t border-stone-300">
-                <div className="flex items-center justify-between border-b border-stone-300 py-6">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.23em] text-stone-500">
-                    Send a message
-                  </p>
+                <AnimatePresence mode="wait">
+                  {isSuccess ? (
+                    <motion.div
+                      key="success"
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.5, ease }}
+                      className="relative flex flex-col items-center overflow-hidden px-6 py-20 text-center sm:py-24"
+                    >
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute left-1/2 top-10 h-64 w-64 -translate-x-1/2 rounded-full bg-emerald-200/40 blur-[90px]"
+                      />
 
-                  <PulseDot dot="bg-cyan-700" ping="bg-cyan-600" />
-                </div>
+                      <motion.div
+                        initial={{ scale: 0.5, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{
+                          delay: 0.1,
+                          duration: 0.55,
+                          ease,
+                        }}
+                        className="relative flex h-20 w-20 items-center justify-center rounded-full bg-emerald-600/10 ring-1 ring-inset ring-emerald-600/20"
+                      >
+                        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-600 text-white shadow-lg shadow-emerald-600/25">
+                          <Check size={24} strokeWidth={2.75} />
+                        </span>
+                      </motion.div>
 
-                <form
-                  onSubmit={handleSubmit}
-                  className="pt-4"
-                >
+                      <motion.p
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.22, duration: 0.5, ease }}
+                        className="mt-7 text-[10px] font-semibold uppercase tracking-[0.3em] text-emerald-700"
+                      >
+                        Message sent
+                      </motion.p>
+
+                      <motion.h3
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.28, duration: 0.5, ease }}
+                        className="mt-4 max-w-md text-3xl font-semibold leading-[1.05] tracking-[-0.05em] text-stone-950 sm:text-[2.6rem]"
+                      >
+                        Thank you for reaching out.
+                      </motion.h3>
+
+                      <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.34, duration: 0.5, ease }}
+                        className="mt-5 max-w-sm text-sm leading-7 text-stone-500"
+                      >
+                        Your message has landed in my inbox. I will get back
+                        to you as soon as possible.
+                      </motion.p>
+
+                      <motion.button
+                        type="button"
+                        onClick={() => setIsSuccess(false)}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4, duration: 0.5, ease }}
+                        className="group mt-10 inline-flex h-12 items-center gap-3 rounded-full border border-stone-300 pl-6 pr-5 text-sm font-medium text-stone-700 transition duration-500 hover:border-stone-950 hover:text-stone-950"
+                      >
+                        Send another message
+                        <ArrowUpRight
+                          size={16}
+                          className="transition-transform duration-500 group-hover:rotate-45"
+                        />
+                      </motion.button>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="form"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3, ease }}
+                    >
+                      <div className="flex items-center justify-between border-b border-stone-300 py-6">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.23em] text-stone-500">
+                          Send a message
+                        </p>
+
+                        <PulseDot dot="bg-cyan-700" ping="bg-cyan-600" />
+                      </div>
+
+                      <form
+                        onSubmit={handleSubmit}
+                        className="pt-4"
+                      >
                   {/* NAME */}
                   <FormField
                     number="01"
@@ -432,45 +513,6 @@ export default function ContactPage() {
 
                   {/* STATUS */}
                   <AnimatePresence mode="wait">
-                    {isSuccess && (
-                      <motion.div
-                        key="success"
-                        initial={{
-                          opacity: 0,
-                          y: 10,
-                        }}
-                        animate={{
-                          opacity: 1,
-                          y: 0,
-                        }}
-                        exit={{
-                          opacity: 0,
-                          y: -5,
-                        }}
-                        transition={{
-                          duration: 0.35,
-                          ease,
-                        }}
-                        className="mt-8 flex items-start gap-4 border-l-2 border-emerald-600 bg-emerald-50/70 px-5 py-4"
-                      >
-                        <CheckCircle2
-                          size={18}
-                          className="mt-0.5 shrink-0 text-emerald-700"
-                        />
-
-                        <div>
-                          <p className="text-sm font-semibold text-emerald-900">
-                            Message sent successfully.
-                          </p>
-
-                          <p className="mt-1 text-xs leading-5 text-emerald-700">
-                            Thank you for reaching out. Your message has been
-                            received.
-                          </p>
-                        </div>
-                      </motion.div>
-                    )}
-
                     {error && (
                       <motion.div
                         key="error"
@@ -528,7 +570,10 @@ export default function ContactPage() {
                       </span>
                     </button>
                   </div>
-                </form>
+                      </form>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </motion.div>
           </div>
