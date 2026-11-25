@@ -90,6 +90,21 @@ const quickFacts = [
 
 const timeline = [
   {
+    year: "Sep 2026 — Dec 2026",
+    title: 'Resident at "Alexandra" General Hospital',
+    description:
+      'Serving as a resident at the General Hospital of Athens "Alexandra", gaining hands-on clinical experience in patient care and management.',
+    icon: Stethoscope,
+    current: true,
+  },
+  {
+    year: "Jan 2026 — Jul 2026",
+    title: 'Resident Doctor at "Gennimatas" General Hospital',
+    description:
+      'Worked as a resident doctor at the General Hospital of Athens "Gennimatas", providing patient care across clinical specialties.',
+    icon: Stethoscope,
+  },
+  {
     year: "Oct 2025 — Present",
     title: "MSc in Clinical Trials",
     description:
