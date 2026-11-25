@@ -461,8 +461,6 @@ export default function ContactPage() {
                         onSubmit={handleSubmit}
                         className="pt-4"
                       >
-                  {/* HONEYPOT: hidden from people and screen readers; bots that
-                      fill every field get silently ignored by the API. */}
                   <div className="sr-only" aria-hidden="true">
                     <label htmlFor="website">Website</label>
                     <input
