@@ -25,6 +25,7 @@ import {
   Sun,
   Users,
 } from "lucide-react";
+import { publications } from "@/lib/publications";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -91,7 +92,7 @@ const marqueeItems = [
 
 const stats = [
   {
-    value: 2,
+    value: publications.length,
     format: (v) => String(Math.round(v)).padStart(2, "0"),
     label: "Peer-reviewed publications",
   },

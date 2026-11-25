@@ -20,6 +20,7 @@ import {
   Quote,
   Stethoscope,
 } from "lucide-react";
+import { publications } from "@/lib/publications";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -64,29 +65,6 @@ const heroItem = {
     },
   },
 };
-
-const quickFacts = [
-  {
-    value: 2019,
-    format: (v) => String(Math.round(v)),
-    label: "In medicine since",
-  },
-  {
-    value: 5,
-    format: (v) => String(Math.round(v)).padStart(2, "0"),
-    label: "Career milestones",
-  },
-  {
-    value: 2,
-    format: (v) => String(Math.round(v)).padStart(2, "0"),
-    label: "Peer-reviewed publications",
-  },
-  {
-    value: "Athens",
-    format: null,
-    label: "Based in Greece",
-  },
-];
 
 const timeline = [
   {
@@ -139,6 +117,29 @@ const timeline = [
     description:
       "Entered Athens School of Medicine with a vision to provide holistic, evidence-based and patient-centered medical care.",
     icon: GraduationCap,
+  },
+];
+
+const quickFacts = [
+  {
+    value: 2019,
+    format: (v) => String(Math.round(v)),
+    label: "In medicine since",
+  },
+  {
+    value: timeline.length,
+    format: (v) => String(Math.round(v)).padStart(2, "0"),
+    label: "Career milestones",
+  },
+  {
+    value: publications.length,
+    format: (v) => String(Math.round(v)).padStart(2, "0"),
+    label: "Peer-reviewed publications",
+  },
+  {
+    value: "Athens",
+    format: null,
+    label: "Based in Greece",
   },
 ];
 
@@ -636,10 +637,10 @@ function Timeline({ shouldReduceMotion }) {
               {/* MARKER */}
               <div className="relative z-10">
                 <span
-                  className={`flex h-10 w-10 items-center justify-center rounded-full border bg-white transition-all duration-500 sm:h-14 sm:w-14 ${
+                  className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-500 sm:h-14 sm:w-14 ${
                    item.current
                       ? "border-cyan-700 bg-cyan-700 text-white"
-                      : "border-stone-300 text-cyan-800 group-hover:border-cyan-700 group-hover:bg-cyan-700 group-hover:text-white"
+                      : "border-stone-300 bg-white text-cyan-800 group-hover:border-cyan-700 group-hover:bg-cyan-700 group-hover:text-white"
                   }`}
                 >
                   <Icon size={19} strokeWidth={1.7} />
