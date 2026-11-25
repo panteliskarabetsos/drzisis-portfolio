@@ -584,7 +584,16 @@ export async function POST(request) {
       );
     }
 
-    const { name, email, message } = body ?? {};
+    const { name, email, message, website } = body ?? {};
+
+    // Honeypot: the "website" field is hidden from real visitors, so any
+    // value means a bot filled it in. Pretend it worked so the bot doesn't
+    // learn it was caught, but don't send an email.
+    if (typeof website === "string" && website.trim() !== "") {
+      console.info("Contact form honeypot triggered; submission ignored.");
+
+      return NextResponse.json({ success: true });
+    }
 
     if (
       typeof name !== "string" ||

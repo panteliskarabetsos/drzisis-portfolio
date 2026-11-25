@@ -95,6 +95,7 @@ export default function ContactPage() {
     name: "",
     email: "",
     message: "",
+    website: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -146,6 +147,7 @@ export default function ContactPage() {
         name: "",
         email: "",
         message: "",
+        website: "",
       });
     } catch (submissionError) {
       console.error("Error submitting contact form:", submissionError);
@@ -459,6 +461,21 @@ export default function ContactPage() {
                         onSubmit={handleSubmit}
                         className="pt-4"
                       >
+                  {/* HONEYPOT: hidden from people and screen readers; bots that
+                      fill every field get silently ignored by the API. */}
+                  <div className="sr-only" aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <input
+                      id="website"
+                      name="website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={formData.website}
+                      onChange={handleChange}
+                    />
+                  </div>
+
                   {/* NAME */}
                   <FormField
                     number="01"
