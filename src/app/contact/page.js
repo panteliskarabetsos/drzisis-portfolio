@@ -415,8 +415,8 @@ export default function ContactPage() {
                         transition={{ delay: 0.34, duration: 0.5, ease }}
                         className="mt-5 max-w-sm text-sm leading-7 text-stone-500"
                       >
-                        Your message has landed in my inbox. I will get back
-                        to you as soon as possible.
+                        Your message has been received. I will get back to you
+                        as soon as possible.
                       </motion.p>
 
                       <motion.button
