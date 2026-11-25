@@ -225,8 +225,6 @@ export default function ContactPage() {
               <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-300">
                 Contact
               </p>
-
-              <PulseDot dot="bg-cyan-300" ping="bg-cyan-300" />
             </motion.div>
 
             <div className="mt-7 grid gap-8 lg:grid-cols-[1fr_0.52fr] lg:items-end">
