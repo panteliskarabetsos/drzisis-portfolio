@@ -99,9 +99,9 @@ const timeline = [
   },
   {
     year: "Jan 2026 — Jul 2026",
-    title: 'Resident Doctor at "Gennimatas" General Hospital',
+    title: "Resident Doctor at Gennimatas Athens General Hospital",
     description:
-      'Worked as a resident doctor at the General Hospital of Athens "Gennimatas", providing patient care across clinical specialties.',
+      "Worked as a resident doctor at Gennimatas Athens General Hospital, providing patient care across clinical specialties.",
     icon: Stethoscope,
   },
   {
