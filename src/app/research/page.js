@@ -124,6 +124,14 @@ const publications = [
   },
   {
     title:
+      "Description of the Anatomical Characteristics of Mitral Valve Apparatus among Patients with Moderate or Severe Primary Mitral Regurgitation Using 3D Transesophageal Echocardiography",
+    journal: "European Heart Journal — Cardiovascular Imaging",
+    year: "2025",
+    type: "Research Abstract",
+    link: "https://doi.org/10.1093/ehjci/jeae333.096",
+  },
+  {
+    title:
       "Acute Ischemic Stroke during Extracorporeal Membrane Oxygenation (ECMO): A Narrative Review of the Literature",
     journal: "Journal of Clinical Medicine",
     year: "2024",
