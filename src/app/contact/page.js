@@ -135,6 +135,13 @@ export default function ContactPage() {
         body: JSON.stringify(formData),
       });
 
+      if (response.status === 429) {
+        setError(
+          "You have sent several messages in a short time. Please wait a few minutes and try again, or contact me directly by email."
+        );
+        return;
+      }
+
       const result = await response.json();
 
       if (!response.ok || !result.success) {

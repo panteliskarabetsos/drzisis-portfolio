@@ -5,6 +5,10 @@ import {
   MAX_MESSAGE_LENGTH,
   MAX_NAME_LENGTH,
 } from "@/lib/contact-limits";
+import {
+  consumeContactRateLimit,
+  getClientKey,
+} from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -625,12 +629,6 @@ export async function POST(request) {
 
     const { name, email, message, website } = body ?? {};
 
-    if (typeof website === "string" && website.trim() !== "") {
-      console.info("Contact submission ignored.");
-
-      return NextResponse.json({ success: true });
-    }
-
     if (
       typeof name !== "string" ||
       typeof email !== "string" ||
@@ -721,6 +719,29 @@ export async function POST(request) {
           status: 400,
         }
       );
+    }
+
+    const rateLimit = consumeContactRateLimit(getClientKey(request));
+
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Too many messages. Please try again later.",
+        },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(rateLimit.retryAfterSeconds),
+          },
+        }
+      );
+    }
+
+    if (typeof website === "string" && website.trim() !== "") {
+      console.info("Contact submission ignored.");
+
+      return NextResponse.json({ success: true });
     }
 
     const gmailUser = process.env.GMAIL_USER;
