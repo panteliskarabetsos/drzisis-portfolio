@@ -285,12 +285,6 @@ export default function ContactPage() {
                 </span>
               </h2>
 
-              <p className="mt-8 max-w-md text-sm leading-7 text-stone-500">
-                The easiest way to reach me is through the contact form or
-                directly by email. I welcome discussions around cardiology,
-                clinical research and academic collaboration.
-              </p>
-
               <div className="mt-14 border-t border-stone-300">
                 {contactDetails.map((detail) => {
                   const Icon = detail.icon;
