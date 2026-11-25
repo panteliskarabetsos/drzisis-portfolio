@@ -1,32 +1,55 @@
-"use client";
-
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { LegalHero } from "../components/legal-layout";
+import { legalDocuments } from "../components/legal-content";
+
+export const metadata = {
+  title: "Legal | Dr. Marios Zisis",
+  description: "Privacy Policy and Terms of Use for the website of Dr. Marios Zisis.",
+};
 
 export default function LegalPage() {
   return (
-    <main className="bg-gradient-to-b from-stone-100 to-white py-20 px-6 min-h-screen">
-      <div className="max-w-3xl mx-auto text-center">
-        <h1 className="text-5xl font-bold text-stone-900 mb-6">Legal</h1>
-        <p className="text-stone-600 mb-12 max-w-xl mx-auto">
-          Transparency and trust matter to me. Please review the policies below.
+    <main className="min-h-screen w-full bg-[#f8f8f6] text-stone-950 selection:bg-cyan-100 selection:text-cyan-950">
+      <LegalHero title="Legal" accent="information.">
+        <p className="mt-6 max-w-xl border-l border-white/20 pl-5 text-sm leading-7 text-stone-300 sm:pl-6 sm:text-base">
+          Transparency and trust matter to me. Please review the policies
+          below.
         </p>
+      </LegalHero>
 
-        <div className="grid gap-6 sm:grid-cols-2">
-          <Link href="/privacy-policy" className="block rounded-xl border border-stone-200 p-6 bg-white shadow-sm hover:shadow-md transition">
-            <h2 className="text-lg font-semibold text-stone-800 mb-2">Privacy Policy</h2>
-            <p className="text-sm text-stone-600">
-              Learn how your personal information is collected, used and protected.
-            </p>
-          </Link>
+      <section className="mx-auto max-w-7xl px-6 py-12 sm:px-10 sm:py-20 lg:py-28">
+        <div className="border-t border-stone-300">
+          {legalDocuments.map((doc, index) => (
+            <Link
+              key={doc.href}
+              href={doc.href}
+              className="group grid grid-cols-[32px_1fr_auto] items-center gap-4 border-b border-stone-300 py-7 sm:grid-cols-[64px_1fr_auto] sm:gap-8 sm:py-10"
+            >
+              <span className="text-[11px] font-medium tabular-nums text-cyan-800">
+                {String(index + 1).padStart(2, "0")}
+              </span>
 
-          <Link href="/terms-of-use" className="block rounded-xl border border-stone-200 p-6 bg-white shadow-sm hover:shadow-md transition">
-            <h2 className="text-lg font-semibold text-stone-800 mb-2">Terms of Use</h2>
-            <p className="text-sm text-stone-600">
-              Understand the rules and responsibilities for using this site and services.
-            </p>
-          </Link>
+              <div className="min-w-0">
+                <h2 className="text-2xl font-semibold tracking-[-0.04em] transition duration-300 group-hover:text-cyan-800 sm:text-4xl lg:text-5xl">
+                  {doc.title}
+                </h2>
+                <p className="mt-2 max-w-xl text-sm leading-6 text-stone-500 sm:mt-3 sm:text-base">
+                  {doc.description}
+                </p>
+              </div>
+
+              <span className="flex h-11 w-11 items-center justify-center rounded-full border border-stone-300 text-stone-500 transition duration-500 group-hover:border-cyan-800 group-hover:bg-cyan-800 group-hover:text-white sm:h-14 sm:w-14">
+                <ArrowUpRight size={18} strokeWidth={1.7} />
+              </span>
+            </Link>
+          ))}
         </div>
-      </div>
+
+        <p className="mt-8 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400">
+          Effective November 25, 2026
+        </p>
+      </section>
     </main>
   );
 }
