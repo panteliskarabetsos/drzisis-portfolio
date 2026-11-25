@@ -84,6 +84,10 @@ export default function TermsOfUsePage() {
             <li>
               Use the contact form to send spam, abusive, or harmful content.
             </li>
+            <li>
+              Use bots, scripts or other automated tools to submit the contact
+              form.
+            </li>
             <li>Introduce malware, viruses, or any other malicious code.</li>
           </ul>
         </section>
@@ -101,12 +105,19 @@ export default function TermsOfUsePage() {
             <li>Your submission is transmitted securely over HTTPS.</li>
             <li>
               Your message is delivered to an email inbox through an email
-              service (for example, a service such as Nodemailer connected to an
-              email provider).
+              service provider (such as Gmail).
             </li>
             <li>
               The Website itself does <strong>not</strong> store your message in
-              a public database or use it for analytics.
+              a database or use it for analytics.
+            </li>
+            <li>
+              Names are limited to 100 characters, email addresses to 254
+              characters and messages to 5,000 characters.
+            </li>
+            <li>
+              Automated spam protection is applied. Submissions identified as
+              spam are discarded without notice and are not delivered.
             </li>
           </ul>
           <p className="text-stone-700 text-sm sm:text-base leading-relaxed mt-2">
@@ -282,16 +293,16 @@ export default function TermsOfUsePage() {
           <p className="text-stone-700 text-sm sm:text-base leading-relaxed">
             📧 <strong>Email:</strong>{" "}
             <a
-              href="mailto:mailsystem.drzisis@gmail.com"
+              href="mailto:contact@drzisis.com"
               className="text-cyan-700 underline underline-offset-2 hover:text-cyan-800"
             >
-         contact@drzisis.com
+              contact@drzisis.com
             </a>
           </p>
         </section>
 
         <p className="text-stone-500 text-xs sm:text-sm mt-10 text-center">
-          Last updated: September 20, 2025
+          Last updated: November 25, 2026
         </p>
       </div>
     </main>

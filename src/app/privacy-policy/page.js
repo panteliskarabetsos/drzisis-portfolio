@@ -9,7 +9,8 @@ export default function PrivacyPolicy() {
             Privacy Policy
           </h1>
           <p className="mt-2 text-sm text-stone-500">
-            Effective Date: <span className="font-medium">12/3/2025</span>
+            Effective Date:{" "}
+            <span className="font-medium">November 25, 2026</span>
           </p>
         </header>
 
@@ -80,6 +81,10 @@ export default function PrivacyPolicy() {
             </li>
           </ul>
           <p className="text-sm sm:text-base leading-relaxed mt-3">
+            The legal basis for this processing is my legitimate interest in
+            replying to messages that you choose to send me.
+          </p>
+          <p className="text-sm sm:text-base leading-relaxed mt-3">
             I <strong>do not</strong> use your contact details for newsletters,
             advertising or marketing campaigns, and I do <strong>not</strong>{" "}
             profile or track visitors.
@@ -107,6 +112,12 @@ export default function PrivacyPolicy() {
             <li>
               Access to the email account where messages are received is
               restricted and protected by industry-standard security measures.
+            </li>
+            <li>
+              The contact form includes an automated <strong>spam check</strong>{" "}
+              (a hidden field that only automated bots fill in). Submissions
+              identified as spam are discarded and are never delivered to my
+              inbox.
             </li>
           </ul>
           <p className="text-sm sm:text-base leading-relaxed mt-3">
@@ -137,6 +148,12 @@ export default function PrivacyPolicy() {
               <strong>email service provider</strong> (e.g. Gmail). That
               provider processes emails according to its own privacy and
               security practices.
+            </li>
+            <li>
+              The website is run by a third-party{" "}
+              <strong>hosting provider</strong>, which may process technical
+              data such as IP addresses in its server logs in order to deliver
+              and secure the website.
             </li>
           </ul>
         </section>
@@ -183,21 +200,34 @@ export default function PrivacyPolicy() {
             8. Your Rights
           </h2>
           <p className="text-sm sm:text-base leading-relaxed mb-2">
-            Depending on your location, you may have rights regarding your
-            personal information, such as:
+            Under the EU General Data Protection Regulation (GDPR), you have
+            the right to:
           </p>
           <ul className="list-disc list-inside mt-2 text-sm sm:text-base leading-relaxed">
-            <li>Accessing the personal information I hold about you.</li>
-            <li>Requesting corrections to inaccurate information.</li>
+            <li>Access the personal information I hold about you.</li>
+            <li>Request correction of inaccurate information.</li>
+            <li>Request deletion of your personal information.</li>
+            <li>Object to, or ask me to restrict, the processing of your data.</li>
             <li>
-              Requesting deletion of your personal information, where
-              applicable.
+              Receive your data in a portable format, where applicable.
             </li>
           </ul>
           <p className="text-sm sm:text-base leading-relaxed mt-3">
             If you would like to exercise any of these rights, please contact me
             using the email address below. I will do my best to respond within a
             reasonable timeframe.
+          </p>
+          <p className="text-sm sm:text-base leading-relaxed mt-3">
+            You also have the right to lodge a complaint with the{" "}
+            <a
+              href="https://www.dpa.gr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cyan-700 underline underline-offset-2 hover:text-cyan-800"
+            >
+              Hellenic Data Protection Authority
+            </a>
+            .
           </p>
         </section>
 
@@ -226,7 +256,7 @@ export default function PrivacyPolicy() {
           <p className="text-sm sm:text-base leading-relaxed">
             📧 <strong>Email:</strong>{" "}
             <a
-              href="mailto:mailsystem.drzisis@gmail.com"
+              href="mailto:contact@drzisis.com"
               className="text-cyan-700 underline underline-offset-2 hover:text-cyan-800"
             >
               contact@drzisis.com
