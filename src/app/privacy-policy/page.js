@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/site";
 import LegalLayout from "../components/legal-layout";
 import {
   LegalContactCard,
@@ -6,11 +7,12 @@ import {
   LegalNote,
 } from "../components/legal-content";
 
-export const metadata = {
-  title: "Privacy Policy | Dr. Marios Zisis",
+export const metadata = pageMetadata({
+  title: "Privacy Policy",
   description:
     "How Dr. Marios Zisis collects, uses and protects information sent through this website.",
-};
+  path: "/privacy-policy",
+});
 
 const sections = [
   {

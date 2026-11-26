@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/site";
 import LegalLayout from "../components/legal-layout";
 import {
   LegalContactCard,
@@ -6,11 +7,12 @@ import {
   LegalNote,
 } from "../components/legal-content";
 
-export const metadata = {
-  title: "Terms of Use | Dr. Marios Zisis",
+export const metadata = pageMetadata({
+  title: "Terms of Use",
   description:
     "The terms that apply when you access or use the website of Dr. Marios Zisis.",
-};
+  path: "/terms-of-use",
+});
 
 const sections = [
   {

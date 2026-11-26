@@ -1,12 +1,14 @@
+import { pageMetadata } from "@/lib/site";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { LegalHero } from "../components/legal-layout";
 import { legalDocuments } from "../components/legal-content";
 
-export const metadata = {
-  title: "Legal | Dr. Marios Zisis",
+export const metadata = pageMetadata({
+  title: "Legal",
   description: "Privacy Policy and Terms of Use for the website of Dr. Marios Zisis.",
-};
+  path: "/legal",
+});
 
 export default function LegalPage() {
   return (

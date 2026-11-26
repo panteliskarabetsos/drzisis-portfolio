@@ -2,6 +2,14 @@ import "./globals.css";
 import { Outfit } from "next/font/google";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import {
+  PROFILE_LINKS,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+  pageMetadata,
+} from "@/lib/site";
 
 // Load Outfit font properly
 const outfit = Outfit({
@@ -11,24 +19,54 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: "Dr. Marios Zisis | Cardiologist",
-  description: "Medical graduate dedicated to cardiology and patient-centered care.",
-  openGraph: {
-    title: "Dr. Marios Zisis | Cardiologist",
-    description: "Medical graduate dedicated to cardiology and patient-centered care",
-    url: "https://drzisis.com",
-    siteName: "Dr. Marios Zisis",
-    images: [
-      {
-        url: "https://drzisis.com/favicon.ico", // Path to Open Graph image
-        width: 1200,
-        height: 630,
-        alt: "Dr. Marios Zisis | Cardiologist",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  ...pageMetadata({ description: SITE_DESCRIPTION, path: "/" }),
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: "Marios Zisis",
+      honorificPrefix: "Dr.",
+      jobTitle: "Resident Doctor",
+      description: SITE_DESCRIPTION,
+      url: SITE_URL,
+      image: `${SITE_URL}/profile-img.jpg`,
+      email: "mailto:contact@drzisis.com",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Athens",
+        addressCountry: "GR",
+      },
+      knowsAbout: [
+        "Cardiology",
+        "Cardiovascular prevention",
+        "Valvular heart disease",
+        "Cardiometabolic health",
+        "Echocardiography",
+        "Clinical research",
+      ],
+      sameAs: PROFILE_LINKS,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE_NAME,
+      inLanguage: "en",
+      publisher: { "@id": `${SITE_URL}/#person` },
+    },
+  ],
 };
 
 export const viewport = {
@@ -55,22 +93,7 @@ export default function RootLayout({ children }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Dr. Marios Zisis",
-              "image": "https://drzisis.com/profile-img.jpg",
-              "jobTitle": "Cardiologist",
-              "url": "https://drzisis.com",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Athens",
-                "addressCountry": "GR",
-              },
-              "email": "mailto:mzisis01@gmail.com",
-              "description":
-                "Recent medical graduate with a passion for cardiology, preventive care, and patient-centered clinical practice.",
-            }),
+            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
           }}
         />
       </body>
